@@ -1,4 +1,4 @@
-# CEN3031_Group111_Project
+# Squizzy
 
 Project Name: Squizzy
 
