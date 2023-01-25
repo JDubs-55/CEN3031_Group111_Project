@@ -16,8 +16,8 @@ Test their knowledge using any deck created on the platform through a variety of
 
 
 Project Members:
-Collin Stebbins (Front-end)
-Anthony Crowe (Front-end)
-Johnathan Weller (Back-end)
-Kyle Chamblee (Back-end)
+--Collin Stebbins (Front-end)
+--Anthony Crowe (Front-end)
+--Johnathan Weller (Back-end)
+--Kyle Chamblee (Back-end)
 
