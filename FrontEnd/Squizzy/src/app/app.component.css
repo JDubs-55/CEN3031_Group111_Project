@@ -1,0 +1,22 @@
+mat-sidenav-container{
+    height: 100%;
+}
+
+mat-sidenav-content{
+    display: flex;
+    flex-direction: column;
+}
+
+#sideNavOptions{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1em;
+    margin: 0.5em;
+}
+
+#subPageDisplay{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}

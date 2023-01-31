@@ -8,11 +8,13 @@ import { FlashCardControllerService } from './flash-card-controller.service';
 })
 export class AppComponent {
   title = 'Squizzy';
-  displayedDeck = "deck1";
-  cardNumber = 0;
+
+  isSideNavOpen: boolean = false;
 
   constructor(private flashCardController: FlashCardControllerService){
-    this.flashCardController.addDeck(this.displayedDeck);
-    this.flashCardController.addCardFromTemplate(this.displayedDeck, "default", "Test Front Text", "Test Back Text");
+  }
+
+  toggleSideNav(){
+    this.isSideNavOpen = !this.isSideNavOpen;
   }
 }

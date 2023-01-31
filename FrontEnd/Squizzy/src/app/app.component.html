@@ -1,1 +1,39 @@
-<app-flash-card [deckID]="displayedDeck" [cardNumber]="cardNumber"></app-flash-card>
+<mat-sidenav-container>
+    <mat-sidenav [opened]="isSideNavOpen">
+        <div id="sideNavOptions">
+            <a mat-flat-button routerLink="/MainMenu" color="primary">
+                Main Menu
+            </a>
+    
+            <a mat-flat-button routerLink="/DeckSelection" color="primary">
+                Deck Selection
+            </a>
+
+            <a mat-flat-button routerLink="/DeckEditor" color="primary">
+                Deck Editor
+            </a>
+
+            <a mat-flat-button routerLink="/Study" color="primary">
+                Study
+            </a>
+        </div>
+        
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div>
+            <button mat-icon-button (click)="toggleSideNav()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div id="subPageDisplay">
+            <!--The router outlet is where the angular routing shows its things-->
+            <router-outlet></router-outlet>
+        </div>
+        
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

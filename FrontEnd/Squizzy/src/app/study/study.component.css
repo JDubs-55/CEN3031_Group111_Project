@@ -1,0 +1,15 @@
+:host {
+    height: 100%;
+}
+
+#tabGroup {
+    height: 100%;
+}
+
+#tabGroup mat-tab-body {
+    flex-grow: 1;
+}
+
+#tabGroup ::ng-deep div {
+    flex-grow: 1;
+}
