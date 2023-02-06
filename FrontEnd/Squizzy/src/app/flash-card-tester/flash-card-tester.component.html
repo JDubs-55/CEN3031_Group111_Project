@@ -1,4 +1,4 @@
-<app-flash-card></app-flash-card>
-<button mat-raised-button color="primary">
+<app-flash-card [cardNumber]="this.currentCardNumber" [deckID]="this.programState.selectedDeck"></app-flash-card>
+<button mat-raised-button color="primary" (click)="nextCard()">
     Next Card
 </button>

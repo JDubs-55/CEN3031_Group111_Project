@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FlashCardComponent } from './flash-card/flash-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule , FormsModule} from '@angular/forms';
+
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
@@ -47,7 +49,9 @@ import { FlashCardTesterComponent } from './flash-card-tester/flash-card-tester.
     MatFormFieldModule,
     MatInputModule,
     MatGridListModule,
-    MatTabsModule
+    MatTabsModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

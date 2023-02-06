@@ -43,6 +43,11 @@ class DeckData{
 @Injectable({
   providedIn: 'root'
 })
+
+//TODO: This component should be renamed to "deck info provider"
+//When trying to get data, there should never be delay. 
+//If newer data exists but has not yet been polled for, just provide only data
+//This allows the isolation of async calls
 export class FlashCardControllerService {
 
   defaultFrontText: string = "Default Front Text";
@@ -59,7 +64,15 @@ export class FlashCardControllerService {
     }
   };
 
-  constructor() {}
+  get deckNameList(): string[]{
+    return Object.keys(this._decks);
+  }
+
+  constructor() {
+    this.addDeck("dummy deck 1");
+    this.addDeck("dummy deck 2");
+    this.addCard("dummy deck 1", "hi", "bye");
+  }
 
   get decks() {
     delete this._decks[""];
