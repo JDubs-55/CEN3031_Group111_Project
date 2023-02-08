@@ -2,47 +2,12 @@ package controller
 
 import (
 	"CEN3031_Group111_Project/BackEnd/server/model"
-	"CEN3031_Group111_Project/BackEnd/server/utils"
 	"encoding/json"
 	"fmt"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
-
-// Testing function.
-func HelloWorld(w http.ResponseWriter, r *http.Request) {
-	var data = struct {
-		Title string `json:"title"`
-	}{
-		Title: "Golang + Angular Starter Kit",
-	}
-
-	jsonBytes, err := utils.StructToJSON(data)
-	if err != nil {
-		fmt.Print(err)
-	}
-
-	w.Header().Set("Content-Type", "application/json")
-	w.Write(jsonBytes)
-	return
-}
-
-//addCard (to Deck)
-//updateCard (in Deck)
-//removeCard (from Deck)
-//getCard (from Deck) - may not be necessary
-
-//AddDeck
-//UpdateDeck
-//RemoveDeck
-//GetDeck
-
-//UpdateDeckInfo (Topic, Favorite, etc)
-//UpdateCardInfo (Favorite)
-
-//Future
-//Make Deck Private/public
 
 func CreateDeckHandler(w http.ResponseWriter, r *http.Request) {
 
@@ -95,14 +60,14 @@ func UpdateDeckInfoHandler(w http.ResponseWriter, r *http.Request) {
 	param := vars["param"]
 	value := vars["val"]
 
-	deck, err := model.UpdateDeckInfo(deckID, param, value)
+	err := model.UpdateDeckInfo(deckID, param, value)
 	if err != nil {
 		http.Error(w, "Failed to update deck.", http.StatusInternalServerError)
 	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode(deck)
+	json.NewEncoder(w).Encode(vars)
 }
 
 func RemoveDeckByIdHandler(w http.ResponseWriter, r *http.Request) {
