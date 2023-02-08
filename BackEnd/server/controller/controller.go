@@ -87,3 +87,37 @@ func GetDeckByIdHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(deck)
 }
+
+func UpdateDeckInfoHandler(w http.ResponseWriter, r *http.Request) {
+
+	vars := mux.Vars(r)
+	deckID := vars["id"]
+	param := vars["param"]
+	value := vars["val"]
+
+	deck, err := model.UpdateDeckInfo(deckID, param, value)
+	if err != nil {
+		http.Error(w, "Failed to update deck.", http.StatusInternalServerError)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(deck)
+}
+
+func RemoveDeckByIdHandler(w http.ResponseWriter, r *http.Request) {
+
+	vars := mux.Vars(r)
+	deckID := vars["id"]
+
+	fmt.Print(deckID)
+
+	err := model.RemoveDeckByID(deckID)
+	if err != nil {
+		http.Error(w, "Failed to remove deck.", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusAccepted)
+}
