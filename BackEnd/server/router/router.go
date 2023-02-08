@@ -12,7 +12,8 @@ func SetupRouter() {
 	router := mux.NewRouter()
 
 	// Register the GetUserHandler function as the handler for a specific URL
-	router.HandleFunc("/helloworld", controller.HelloWorld).Methods("GET")
+	router.HandleFunc("/createdeck", controller.CreateDeckHandler).Methods("POST")
+	router.HandleFunc("/getdeck/{id}", controller.GetDeckByIdHandler).Methods("GET")
 
 	// Use CORS middleware to handle cross-origin requests
 	c := cors.New(cors.Options{
