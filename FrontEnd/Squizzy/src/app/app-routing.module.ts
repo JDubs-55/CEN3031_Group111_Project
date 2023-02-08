@@ -7,8 +7,8 @@ import { StudyComponent } from './study/study.component';
 
 const routes: Routes = [
   { path: '',   redirectTo: '/MainMenu', pathMatch: 'full' },
-  {path:"MainMenu", component: MainMenuComponent},
-  {path:"DeckSelection", component: DeckSelectionComponent},
+  {path: "MainMenu", component: MainMenuComponent},
+  {path: "DeckSelection", component: DeckSelectionComponent},
   {path: "DeckEditor", component: DeckEditorComponent},
   {path: "Study", component: StudyComponent}
 ];
