@@ -94,6 +94,44 @@ func GetDeckByID(docID string) (map[string]interface{}, error) {
 
 }
 
+func RemoveDeckByID(docID string) error {
+
+	ctx := context.Background()
+	_, err := client.Collection("Deck").Doc(docID).Delete(ctx)
+	if err != nil {
+		fmt.Println("Error removing deck.")
+		return err
+	}
+
+	return nil
+}
+
+func UpdateDeckInfo(docID string, param string, value string) (map[string]interface{}, error) {
+
+	ctx := context.Background()
+
+	if param == "ID" {
+		_, err := client.Collection("Deck").Doc(docID).Update(ctx, []firestore.Update{
+			{
+				Path:  "ID",
+				Value: value,
+			},
+		})
+		if err != nil {
+			fmt.Print("Error updating deck information.")
+			return nil, err
+		}
+	}
+
+	deck, err := GetDeckByID(docID)
+	if err != nil {
+		fmt.Print("Error retrieving updated deck.")
+		return nil, err
+	}
+
+	return deck, nil
+}
+
 //Template Code
 
 // func AddDocument(ctx context.Context, collection string, doc map[string]interface{}) error {
