@@ -16,3 +16,5 @@
 
 /BackEnd/server/config/
 /BackEnd/server/tmp/
+.DS_Store
+BackEnd/API_ENDPOINTS.md
