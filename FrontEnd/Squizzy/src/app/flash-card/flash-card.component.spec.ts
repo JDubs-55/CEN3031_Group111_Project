@@ -8,6 +8,7 @@ describe('FlashCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [],
       declarations: [ FlashCardComponent ]
     })
     .compileComponents();

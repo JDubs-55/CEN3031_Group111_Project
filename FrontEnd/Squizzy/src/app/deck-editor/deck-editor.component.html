@@ -3,19 +3,19 @@
 <div>
     <span>
         <mat-form-field>
-            <input matNativeControl placeholder="Deck Name">
+            <input matNativeControl placeholder="Deck Name" [formControl]="deckNameForm">
         </mat-form-field>
         <mat-form-field>
-            <input matNativeControl placeholder="Card Number" type="number">
+            <input matNativeControl placeholder="Card Number" type="number" [formControl]="cardNumberForm">
         </mat-form-field>
     </span>
     
     <span>
         <mat-form-field>
-            <textarea cdkTextareaAutosize matNativeControl placeholder="Front Text"></textarea>
+            <textarea cdkTextareaAutosize matNativeControl placeholder="Front Text" [formControl]="frontTextForm"></textarea>
         </mat-form-field>
         <mat-form-field>
-            <textarea cdkTextareaAutosize matNativeControl placeholder="Back Text"></textarea>
+            <textarea cdkTextareaAutosize matNativeControl placeholder="Back Text" [formControl]="backTextForm"></textarea>
         </mat-form-field>
     </span>
 

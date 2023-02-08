@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeckSelectionComponent } from './deck-selection.component';
+import { SelectedDeckDisplayComponent } from '../selected-deck-display/selected-deck-display.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('DeckSelectionComponent', () => {
   let component: DeckSelectionComponent;
@@ -8,7 +13,8 @@ describe('DeckSelectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeckSelectionComponent ]
+      imports: [MatAutocompleteModule, MatInputModule, MatCardModule, FormsModule, ReactiveFormsModule ],
+      declarations: [ DeckSelectionComponent, SelectedDeckDisplayComponent ]
     })
     .compileComponents();
 

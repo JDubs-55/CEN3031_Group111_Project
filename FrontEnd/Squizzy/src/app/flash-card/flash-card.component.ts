@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input, HostListener, HostBinding } from '@angular/core';
 
-import { FlashCardControllerService } from "../flash-card-controller.service"
+import { DeckInfoProviderService } from "../deck-info-provider.service"
 
 @Component({
   selector: 'app-flash-card',
@@ -57,7 +57,7 @@ export class FlashCardComponent {
     }
   }
 
-  constructor(private flashCardController: FlashCardControllerService){}
+  constructor(private flashCardController: DeckInfoProviderService){}
 
   
 

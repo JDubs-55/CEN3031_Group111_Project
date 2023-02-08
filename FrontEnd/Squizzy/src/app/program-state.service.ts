@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FlashCardControllerService } from './flash-card-controller.service';
+import { DeckInfoProviderService } from './deck-info-provider.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ProgramStateService {
   private _selectedDeck = new BehaviorSubject<string>("");
 
-  constructor(private deckInfoProvider: FlashCardControllerService) { }
+  constructor(private deckInfoProvider: DeckInfoProviderService) { }
 
   set selectedDeck(value: string){
     if(this.deckInfoProvider.deckNameList.includes(value)){

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FlashCardTesterComponent } from './flash-card-tester.component';
+import { FlashCardComponent } from '../flash-card/flash-card.component';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('FlashCardTesterComponent', () => {
   let component: FlashCardTesterComponent;
@@ -8,7 +10,8 @@ describe('FlashCardTesterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlashCardTesterComponent ]
+      imports: [ MatButtonModule],
+      declarations: [ FlashCardTesterComponent, FlashCardComponent ]
     })
     .compileComponents();
 

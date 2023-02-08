@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
 import { ProgramStateService } from '../program-state.service';
-import { FlashCardControllerService } from '../flash-card-controller.service';
+import { DeckInfoProviderService } from '../deck-info-provider.service';
 
 @Component({
   selector: 'app-deck-selection',
@@ -17,7 +17,7 @@ export class DeckSelectionComponent {
   myControl = new FormControl('');
   filteredOptions = new Observable<string[]>();
 
-  constructor(private deckInfoProviderService:FlashCardControllerService, private programState: ProgramStateService){
+  constructor(private deckInfoProviderService:DeckInfoProviderService, private programState: ProgramStateService){
 
   }
 
@@ -41,6 +41,6 @@ export class DeckSelectionComponent {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    return this.options.filter(option => option.toLowerCase().includes(filterValue) && option != "");
   }
 }

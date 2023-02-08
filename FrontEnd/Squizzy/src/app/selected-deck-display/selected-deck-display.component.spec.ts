@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectedDeckDisplayComponent } from './selected-deck-display.component';
+import { MatCardModule } from '@angular/material/card';
 
 describe('SelectedDeckDisplayComponent', () => {
   let component: SelectedDeckDisplayComponent;
@@ -8,9 +9,10 @@ describe('SelectedDeckDisplayComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SelectedDeckDisplayComponent ]
+      imports : [MatCardModule],
+      declarations: [SelectedDeckDisplayComponent ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SelectedDeckDisplayComponent);
     component = fixture.componentInstance;

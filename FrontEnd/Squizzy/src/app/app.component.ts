@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FlashCardControllerService } from './flash-card-controller.service';
+import { DeckInfoProviderService } from './deck-info-provider.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +7,10 @@ import { FlashCardControllerService } from './flash-card-controller.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Squizzy';
 
   isSideNavOpen: boolean = false;
 
-  constructor(private flashCardController: FlashCardControllerService){
+  constructor(private flashCardController: DeckInfoProviderService){
   }
 
   toggleSideNav(){
