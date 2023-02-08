@@ -20,19 +20,14 @@ type Card struct {
 type Deck struct {
 	ID         string
 	Name       string
-	Topic      string
+	Tags       []string
 	IsFavorite bool
 	Cards      []Card
 }
 
-type DeckGroup struct {
-	Name  string
-	Decks []Deck
-}
-
 type User struct {
-	Username   string
-	DeckGroups []DeckGroup
+	Username string
+	Deck     []Deck
 }
 
 var client *firestore.Client
