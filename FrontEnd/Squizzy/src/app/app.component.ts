@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FlashCardControllerService } from './flash-card-controller.service';
+import { DeckInfoService } from './deck-info.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { FlashCardControllerService } from './flash-card-controller.service';
 })
 export class AppComponent {
 
-  constructor(){
-
+  constructor(private deckInfo: DeckInfoService){
+    console.log(deckInfo.getDecksByName("hi"));
   }
 }
