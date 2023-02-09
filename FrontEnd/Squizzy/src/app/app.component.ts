@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { FlashCardControllerService } from './flash-card-controller.service';
-import { DeckInfoService } from './deck-info.service';
+
+import { DeckData } from './MyClasses/DeckData';
+import { Deck } from './MyClasses/Deck';
+import { CardData } from './MyClasses/CardData';
+
 
 @Component({
   selector: 'app-root',
@@ -9,7 +12,7 @@ import { DeckInfoService } from './deck-info.service';
 })
 export class AppComponent {
 
-  constructor(private deckInfo: DeckInfoService){
-    console.log(deckInfo.getDecksByName("hi"));
+  constructor() {
+    
   }
 }
