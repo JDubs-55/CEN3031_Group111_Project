@@ -34,7 +34,7 @@ Issues:
 
 - For the frontend specifically, we wanted to have an autofill feature when searching for decknames. A functional Deck Editor Tab with the ability to not only change the information on the cards but also the order at which they sit in the deck. We planned to have a flashcard design that mimics that of traditional cards and that has some kind of interactivity with the mouse cursor whether being hovered or clicked on. We also planned to remove the Deck Selection Tab as a whole and have it be something that is editable from anywhere a deck is being shown.
 
-- Within the timeframe for Sprint 1 we were able to complete the autofill feature and create a base for the Deck Editor tab. Unfortunately due to the focus on compatibility between the frontend and backend we were unable to achieve some of the other goals. As we have some of the more glaring issues, we can expect to make significant progress in the near future.
+- Within the timeframe of Sprint 1 we were able to complete the autofill feature and create a base for the Deck Editor tab. Unfortunately due to the focus on compatibility between the frontend and backend we were unable to achieve some of the other goals. As we have some of the more glaring issues figured out, we can expect to make significant progress in the near future.
 
 
 During Sprint 1, the issues the backend team planned to address were:
