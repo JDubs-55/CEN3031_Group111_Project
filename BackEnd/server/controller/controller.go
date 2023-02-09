@@ -3,11 +3,85 @@ package controller
 import (
 	"CEN3031_Group111_Project/BackEnd/server/model"
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
+
+//User Functions
+// ```/getuser/{id}/```
+// ```/createuser```
+// ```/updateuser/{id}/```
+// ```/removeuser/{id}/```
+
+func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
+	var user model.User
+
+	err := json.NewDecoder(r.Body).Decode(&user)
+
+	if err != nil {
+		http.Error(w, "Failed to parse request body", http.StatusBadRequest)
+		return
+	}
+
+	err = model.CreateUser(user)
+	if err != nil {
+		http.Error(w, "Failed to save deck", http.StatusInternalServerError)
+		return
+	}
+
+	// Return the saved user
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(user)
+}
+
+func GetUserByIdHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	userID := vars["id"]
+
+	// Save the user to the database
+	user, err := model.GetUserByID(userID)
+	if err != nil {
+		http.Error(w, "Failed to get user.", http.StatusInternalServerError)
+		return
+	}
+
+	// Return the saved user
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(user)
+}
+
+func UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	userID := vars["id"]
+	param := vars["param"]
+	value := vars["val"]
+
+	err := model.UpdateUserById(userID, param, value)
+	if err != nil {
+		http.Error(w, "Failed to update user.", http.StatusInternalServerError)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(vars)
+}
+
+func RemoveUserHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	userID := vars["id"]
+
+	err := model.RemoveUserById(userID)
+	if err != nil {
+		http.Error(w, "Failed to remove user.", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusAccepted)
+}
 
 func CreateDeckHandler(w http.ResponseWriter, r *http.Request) {
 
@@ -23,7 +97,7 @@ func CreateDeckHandler(w http.ResponseWriter, r *http.Request) {
 	// Save the user to the database
 	err = model.CreateDeck(deck, deck.ID)
 	if err != nil {
-		http.Error(w, "Failed to save user", http.StatusInternalServerError)
+		http.Error(w, "Failed to save deck", http.StatusInternalServerError)
 		return
 	}
 
@@ -37,8 +111,6 @@ func GetDeckByIdHandler(w http.ResponseWriter, r *http.Request) {
 
 	vars := mux.Vars(r)
 	deckID := vars["id"]
-
-	fmt.Print(deckID)
 
 	// Save the user to the database
 	deck, err := model.GetDeckByID(deckID)
@@ -74,8 +146,6 @@ func RemoveDeckByIdHandler(w http.ResponseWriter, r *http.Request) {
 
 	vars := mux.Vars(r)
 	deckID := vars["id"]
-
-	fmt.Print(deckID)
 
 	err := model.RemoveDeckByID(deckID)
 	if err != nil {
