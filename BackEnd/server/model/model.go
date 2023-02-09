@@ -7,6 +7,7 @@ import (
 	"log"
 
 	"cloud.google.com/go/firestore"
+	"google.golang.org/api/iterator"
 	"google.golang.org/api/option"
 )
 
@@ -97,6 +98,32 @@ func RemoveDeckByID(docID string) error {
 		fmt.Println("Error removing deck.")
 		return err
 	}
+
+	return nil
+}
+
+func RemoveCardByID(deckID string, cardID string) error {
+
+	ctx := context.Background()
+	iter := client.Collection("Decks").Doc(deckID).Collection("Cards").Documents(ctx)
+
+	batch := client.Batch()
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			fmt.Println("Card not found.")
+			break
+		}
+		if err != nil {
+			fmt.Println("Error removing card.")
+			return err
+		}
+		if doc.Ref.ID == cardID {
+			fmt.Println("yay")
+		}
+	}
+
+	batch.Commit(ctx)
 
 	return nil
 }

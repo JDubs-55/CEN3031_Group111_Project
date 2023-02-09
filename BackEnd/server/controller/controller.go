@@ -75,11 +75,25 @@ func RemoveDeckByIdHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	deckID := vars["id"]
 
-	fmt.Print(deckID)
-
 	err := model.RemoveDeckByID(deckID)
 	if err != nil {
 		http.Error(w, "Failed to remove deck.", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusAccepted)
+}
+
+func RemoveCardByIdHandler(w http.ResponseWriter, r *http.Request) {
+
+	vars := mux.Vars(r)
+	deckID := vars["deckID"]
+	cardID := vars["cardID"]
+
+	err := model.RemoveCardByID(deckID, cardID)
+	if err != nil {
+		http.Error(w, "Failed to remove card.", http.StatusInternalServerError)
 		return
 	}
 

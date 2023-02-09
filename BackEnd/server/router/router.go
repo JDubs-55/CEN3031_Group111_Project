@@ -14,8 +14,9 @@ func SetupRouter() {
 	// Register the GetUserHandler function as the handler for a specific URL
 	router.HandleFunc("/createdeck", controller.CreateDeckHandler).Methods("POST")
 	router.HandleFunc("/getdeck/{id}", controller.GetDeckByIdHandler).Methods("GET")
-	router.HandleFunc("/updatedeckinfo/{id}/{param}/{val}", controller.UpdateDeckInfoHandler).Methods("PUT")
+	router.HandleFunc("/updatedeck/{id}/{param}/{val}", controller.UpdateDeckInfoHandler).Methods("PUT")
 	router.HandleFunc("/removedeck/{id}", controller.RemoveDeckByIdHandler).Methods("DELETE")
+	router.HandleFunc("/removecard/{deckID}/cards/{cardID}", controller.RemoveCardByIdHandler).Methods("DELETE")
 
 	// Use CORS middleware to handle cross-origin requests
 	c := cors.New(cors.Options{
