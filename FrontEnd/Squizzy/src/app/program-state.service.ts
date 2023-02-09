@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { DeckInfoService } from './deck-info.service';
+import { Deck } from './MyClasses/Deck';
 
 
 @Injectable({
@@ -9,7 +11,9 @@ export class ProgramStateService {
 
   
 
-  constructor() { }
+  constructor(private deckInfo: DeckInfoService) {
+    this.deckInfo.getDecksByID(this.deckInfo.getAllDeckIDs()[0])
+  }
 
 
   //Deck Selection
@@ -28,6 +32,8 @@ export class ProgramStateService {
   }
 
 
-  
+  get selectedDeck(): Deck{
+    return this.deckInfo.getDecksByID(this.selectedDeckID)[0];
+  }
 
 }
