@@ -28,7 +28,8 @@ type Deck struct {
 
 type User struct {
 	Username string
-	Deck     []Deck
+	ID       string `json:"id,omitempty"`
+	Decks    []Deck
 }
 
 var client *firestore.Client
@@ -47,21 +48,75 @@ func init() {
 
 }
 
-//addCard (to Deck)
-//updateCard (in Deck)
-//removeCard (from Deck)
-//getCard (from Deck) - may not be necessary
+//User Functions
+// ```/getuser/{id}/```
+// ```/getuser/{username}/```
+// ```/createuser```
+// ```/updateuser/{id}/```
+// ```/removeuser/{id}/```
 
-//AddDeck
-//UpdateDeck
-//RemoveDeck
-//GetDeck
+func CreateUser(user User) error {
+	ctx := context.Background()
 
-//UpdateDeckInfo (Topic, Favorite, etc)
-//UpdateCardInfo (Favorite)
+	ref := client.Collection("Users").NewDoc()
+	fmt.Print(ref.ID)
+	user.ID = ref.ID
+	_, err := ref.Set(ctx, user)
 
-//Future
-//Make Deck Private/public
+	if err != nil {
+		log.Printf("An error has occured: %s", err)
+		return err
+	}
+
+	return nil
+}
+
+func GetUserByID(userID string) (map[string]interface{}, error) {
+	ctx := context.Background()
+
+	userSnap, err := client.Collection("Users").Doc(userID).Get(ctx)
+	if err != nil {
+		return nil, err
+	} else {
+		fmt.Print("Error getting deck")
+	}
+
+	var data map[string]interface{}
+	err = userSnap.DataTo(&data)
+
+	if err != nil {
+		return nil, err
+	}
+	return data, nil
+}
+
+func UpdateUserById(userID string, attr string, val string) error {
+	ctx := context.Background()
+
+	_, err := client.Collection("Users").Doc(userID).Update(ctx, []firestore.Update{
+		{
+			Path:  attr,
+			Value: val,
+		},
+	})
+	if err != nil {
+		fmt.Print("Error updating user information.")
+		return err
+	}
+
+	return nil
+}
+
+func RemoveUserById(userID string) error {
+	ctx := context.Background()
+	_, err := client.Collection("Users").Doc(userID).Delete(ctx)
+	if err != nil {
+		fmt.Println("Error removing user.")
+		return err
+	}
+
+	return nil
+}
 
 func CreateDeck(deck Deck, deckID string) error {
 	ctx := context.Background()

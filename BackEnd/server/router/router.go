@@ -18,6 +18,12 @@ func SetupRouter() {
 	router.HandleFunc("/removedeck/{id}", controller.RemoveDeckByIdHandler).Methods("DELETE")
 	router.HandleFunc("/removecard/{deckID}/cards/{cardID}", controller.RemoveCardByIdHandler).Methods("DELETE")
 
+	//User Endpoints
+	router.HandleFunc("/createuser", controller.CreateUserHandler).Methods("POST")
+	router.HandleFunc("/getuser/{id}", controller.GetUserByIdHandler).Methods("GET")
+	router.HandleFunc("/updateuser/{id}/{param}/{val}", controller.UpdateUserHandler).Methods("PUT")
+	router.HandleFunc("/removeuser/{id}", controller.RemoveUserHandler).Methods("DELETE")
+
 	// Use CORS middleware to handle cross-origin requests
 	c := cors.New(cors.Options{
 		AllowedOrigins: []string{"*"},
