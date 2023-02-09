@@ -48,13 +48,7 @@ func init() {
 
 }
 
-//User Functions
-// ```/getuser/{id}/```
-// ```/getuser/{username}/```
-// ```/createuser```
-// ```/updateuser/{id}/```
-// ```/removeuser/{id}/```
-
+// User Functions
 func CreateUser(user User) error {
 	ctx := context.Background()
 

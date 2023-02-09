@@ -8,12 +8,6 @@ import (
 	"github.com/gorilla/mux"
 )
 
-//User Functions
-// ```/getuser/{id}/```
-// ```/createuser```
-// ```/updateuser/{id}/```
-// ```/removeuser/{id}/```
-
 func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
 	var user model.User
 
@@ -94,14 +88,14 @@ func CreateDeckHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Save the user to the database
+	// Save the deck to the database
 	err = model.CreateDeck(deck, deck.ID)
 	if err != nil {
 		http.Error(w, "Failed to save deck", http.StatusInternalServerError)
 		return
 	}
 
-	// Return the saved user
+	// Return the saved deck
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(deck)
@@ -112,14 +106,14 @@ func GetDeckByIdHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	deckID := vars["id"]
 
-	// Save the user to the database
+	// Save the deck to the database
 	deck, err := model.GetDeckByID(deckID)
 	if err != nil {
 		http.Error(w, "Failed to get deck.", http.StatusInternalServerError)
 		return
 	}
 
-	// Return the saved user
+	// Return the saved deck
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(deck)

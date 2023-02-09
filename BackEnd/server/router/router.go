@@ -34,7 +34,3 @@ func SetupRouter() {
 	handler := c.Handler(router)
 	http.ListenAndServe(":4201", handler)
 }
-
-//endpoints
-// /createdeck
-// /

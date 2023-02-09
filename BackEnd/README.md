@@ -1,18 +1,7 @@
 # Squizzy Backend Endpoints
 
-Database Structure (NoSQL)
 
-```
-{
-    "user" : {
-        
-    }
-}
-
-```
-
-
-API Endpoints:
+Desired API Endpoints:
 
 User Endpoints
 ```/getuser/{id}/```
