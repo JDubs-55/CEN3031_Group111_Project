@@ -42,17 +42,6 @@ describe('Deck', () => {
         }
     })
 
-    it("Should be able to generate new decks", () => {
-        let deck = Deck.NewDeck();
-
-        //values from the data it would save (these use the getters)
-        let data = deck.data;
-        expect(data.cards).toEqual([]);
-        expect(data.isFavorite).toEqual(false);
-        expect(data.name).toEqual("default deck name");
-        expect(data.tags).toEqual([]);
-    });
-
     it("Should be able to load from deck data", () => {
         let deck = new Deck(defaultData);
 

@@ -6,19 +6,20 @@ import { BehaviorSubject, Observable } from "rxjs";
 export class Deck{
     private _id: string;
     private _isFavorite: BehaviorSubject<boolean>;
-    private _name: BehaviorSubject<string>;
+    private _name: string;
     private _tags: Set<string>;
     private _cards: {[ID: string]: CardData};
 
 
     private _tagsSubject: BehaviorSubject<Set<string>>;
     private _cardsSubject: BehaviorSubject<{[ID: string]: CardData}>;
+    private _nameSubject: BehaviorSubject<{old:string, new:string}>;
 
 
     constructor(deckData: DeckData){
         this._id = deckData.ID;
         this._isFavorite = new BehaviorSubject<boolean>(deckData.isFavorite);
-        this._name = new BehaviorSubject<string>(deckData.name);
+        this._name = deckData.name;
         this._tags = new Set<string>(deckData.tags);
         this._cards = {};
         deckData.cards.forEach(card=>{
@@ -27,35 +28,7 @@ export class Deck{
 
         this._tagsSubject = new BehaviorSubject<Set<string>>(this._tags);
         this._cardsSubject = new BehaviorSubject<{[ID: string]: CardData}>(this._cards);
-    }
-    
-
-    //This is the only place where calls to the backend to generate a new deck are found
-    static NewDeck(): Deck{
-        //Placeholder function
-        function requestServerToMakeNewDeck(): DeckData{
-            function makeid(length: number): string {
-                let result = '';
-                const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-                const charactersLength = characters.length;
-                let counter = 0;
-                while (counter < length) {
-                  result += characters.charAt(Math.floor(Math.random() * charactersLength));
-                  counter += 1;
-                }
-                return result;
-            }
-
-            return {
-                ID: makeid(10),
-                isFavorite: false,
-                name: "default deck name",
-                tags: [],
-                cards: []
-            }
-        }
-
-        return new Deck(requestServerToMakeNewDeck());
+        this._nameSubject = new BehaviorSubject<{old:string, new:string}>({old: this._name, new: this._name});
     }
 
     //isFavorite may be changed directly
@@ -71,12 +44,16 @@ export class Deck{
 
     //name may be changed directly
     get name(): string{
-        return this._name.value;
+        return this._name;
     }
 
     set name(value: string){
         if(value != this.name){//If a change actually occurs
-            this._name.next(value);
+            this._nameSubject.next({
+                old: this._name,
+                new: value
+            });
+            this._name = value;
         }
     }
 
@@ -153,8 +130,8 @@ export class Deck{
     }
 
 
-    get onNameChange(): Observable<string>{
-        return this._name.asObservable();
+    get onNameChange(): Observable<{old:string, new:string}>{
+        return this._nameSubject.asObservable();
     }
 
     get onFavoriteChange(): Observable<boolean>{
