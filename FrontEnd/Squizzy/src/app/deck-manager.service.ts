@@ -23,7 +23,9 @@ export class DeckManagerService {
   private _loadedDecks: { [ID: string]: Deck } = {};
   private _nameToID: { [deckName: string]: Set<string> } = {};//The keys of this object are the loaded names
 
-  constructor() { }
+  constructor() {
+
+  }
 
 
   //This requests the backend to generate a deck
