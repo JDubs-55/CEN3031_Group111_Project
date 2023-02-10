@@ -7,6 +7,8 @@ import { DeckData } from './MyClasses/DeckData';
 //Before any decks can be loaded the frontend must request all the deck names
 //Then the frontend requests decks by name (This search is expected to happen via exact match)
 
+//When saving decks are sent back in batches
+
 
 @Injectable({
   providedIn: 'root'
