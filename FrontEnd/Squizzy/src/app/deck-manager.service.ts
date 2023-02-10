@@ -30,7 +30,7 @@ export class DeckManagerService {
 
   //This requests the backend to generate a deck
   generateDeck(): Deck {
-    function queryBackend(): DeckData{
+    function queryBackend(): DeckData {
       function makeid(length: number): string {
         let result = '';
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -42,18 +42,18 @@ export class DeckManagerService {
         }
         return result;
       }
-  
+
       return {
         ID: makeid(10),
         isFavorite: false,
-        name: makeid(10),
+        name: "",
         tags: [],
         cards: []
       };
     }
 
     let deck: DeckData = queryBackend();
-    
+
 
     if (!this.allDeckNames.includes(deck.name)) {
       this._allDeckNames.push(deck.name);
@@ -96,7 +96,25 @@ export class DeckManagerService {
   }
 
   //(Backend Requirement) This requests a list of every deck name from the backend 
-  loadAllDeckNames(): void { }
+  loadAllDeckNames(): void {
+
+    //This is placeholder code
+    function makeid(length: number): string {
+      let result = '';
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const charactersLength = characters.length;
+      let counter = 0;
+      while (counter < length) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+      }
+      return result;
+    }
+    for(let i = 0; i < 10; i++){
+      this._allDeckNames.push(makeid(10));
+    }
+    
+  }
 
   //(Backend might never get used) Not sure this function should even exist
   loadDecksByID(IDs: string[] | string, overwriteLocal?: boolean): void {
@@ -123,7 +141,7 @@ export class DeckManagerService {
 
 
       //This will almost certainly never be true (but it can happen, and in that event this makes sense to do)
-      if(!this._allDeckNames.includes(deck.name)){
+      if (!this._allDeckNames.includes(deck.name)) {
         this._allDeckNames.push(deck.name);
       }
 
@@ -222,7 +240,7 @@ export class DeckManagerService {
     return this._nameToID;
   }
 
-  get loadedDecks(): Readonly<{ [ID: string]: Readonly<Deck> }>{
+  get loadedDecks(): Readonly<{ [ID: string]: Readonly<Deck> }> {
     return this._loadedDecks;
   }
 
@@ -249,7 +267,7 @@ export class DeckManagerService {
       if (temp != undefined)
         IDs = IDs.concat(Array.from(temp))
     })
-    
+
     //There is no way to get duplicate IDs
 
     return IDs;
@@ -265,37 +283,37 @@ export class DeckManagerService {
 
 
   searchDeckNames(targetName: string): string[] {
-    return this.allDeckNames.filter(name => name.includes(targetName));
+    return this.allDeckNames.filter(name => name.toLowerCase().includes(targetName.toLowerCase()));
   }
 
-  searchDecksByName(targetNames: string[] | string): Deck[]{
+  searchDecksByName(targetNames: string[] | string): Deck[] {
     if (typeof targetNames == "string") {
       return this.searchDecksByName([targetNames]);
     }
 
-    
+
     let names: string[] = [];
-    targetNames.forEach(targetName=>{
+    targetNames.forEach(targetName => {
       names = names.concat(this.searchDeckNames(targetName));
     });
 
-    names = names.filter((name, index)=>names.indexOf(name) === index);//remove duplicate names
+    names = names.filter((name, index) => names.indexOf(name) === index);//remove duplicate names
 
     return this.getDecksByName(names);
   }
 
-  searchIDsByName(targetNames: string[] | string): string[]{
+  searchIDsByName(targetNames: string[] | string): string[] {
     if (typeof targetNames == "string") {
       return this.searchIDsByName([targetNames]);
     }
 
-    
+
     let names: string[] = [];
-    targetNames.forEach(targetName=>{
+    targetNames.forEach(targetName => {
       names = names.concat(this.searchDeckNames(targetName));
     });
 
-    names = names.filter((name, index)=>names.indexOf(name) === index);//remove duplicate names
+    names = names.filter((name, index) => names.indexOf(name) === index);//remove duplicate names
 
     return this.getIDsByName(names);
   }

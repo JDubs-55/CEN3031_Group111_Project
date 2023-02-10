@@ -1,0 +1,24 @@
+:host{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: -1em;
+}
+
+mat-card{
+    margin-right: 1em;
+}
+mat-card-content{
+    display: flex;
+    justify-content: center;
+}
+
+
+#topCard{
+    z-index: 1;
+}
+
+#bottomCard{
+    bottom: 1em;
+    left: 1em;
+}
