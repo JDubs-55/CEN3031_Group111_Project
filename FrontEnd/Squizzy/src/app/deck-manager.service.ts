@@ -5,7 +5,7 @@ import { DeckData } from './MyClasses/DeckData';
 
 
 //Before any decks can be loaded the frontend must request all the deck names
-//Then the frontend requests decks by name (This search is expected to happen via exact match)
+//Then the frontend requests decks by name (This search is expected to happen via exact match) (It doesn't have to. It could also send back more than what exact match would return.)
 
 //When saving decks are sent back in batches
 
