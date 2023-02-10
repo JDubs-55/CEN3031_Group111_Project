@@ -16,7 +16,7 @@ import { DeckData } from './MyClasses/DeckData';
 export class DeckManagerService {
 
   //The only time names are removed from this list, is when reloading all names or if a "load by name" does not find any decks for a given name
-  //This contains all names that might be on the server
+  //This contains all names that might be on the server as well as all loaded deck names
   private _allDeckNames: string[] = [];
 
   //These are for loaded data
@@ -72,6 +72,7 @@ export class DeckManagerService {
 
   private initializeCallbacks(deck: Deck): void {
     deck.onNameChange.subscribe((names) => {
+      //remove the name mapping for the old name
       if (this._nameToID[names.old] != undefined) {
         this._nameToID[names.old].delete(deck.ID);
         if (this._nameToID[names.old].size == 0) {
@@ -118,6 +119,12 @@ export class DeckManagerService {
         }
       }
 
+
+      //This will almost certainly never be true (but it can happen, and in that event this makes sense to do)
+      if(!this._allDeckNames.includes(deck.name)){
+        this._allDeckNames.push(deck.name);
+      }
+
       //It will only get here if data was written to loadedDecks
       this.initializeCallbacks(this._loadedDecks[deck.ID]);
     })
@@ -155,7 +162,9 @@ export class DeckManagerService {
     });
 
     //Any names in unused names did not have a deck that used that name
-    this._allDeckNames = this._allDeckNames.filter(name => !unusedNames.has(name));//all names that are not found to be unused are removed
+    //all names that are not found to be unused are removed
+    //A name is unsused if, it is neither in the server nor in the locally loaded decks
+    this._allDeckNames = this._allDeckNames.filter(name => !unusedNames.has(name) || this._nameToID[name] != undefined);
   }
 
   //(Backend Requirement)
@@ -215,6 +224,11 @@ export class DeckManagerService {
     return this._loadedDecks;
   }
 
+
+  //Get is by exact match, search is by partial match
+  //Get uses name == targetName
+  //Search using name.include(targetName)
+
   getDeck(ID: string): Deck {
     if (this._loadedDecks[ID] == undefined) {
       throw "Attempted to get a deck that has not been loaded.";
@@ -233,6 +247,8 @@ export class DeckManagerService {
       if (temp != undefined)
         IDs = IDs.concat(Array.from(temp))
     })
+    
+    //There is no way to get duplicate IDs
 
     return IDs;
   }
@@ -264,6 +280,22 @@ export class DeckManagerService {
     names = names.filter((name, index)=>names.indexOf(name) === index);//remove duplicate names
 
     return this.getDecksByName(names);
+  }
+
+  searchIDsByName(targetNames: string[] | string): string[]{
+    if (typeof targetNames == "string") {
+      return this.searchIDsByName([targetNames]);
+    }
+
+    
+    let names: string[] = [];
+    targetNames.forEach(targetName=>{
+      names = names.concat(this.searchDeckNames(targetName));
+    });
+
+    names = names.filter((name, index)=>names.indexOf(name) === index);//remove duplicate names
+
+    return this.getIDsByName(names);
   }
 
 }
