@@ -15,6 +15,15 @@ import { PageEvent } from '@angular/material/paginator';
 //TODO: write comments
 
 
+//Some user stories that were handled
+//I want to be able to get a list of the available decks
+//I want to be able to search through the list of available decks
+//I want to be able to see what is in the deck I am selecting
+//I want the cycling of the previews to be synced. (yes this was an issue)
+
+
+
+
 @Component({
   selector: 'app-selected-deck-display',
   templateUrl: './selected-deck-display.component.html',
