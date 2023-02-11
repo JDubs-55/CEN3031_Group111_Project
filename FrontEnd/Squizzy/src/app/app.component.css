@@ -6,6 +6,8 @@
 
 #TopBar{
     padding: 0.5em;
+    display: flex;
+    gap: 1em;
 }
 
 #SelectedTabDiv{

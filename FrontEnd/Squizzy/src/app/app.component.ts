@@ -21,4 +21,11 @@ export class AppComponent {
   ngOnInit(){
     this.deckManager.loadAllDeckNames();
   }
+
+  dumpDeckData(): void{
+    let data: DeckData[] = Object.values(this.deckManager.loadedDecks).map(deck=>deck.data);
+
+    console.log(data);
+    
+  }
 }

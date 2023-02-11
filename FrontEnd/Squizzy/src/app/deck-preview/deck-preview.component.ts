@@ -2,6 +2,11 @@ import { Component, Input, ChangeDetectorRef } from '@angular/core';
 import { Deck } from '../MyClasses/Deck';
 import { interval, Subscription, Observable } from 'rxjs';
 
+
+//TODO: Write Comments
+//TODO: Write Unit Tests
+
+
 @Component({
   selector: 'app-deck-preview',
   templateUrl: './deck-preview.component.html',

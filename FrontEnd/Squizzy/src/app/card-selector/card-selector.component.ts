@@ -2,6 +2,11 @@ import { Component, Output, EventEmitter, ChangeDetectorRef } from '@angular/cor
 import { CardData } from '../MyClasses/CardData';
 import { ProgramStateService } from '../program-state.service';
 
+
+//TODO: add comments
+//TODO: write unit tests
+
+
 @Component({
   selector: 'app-card-selector',
   templateUrl: './card-selector.component.html',

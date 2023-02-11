@@ -4,6 +4,10 @@ import { ProgramStateService } from '../program-state.service';
 
 import { Observable, map, startWith, Subscription, timer } from 'rxjs';
 
+//TODO: Write comments
+//TODO: Write unit tests
+
+
 @Component({
   selector: 'app-deck-editor',
   templateUrl: './deck-editor.component.html',
