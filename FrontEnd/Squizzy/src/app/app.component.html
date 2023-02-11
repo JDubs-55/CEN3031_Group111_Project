@@ -1,2 +1,7 @@
-<app-selected-deck-display></app-selected-deck-display>
-<button (click)="changeFrontText()">Change cards of Genki Lesson 1</button>
+<div id="TopBar">
+    <a mat-flat-button color="primary" href="./DeckEditor">Deck Editor</a>
+</div>
+<mat-divider></mat-divider>
+<div>
+    <router-outlet></router-outlet>
+</div>
