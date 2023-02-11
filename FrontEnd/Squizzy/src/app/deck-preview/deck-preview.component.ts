@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectorRef } from '@angular/core';
 import { Deck } from '../MyClasses/Deck';
-import { interval, Subscription } from 'rxjs';
+import { interval, Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-deck-preview',
@@ -13,18 +13,22 @@ export class DeckPreviewComponent {
   backTexts: string[] = [];
   textNumber: number = 0;
 
-  clock: Subscription;
   onCardChange?: Subscription;
+  static timer = interval(1000).subscribe(()=>{
+    DeckPreviewComponent.deckPreviewComponents.forEach(preview=>{
+      preview.showNext();
+    })
+  })
+
+  static deckPreviewComponents = new Set<DeckPreviewComponent>();
 
 
 
-  constructor(){
-    this.clock = interval(1000).subscribe(()=>{
-      this.showNext();
-    });
-  }
+  constructor(private changeDetector: ChangeDetectorRef){ }
 
   ngOnInit(){
+    DeckPreviewComponent.deckPreviewComponents.add(this);
+
     this.showNext();
     
     this.deck?.onCardsChange.subscribe(()=>{
@@ -33,7 +37,8 @@ export class DeckPreviewComponent {
   }
   
   ngOnDestroy(){
-    this.clock.unsubscribe();
+    DeckPreviewComponent.deckPreviewComponents.delete(this);
+
     this.onCardChange?.unsubscribe();
   }
 
@@ -44,6 +49,7 @@ export class DeckPreviewComponent {
     }else{
       this.textNumber = (this.textNumber + 1) % this.frontTexts.length;
     }
+    this.changeDetector.detectChanges();
   }
 
   updateText(): void{

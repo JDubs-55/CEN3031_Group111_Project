@@ -11,6 +11,9 @@ import { PageEvent } from '@angular/material/paginator';
 
 //This component will load decks as the user searches for them
 //If the deck cannot be found locally or on the server, but it is in the autocomplete list, then upon searching for that deck those entries will be removed
+//TODO: write unit tests
+//TODO: write comments
+
 
 @Component({
   selector: 'app-selected-deck-display',
@@ -77,6 +80,10 @@ export class SelectedDeckDisplayComponent {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
 
+    while(this.pageIndex * this.pageSize > length){
+      this.pageIndex--;
+    }
+
     
     this.updateDeckOptions();
   }
@@ -91,6 +98,10 @@ export class SelectedDeckDisplayComponent {
     //This prevents every deck from being requested from the back end
     if(this.selectedDeckName == ""){
       this.deckOptions = [];
+    }
+
+    while(this.pageIndex * this.pageSize > this.deckOptions.length){
+      this.pageIndex--;
     }
   }
 
