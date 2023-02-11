@@ -15,7 +15,7 @@ import { CardData } from './MyClasses/CardData';
 export class AppComponent {
 
   constructor(private deckManager: DeckManagerService) {
-    for(let i = 0; i < 10; i++){
+    for(let i = 0; i < 13; i++){
       this.generateRandomDeck(5);
     }
     
