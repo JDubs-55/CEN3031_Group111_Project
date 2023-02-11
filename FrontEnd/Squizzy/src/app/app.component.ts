@@ -72,7 +72,7 @@ export class AppComponent {
     Object.values(this.deckManager.searchDecksByName("Genki")[0].cards).forEach(card=>{
       this.deckManager.searchDecksByName("Genki")[0].editCard({
         ID: card.ID,
-        frontText: "frontText: " + makeid(3)
+        frontText: "front: " + makeid(3)
       })
     })
   }
