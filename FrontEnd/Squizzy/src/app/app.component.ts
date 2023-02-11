@@ -14,15 +14,14 @@ import { CardData } from './MyClasses/CardData';
 })
 export class AppComponent {
 
-  previewDeck: Deck;
-
   constructor(private deckManager: DeckManagerService) {
+    /*
     for(let i = 0; i < 13; i++){
       this.generateRandomDeck(5);
     }
+    */
+  
     
-
-    this.previewDeck = this.deckManager.searchDecksByName("D")[0];
   }
 
   ngOnInit(){
@@ -69,9 +68,12 @@ export class AppComponent {
     }
 
 
-    this.deckManager.searchDecksByName("D")[0].editCard({
-      ID: Object.keys(this.deckManager.searchDecksByName("D")[0].cards)[0],
-      frontText: "frontText " + makeid(2)
+
+    Object.values(this.deckManager.searchDecksByName("Genki")[0].cards).forEach(card=>{
+      this.deckManager.searchDecksByName("Genki")[0].editCard({
+        ID: card.ID,
+        frontText: "frontText: " + makeid(3)
+      })
     })
   }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Deck } from './MyClasses/Deck';
 import { DeckData } from './MyClasses/DeckData';
+import { dummyData } from './MyClasses/DummyData'
 
 
 
@@ -8,6 +9,9 @@ import { DeckData } from './MyClasses/DeckData';
 //Then the frontend requests decks by name (This search is expected to happen via exact match) (It doesn't have to. It could also send back more than what exact match would return.)
 
 //When saving decks are sent back in batches
+
+
+
 
 
 @Injectable({
@@ -97,23 +101,13 @@ export class DeckManagerService {
 
   //(Backend Requirement) This requests a list of every deck name from the backend 
   loadAllDeckNames(): void {
+    function queryBackend(): string[]{
+      return dummyData.map(deck=>deck.name);
+    }
+    let names = queryBackend();//load all the names from the backend
+    names = names.concat(Object.keys(this._nameToID));//Add all the names that are found locally
 
-    //This is placeholder code
-    function makeid(length: number): string {
-      let result = '';
-      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      const charactersLength = characters.length;
-      let counter = 0;
-      while (counter < length) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        counter += 1;
-      }
-      return result;
-    }
-    for(let i = 0; i < 10; i++){
-      this._allDeckNames.push(makeid(10));
-    }
-    
+    this._allDeckNames = names.filter((name, index) => names.indexOf(name) === index);//remove duplicate names
   }
 
   //(Backend might never get used) Not sure this function should even exist
@@ -156,7 +150,13 @@ export class DeckManagerService {
       return this.loadDecksByName([names]);
     }
 
-    function queryBackend(names: string[]): DeckData[] { return [] }
+    
+
+    function queryBackend(names: string[]): DeckData[] {
+      return dummyData.filter(deck=>{
+        return names.includes(deck.name)
+      });
+    }
 
     let result = queryBackend(names);
 

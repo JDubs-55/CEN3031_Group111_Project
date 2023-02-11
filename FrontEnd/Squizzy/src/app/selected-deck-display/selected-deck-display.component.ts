@@ -112,6 +112,7 @@ export class SelectedDeckDisplayComponent {
     while(this.pageIndex * this.pageSize > this.deckOptions.length){
       this.pageIndex--;
     }
+
   }
 
   selectDeck(deck: Deck): void{
