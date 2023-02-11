@@ -1601,7 +1601,7 @@ const dummyData: DeckData[] = [
     {
         "ID": "LIYGLHGygkbhgkuhvkjhasdcas",
         "isFavorite": false,
-        "name": "Genki Kanji Lessson 4",
+        "name": "Genki Kanji Lesson 4",
         "tags": [
             "Japanese",
             "Genki"
