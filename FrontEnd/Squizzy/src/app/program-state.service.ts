@@ -27,7 +27,7 @@ export class ProgramStateService {
   set selectedDeck(deck: Deck | undefined) {
     if(deck != undefined){
       this._selectedDeck = this.deckManager.getDeck(deck.ID);//This line ensures that the deck that is set as selected is actually loaded
-      console.log(this._selectedDeck.cards)
+      console.log(this._selectedDeck.data)
     }
     
   }
