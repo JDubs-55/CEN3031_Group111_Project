@@ -16,7 +16,7 @@ export class AppComponent {
 
   constructor(private deckManager: DeckManagerService) {
     for(let i = 0; i < 13; i++){
-      this.generateRandomDeck(1);
+      this.generateRandomDeck(5);
     }
     
   }
@@ -52,9 +52,22 @@ export class AppComponent {
   }
 
   changeFrontText(): void{
+    function makeid(length: number): string {
+      let result = '';
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const charactersLength = characters.length;
+      let counter = 0;
+      while (counter < length) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+      }
+      return result;
+    }
+
+
     this.deckManager.searchDecksByName("D")[0].editCard({
       ID: Object.keys(this.deckManager.searchDecksByName("D")[0].cards)[0],
-      frontText: "frontText"
+      frontText: "frontText " + makeid(2)
     })
   }
 }
