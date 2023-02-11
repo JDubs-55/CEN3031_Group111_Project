@@ -1,5 +1,5 @@
-<mat-card>
-    <mat-card-content>
+<mat-card id="OuterCard">
+    <mat-card-content id="OuterCardContent">
 
         <mat-autocomplete #auto="matAutocomplete">
             <mat-option *ngFor="let option of filteredOptions" [value]="option">
@@ -13,8 +13,8 @@
         </mat-form-field>
 
 
-        <mat-card id="hi">
-            <mat-card-content>
+        <mat-card id="InnerCard">
+            <mat-card-content id="InnerCardContent">
                 <mat-paginator [length]="deckOptions.length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" (page)="handlePageEvent($event)" color="primary">
                 </mat-paginator>
         
