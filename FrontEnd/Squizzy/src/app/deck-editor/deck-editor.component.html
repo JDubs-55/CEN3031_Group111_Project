@@ -1,1 +1,9 @@
-<p>deck-editor works!</p>
+<app-selected-deck-display></app-selected-deck-display>
+
+<mat-card>
+    <mat-card-content id="EditorDiv">
+        <mat-form-field>
+            <input mat-input matNativeControl [formControl]="deckNameControl" type="text" placeholder="DeckName">
+        </mat-form-field>
+    </mat-card-content>
+</mat-card>

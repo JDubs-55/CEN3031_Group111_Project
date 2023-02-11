@@ -1,3 +1,14 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 #TopBar{
     padding: 0.5em;
+}
+
+#SelectedTabDiv{
+    flex-grow: 1;
+    overflow: hidden;
 }

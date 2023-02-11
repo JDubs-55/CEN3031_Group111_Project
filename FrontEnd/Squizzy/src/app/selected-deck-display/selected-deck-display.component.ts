@@ -37,7 +37,7 @@ export class SelectedDeckDisplayComponent {
 
   myControl = new FormControl();
   get filteredOptions(): string[]{
-    return this.deckManager.searchDeckNames(this.selectedDeckName).filter(name=>name!="");
+    return this.deckManager.searchDeckNames(this.selectedDeckName).filter(name=>name!="").sort();
   }
   selectedDeckName = "";
 
@@ -48,7 +48,7 @@ export class SelectedDeckDisplayComponent {
 
   //The delay is used to prevent a server query every time the user presses a key
   delay?: Subscription;
-  refreshDelay: Readonly<number> = 500;
+  refreshDelay: Readonly<number> = 500;//milliseconds
 
 
   constructor(public programState: ProgramStateService, private deckManager: DeckManagerService) {

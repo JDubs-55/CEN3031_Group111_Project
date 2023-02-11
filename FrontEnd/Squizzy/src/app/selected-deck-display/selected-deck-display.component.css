@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: flex-start;
     width: fit-content;
+    overflow: hidden;
 }
 
 mat-card-content {
@@ -28,6 +29,7 @@ app-deck-preview{
 
 #OuterCard{
     overflow: hidden;
+    height: 100%;
 }
 
 #OuterCardContent{
