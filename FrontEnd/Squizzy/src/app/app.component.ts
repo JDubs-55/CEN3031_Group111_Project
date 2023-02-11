@@ -14,11 +14,15 @@ import { CardData } from './MyClasses/CardData';
 })
 export class AppComponent {
 
+  previewDeck: Deck;
+
   constructor(private deckManager: DeckManagerService) {
     for(let i = 0; i < 13; i++){
       this.generateRandomDeck(5);
     }
     
+
+    this.previewDeck = this.deckManager.searchDecksByName("D")[0];
   }
 
   ngOnInit(){
