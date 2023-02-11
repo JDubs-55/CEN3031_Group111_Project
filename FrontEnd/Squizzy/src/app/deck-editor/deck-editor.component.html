@@ -3,7 +3,32 @@
 <mat-card>
     <mat-card-content id="EditorDiv">
         <mat-form-field>
-            <input mat-input matNativeControl [formControl]="deckNameControl" type="text" placeholder="DeckName">
+            <input mat-input matNativeControl [formControl]="deckIDControl" type="text" placeholder="Deck ID">
         </mat-form-field>
+        <mat-form-field>
+            <input mat-input matNativeControl [formControl]="deckNameControl" type="text" placeholder="Deck Name">
+        </mat-form-field>
+
+        <mat-card>
+            <mat-card-content>
+                <div id="CardEditorDiv">
+                    <app-card-selector (onSelectCard)="selectCard($event)"></app-card-selector>
+                    <div id="CardEditorFields">
+                        <mat-form-field>
+                            <input mat-input matNativeControl [formControl]="cardIDControl" type="text" placeholder="Card ID">
+                        </mat-form-field>
+        
+                        <mat-form-field>
+                            <input mat-input matNativeControl [formControl]="cardFrontTextControl" type="text" placeholder="Font Text">
+                        </mat-form-field>
+        
+                        <mat-form-field>
+                            <input mat-input matNativeControl [formControl]="cardBackTextControl" type="text" placeholder="Back Text">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        
     </mat-card-content>
 </mat-card>

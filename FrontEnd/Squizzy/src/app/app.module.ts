@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SelectedDeckDisplayComponent } from './selected-deck-display/selected-deck-display.component';
 import { DeckPreviewComponent } from './deck-preview/deck-preview.component';
 import { DeckEditorComponent } from './deck-editor/deck-editor.component';
+import { CardSelectorComponent } from './card-selector/card-selector.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DeckEditorComponent } from './deck-editor/deck-editor.component';
     SelectedDeckDisplayComponent,
     DeckPreviewComponent,
     DeckEditorComponent,
+    CardSelectorComponent,
   ],
   imports: [
     BrowserModule,
