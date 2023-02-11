@@ -120,22 +120,30 @@ export class DeckManagerService {
 
     let result = queryBackend(IDs);
 
+    let addNameToList: boolean = false;
+
     result.forEach(deck => {
+
       if (this._loadedDecks[deck.ID] == undefined) {
         //If a version is not alredy loaded
         this._loadedDecks[deck.ID] = new Deck(deck);
+        addNameToList = true;
       } else {
         //If a version of the deck is already in the system
         if (overwriteLocal) {
           this._loadedDecks[deck.ID] = new Deck(deck);
         } else {
-          return;
+          //If the name of the server does not equal the name locally, then ignore the name from the server
+          //This if statement does the contrapositive
+          if(this._loadedDecks[deck.ID].name == deck.name){
+            addNameToList = true;
+          }
         }
       }
 
 
       //This will almost certainly never be true (but it can happen, and in that event this makes sense to do)
-      if (!this._allDeckNames.includes(deck.name)) {
+      if (!this._allDeckNames.includes(deck.name) && addNameToList) {
         this._allDeckNames.push(deck.name);
       }
 
@@ -163,18 +171,36 @@ export class DeckManagerService {
     let unusedNames = new Set<string>(names);
 
     result.forEach(deck => {
-      unusedNames.delete(deck.name);
+      
+
+      let addNameToList: boolean = false;
+      let nameWasUsed: boolean = true;//This removes the server name from the searchable list, if the local name differs from the server name (And no other decks used that name)
 
       if (this._loadedDecks[deck.ID] == undefined) {
         //If a version is not alredy loaded
         this._loadedDecks[deck.ID] = new Deck(deck);
+        addNameToList = true;
       } else {
         //If a version of the deck is already in the system
         if (overwriteLocal) {
           this._loadedDecks[deck.ID] = new Deck(deck);
         } else {
-          return;
+          //If the name of the server does not equal the name locally, then ignore the name from the server
+          //This if statement does the contrapositive
+          if(this._loadedDecks[deck.ID].name == deck.name){
+            addNameToList = true;
+          }else{
+            nameWasUsed = false;
+          }
         }
+      }
+
+      if(nameWasUsed){
+        unusedNames.delete(deck.name);
+      }
+
+      if (!this._allDeckNames.includes(deck.name) && addNameToList) {
+        this._allDeckNames.push(deck.name);
       }
 
       //It will only get here if data was written to loadedDecks
