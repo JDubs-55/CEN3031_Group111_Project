@@ -14,6 +14,7 @@ export class DeckPreviewComponent {
   textNumber: number = 0;
 
   clock: Subscription;
+  onCardChange?: Subscription;
 
 
 
@@ -24,19 +25,31 @@ export class DeckPreviewComponent {
   }
 
   ngOnInit(){
-    if(this.deck != undefined){
-      this.frontTexts = Object.values(this.deck.cards).map(card=>card.frontText);
-      this.backTexts = Object.values(this.deck.cards).map(card=>card.backText);
-    }
     this.showNext();
+    
+    this.deck?.onCardsChange.subscribe(()=>{
+      this.updateText();
+    })
   }
   
   ngOnDestroy(){
     this.clock.unsubscribe();
+    this.onCardChange?.unsubscribe();
   }
 
 
   showNext(): void{
-    this.textNumber = (this.textNumber + 1) % this.frontTexts.length
+    if(this.frontTexts.length == 0){
+      this.textNumber = 0;
+    }else{
+      this.textNumber = (this.textNumber + 1) % this.frontTexts.length;
+    }
+  }
+
+  updateText(): void{
+    if(this.deck != undefined){
+      this.frontTexts = Object.values(this.deck.cards).map(card=>card.frontText);
+      this.backTexts = Object.values(this.deck.cards).map(card=>card.backText);
+    }
   }
 }

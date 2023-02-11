@@ -16,7 +16,7 @@ export class AppComponent {
 
   constructor(private deckManager: DeckManagerService) {
     for(let i = 0; i < 13; i++){
-      this.generateRandomDeck(5);
+      this.generateRandomDeck(1);
     }
     
   }
@@ -49,5 +49,12 @@ export class AppComponent {
         backText: "back: " + makeid(10),
       });
     }
+  }
+
+  changeFrontText(): void{
+    this.deckManager.searchDecksByName("D")[0].editCard({
+      ID: Object.keys(this.deckManager.searchDecksByName("D")[0].cards)[0],
+      frontText: "frontText"
+    })
   }
 }
