@@ -17,12 +17,14 @@ import {MatButtonModule} from '@angular/material/button';
 
 import { SelectedDeckDisplayComponent } from './selected-deck-display/selected-deck-display.component';
 import { DeckPreviewComponent } from './deck-preview/deck-preview.component';
+import { DeckEditorComponent } from './deck-editor/deck-editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SelectedDeckDisplayComponent,
     DeckPreviewComponent,
+    DeckEditorComponent,
   ],
   imports: [
     BrowserModule,
