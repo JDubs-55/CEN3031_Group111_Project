@@ -19,6 +19,7 @@ import { SelectedDeckDisplayComponent } from './selected-deck-display/selected-d
 import { DeckPreviewComponent } from './deck-preview/deck-preview.component';
 import { DeckEditorComponent } from './deck-editor/deck-editor.component';
 import { CardSelectorComponent } from './card-selector/card-selector.component';
+import { FlashCardTesterComponent } from './flash-card-tester/flash-card-tester.component';
 
 //TODO: figure out why angular is reporting a problem every time I force an update to the display
 //(note) the code does what I intend to do, but I am probably doing something in an unintended way
@@ -37,6 +38,7 @@ import { CardSelectorComponent } from './card-selector/card-selector.component';
     DeckPreviewComponent,
     DeckEditorComponent,
     CardSelectorComponent,
+    FlashCardTesterComponent,
   ],
   imports: [
     BrowserModule,
