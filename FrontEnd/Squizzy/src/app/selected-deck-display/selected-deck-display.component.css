@@ -4,11 +4,17 @@
     align-items: flex-start;
     width: fit-content;
     overflow: hidden;
+    max-width: 35%;
+}
+
+mat-card{
+    max-width: 100%;
 }
 
 mat-card-content {
     display: flex;
     flex-direction: column;
+    max-width: 100%;
 }
 
 #deckPreviewList{

@@ -12,11 +12,21 @@ div{
 
 #topCard{
     z-index: 1;
+    max-width: 30vw;
 }
 
 #bottomCard{
     bottom: 1em;
     left: 1em;
+    max-width: 30vw;
+}
+
+#topCard mat-card-content{
+    overflow: hidden;
+}
+
+#bottomCard  mat-card-content{
+    overflow: hidden;
 }
 
 #OuterCard{
