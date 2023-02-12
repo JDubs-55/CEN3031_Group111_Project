@@ -1,6 +1,7 @@
 import { Component, Input, ChangeDetectorRef } from '@angular/core';
 import { Deck } from '../MyClasses/Deck';
 import { interval, Subscription, Observable } from 'rxjs';
+import { ProgramStateService } from '../program-state.service';
 
 
 //TODO: Write Comments
@@ -18,6 +19,8 @@ export class DeckPreviewComponent {
   backTexts: string[] = [];
   textNumber: number = 0;
 
+  colorClass: string = "";
+
   onCardChange?: Subscription;
   static timer = interval(1000).subscribe(()=>{
     DeckPreviewComponent.deckPreviewComponents.forEach(preview=>{
@@ -29,7 +32,7 @@ export class DeckPreviewComponent {
 
 
 
-  constructor(private changeDetector: ChangeDetectorRef){ }
+  constructor(private changeDetector: ChangeDetectorRef, private programState: ProgramStateService){ }
 
   ngOnInit(){
     DeckPreviewComponent.deckPreviewComponents.add(this);
@@ -38,6 +41,16 @@ export class DeckPreviewComponent {
     
     this.deck?.onCardsChange.subscribe(()=>{
       this.updateText();
+    })
+
+    this.programState.onSelectedDeckChange.subscribe((deck)=>{
+      if(deck != undefined && this.deck != undefined){
+        if(deck.ID == this.deck.ID){
+          this.colorClass = "selected";
+          return;
+        }
+      }
+      this.colorClass = "";
     })
   }
   
@@ -61,6 +74,15 @@ export class DeckPreviewComponent {
     if(this.deck != undefined){
       this.frontTexts = Object.values(this.deck.cards).map(card=>card.frontText);
       this.backTexts = Object.values(this.deck.cards).map(card=>card.backText);
+
+      if(this.frontTexts.length == 0){
+        this.frontTexts = ["This deck has no cards"];
+        this.backTexts = ["ID: " + this.deck.ID];
+      }
     }
+
+    
+
+    this.textNumber = this.textNumber % this.frontTexts.length;//This prevents the text number from becomming too high when a card is deleted
   }
 }

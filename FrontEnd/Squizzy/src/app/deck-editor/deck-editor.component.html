@@ -25,6 +25,15 @@
                         <mat-form-field>
                             <input mat-input matNativeControl [formControl]="cardBackTextControl" type="text" placeholder="Back Text">
                         </mat-form-field>
+
+                        <button mat-flat-button color="primary" (click)="removeCard()">Remove Card</button>
+                        <button mat-flat-button color="primary" (click)="makeNewCard()">New Card</button>
+                        <button mat-flat-button color="primary" (click)="makeNewDeck()">New Deck</button>
+
+                        <div id="DeleteDeckButtonDiv">
+                            <button mat-flat-button color="warn" (click)="deleteDeck()">Delete Deck</button>
+                        </div>
+                        
                     </div>
                 </div>
             </mat-card-content>

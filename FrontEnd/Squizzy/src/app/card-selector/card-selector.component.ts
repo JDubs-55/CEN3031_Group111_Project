@@ -14,25 +14,20 @@ import { ProgramStateService } from '../program-state.service';
 })
 export class CardSelectorComponent {
 
-  @Output() onSelectCard = new EventEmitter<string>();//Hopefully this allows me to emit an event every time the selected card changes
+
+  @Output() onSelectCard = new EventEmitter<string>();//This is an event just like how (click) is an event.
 
 
   constructor(public programState: ProgramStateService, private changeDetector: ChangeDetectorRef){
+    //This forces the card list to change which cards are being displayed
     this.programState.onSelectedDeckChange.subscribe(()=>{
       this.changeDetector.detectChanges();
     })
   }
 
-  selectRandom(): void{
-    if(this.programState.selectedDeck != undefined){
-      let cardIDs = Object.keys(this.programState.selectedDeck.cards);
-      this.selectCard(cardIDs[Math.floor(Math.random() * cardIDs.length)]);
-    }
-    
-  }
 
-
+  //This runs when you click on one of the cards
   selectCard(cardID: string): void{
-    this.onSelectCard.emit(cardID);
+    this.onSelectCard.emit(cardID);//This fires off the event
   }
 }

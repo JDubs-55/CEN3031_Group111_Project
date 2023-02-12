@@ -1,5 +1,6 @@
 <mat-card id="OuterCard">
     <mat-card-content>
+        <!--This makes the list of cards that can be selected-->
         <div *ngFor="let card of programState.getCardList()">
             <div (click)="selectCard(card.ID)">
                 <mat-card id="topCard">

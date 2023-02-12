@@ -20,6 +20,16 @@ import { DeckPreviewComponent } from './deck-preview/deck-preview.component';
 import { DeckEditorComponent } from './deck-editor/deck-editor.component';
 import { CardSelectorComponent } from './card-selector/card-selector.component';
 
+//TODO: figure out why angular is reporting a problem every time I force an update to the display
+//(note) the code does what I intend to do, but I am probably doing something in an unintended way
+//(not) it seems as if something is configured incorrectly
+
+//Warning it could become hard to understand how this code works due to the use of event handlers
+//Each part responds accordingly, but it not immeadiately obvious what things respond when any particular variable changes.
+//The way the code works currently means that things "just work"
+//It should be easily expandable as a result
+
+
 @NgModule({
   declarations: [
     AppComponent,

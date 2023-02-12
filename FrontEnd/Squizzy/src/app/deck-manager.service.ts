@@ -12,8 +12,6 @@ import { dummyData } from './MyClasses/DummyData'
 
 
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +24,9 @@ export class DeckManagerService {
   //These are for loaded data
   private _loadedDecks: { [ID: string]: Deck } = {};
   private _nameToID: { [deckName: string]: Set<string> } = {};//The keys of this object are the loaded names
+
+  private _dirtyDecks = new Set<string>();
+
 
   constructor() {
 
@@ -76,6 +77,8 @@ export class DeckManagerService {
     return this._loadedDecks[deck.ID];
   }
 
+  
+
   private initializeCallbacks(deck: Deck): void {
     deck.onNameChange.subscribe((names) => {
       //remove the name mapping for the old name
@@ -120,18 +123,17 @@ export class DeckManagerService {
 
     let result = queryBackend(IDs);
 
-    let addNameToList: boolean = false;
-
     result.forEach(deck => {
+      let addNameToList: boolean = false;
 
       if (this._loadedDecks[deck.ID] == undefined) {
         //If a version is not alredy loaded
-        this._loadedDecks[deck.ID] = new Deck(deck);
+        this.loadDeckHelper(deck);
         addNameToList = true;
       } else {
         //If a version of the deck is already in the system
         if (overwriteLocal) {
-          this._loadedDecks[deck.ID] = new Deck(deck);
+          this.loadDeckHelper(deck);
         } else {
           //If the name of the server does not equal the name locally, then ignore the name from the server
           //This if statement does the contrapositive
@@ -178,12 +180,12 @@ export class DeckManagerService {
 
       if (this._loadedDecks[deck.ID] == undefined) {
         //If a version is not alredy loaded
-        this._loadedDecks[deck.ID] = new Deck(deck);
+        this.loadDeckHelper(deck);
         addNameToList = true;
       } else {
         //If a version of the deck is already in the system
         if (overwriteLocal) {
-          this._loadedDecks[deck.ID] = new Deck(deck);
+          this.loadDeckHelper(deck);
         } else {
           //If the name of the server does not equal the name locally, then ignore the name from the server
           //This if statement does the contrapositive
@@ -225,11 +227,38 @@ export class DeckManagerService {
 
     IDs.forEach(ID => {
       decksToSave.push(this._loadedDecks[ID].data);
+      this._dirtyDecks.delete(ID);
     })
 
     queryBackend(decksToSave);
   }
 
+
+  //(backend requirement)
+  deleteDecks(IDs: string[] | string): void {
+    if (typeof IDs == "string") {
+      return this.deleteDecks([IDs]);
+    }
+
+    function queryBackend(data: DeckData[]): void { }
+
+    let decksToDelete: DeckData[] = [];
+
+    IDs.forEach(ID => {
+      decksToDelete.push(this._loadedDecks[ID].data);
+      this._dirtyDecks.delete(ID);
+    })
+
+    this.unloadDecks(IDs);
+    queryBackend(decksToDelete);
+  }
+  //Warning do no use (this is a helper function for the proper loading functions)
+  private loadDeckHelper(deck: DeckData): void{
+    this._loadedDecks[deck.ID] = new Deck(deck);
+    this._loadedDecks[deck.ID].onDirty.subscribe(()=>{
+      this._dirtyDecks.add(deck.ID);
+    });
+  }
 
   unloadDecks(IDs: string[] | string, isSaving?: boolean): void {
     if (typeof IDs == "string") {
@@ -251,7 +280,13 @@ export class DeckManagerService {
 
       //Unload the deck
       delete this._loadedDecks[ID];
+      this._dirtyDecks.delete(ID);
     });
+  }
+
+  saveDirty(): void{
+    console.log("Saving Dirty", Array.from(this._dirtyDecks))
+    this.saveDecks(Array.from(this._dirtyDecks));
   }
 
 

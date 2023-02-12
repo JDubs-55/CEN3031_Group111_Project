@@ -16,9 +16,20 @@ mat-card-content{
 
 #topCard{
     z-index: 1;
+    background-color: inherit;
 }
 
 #bottomCard{
     bottom: 1em;
     left: 1em;
+    background-color: inherit;
+}
+
+div{
+    background-color: white;
+    display: contents;
+}
+
+.selected{
+    background-color: #E0E0E0;
 }

@@ -75,6 +75,18 @@ export class SelectedDeckDisplayComponent {
       });
     });
 
+    this.programState.onSelectedDeckChange.subscribe(()=>{
+      if(this.programState.selectedDeck != undefined){
+        this.myControl.setValue(this.programState.selectedDeck.name);
+      }else{
+        this.selectedDeckName = "";
+        this.updateDeckOptions();
+      }
+      
+    })
+
+
+    
   }
 
   private _filter(value: string): string[] {

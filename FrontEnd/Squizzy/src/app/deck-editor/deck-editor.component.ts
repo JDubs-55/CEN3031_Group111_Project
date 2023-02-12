@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ProgramStateService } from '../program-state.service';
+import { DeckManagerService } from '../deck-manager.service';
 
 import { Observable, map, startWith, Subscription, timer } from 'rxjs';
 
 //TODO: Write comments
 //TODO: Write unit tests
+
+//If a deck editor is every closed. It will save the data to the server
 
 
 @Component({
@@ -19,7 +22,7 @@ export class DeckEditorComponent {
   deckNameControl = new FormControl();
 
   cardIDControl = new FormControl();
-    cardFrontTextControl = new FormControl();
+  cardFrontTextControl = new FormControl();
   cardBackTextControl = new FormControl();
 
   selectedCardID: string = "";
@@ -31,84 +34,122 @@ export class DeckEditorComponent {
   backTextDelay?: Subscription;
 
 
-  constructor(private programState: ProgramStateService){
-    this.programState.onSelectedDeckChange.subscribe((deck)=>{
+  constructor(private programState: ProgramStateService, private deckManager: DeckManagerService) {
+
+    //When the selected deck changes we need to
+    this.programState.onSelectedDeckChange.subscribe((deck) => {
       this.deckNameControl.setValue(deck?.name);
-      this.deckIDControl.setValue(deck?.ID)
+      this.deckIDControl.setValue("Deck ID: " + deck?.ID)
+      this.unselectCard();
     })
 
-    this.deckNameControl.valueChanges.subscribe((value)=>{
-      if(value == this.programState.selectedDeck?.name){
+    //When the value listed as the deck name changes we need to
+    this.deckNameControl.valueChanges.subscribe((value) => {
+      //Check if the name has actually changed
+      if (value == this.programState.selectedDeck?.name) {
         return;
       }
 
-      if(this.nameDelay != undefined){
+      //Refresh the delay timer
+      if (this.nameDelay != undefined) {
         this.nameDelay.unsubscribe();
       }
 
-      this.nameDelay = timer(this.saveDelay).subscribe(()=>{
+      //Schedule the saving of the data to occur "saveDelay" milliseconds later
+      this.nameDelay = timer(this.saveDelay).subscribe(() => {
         this.saveDeckName();
       });
     })
 
-    this.cardFrontTextControl.valueChanges.subscribe((value)=>{
-      //Do nothing if there is no selected deck or if the text did not actually change
-      if(this.programState.selectedDeck == undefined){
+    //When the value listed for the front text changes we need to
+    this.cardFrontTextControl.valueChanges.subscribe((value) => {
+      //Check is a deck is selected
+      if (this.programState.selectedDeck == undefined) {
         return;
       }
-      if(value == this.programState.selectedDeck.cards[this.selectedCardID].frontText){
+      //Check is a card has been selected
+      if (this.selectedCardID == undefined) {
+        return;
+      }
+      //Check that the card exists
+      if (this.programState.selectedDeck.cards[this.selectedCardID] == undefined) {
+        return;
+      }
+      //Check that front text actually changed
+      if (value == this.programState.selectedDeck.cards[this.selectedCardID].frontText) {
         return;
       }
 
 
-      if(this.frontTextDelay != undefined){
+      //Refresh the delay timer
+      if (this.frontTextDelay != undefined) {
         this.frontTextDelay.unsubscribe();
       }
 
-      this.frontTextDelay = timer(this.saveDelay).subscribe(()=>{
+      //Schedule the saving of the data to occur "saveDelay" milliseconds later
+      this.frontTextDelay = timer(this.saveDelay).subscribe(() => {
         this.saveCardFrontText();
       });
 
     })
 
-    this.cardBackTextControl.valueChanges.subscribe((value)=>{
-      //Do nothing if there is no selected deck or if the text did not actually change
-      if(this.programState.selectedDeck == undefined){
+    //When the value listed for the back text changes we need to
+    this.cardBackTextControl.valueChanges.subscribe((value) => {
+      //Check is a deck is selected
+      if (this.programState.selectedDeck == undefined) {
         return;
       }
-      if(value == this.programState.selectedDeck.cards[this.selectedCardID].backText){
+      //Check is a card has been selected
+      if (this.selectedCardID == undefined) {
+        return;
+      }
+      //Check that the card exists
+      if (this.programState.selectedDeck.cards[this.selectedCardID] == undefined) {
+        return;
+      }
+      //Check that front text actually changed
+      if (value == this.programState.selectedDeck.cards[this.selectedCardID].backText) {
         return;
       }
 
-      if(this.backTextDelay != undefined){
+
+      //Refresh the delay timer
+      if (this.backTextDelay != undefined) {
         this.backTextDelay.unsubscribe();
       }
 
-      this.backTextDelay = timer(this.saveDelay).subscribe(()=>{
+      //Schedule the saving of the data to occur "saveDelay" milliseconds later
+      this.backTextDelay = timer(this.saveDelay).subscribe(() => {
         this.saveCardBackText();
       });
     })
 
+    //The controls for the deck ID and card ID are disabled because those are not allowed to be changed
     this.deckIDControl.disable();
     this.cardIDControl.disable();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     //If the user clicks off the deck editor, save the data immeadiately (ignore the save delay)
     this.saveDeckName();
     this.saveCardFrontText();
     this.saveCardBackText();
+
+    //This line saves all the decks that have changed data
+    this.deckManager.saveDirty();
   }
 
 
-  saveDeckName(): void{
-    if(this.programState.selectedDeck != undefined){
+  //These save functions push the displayed data to the local deck storage
+  //These do not save the data to the server
+  saveDeckName(): void {
+    if (this.programState.selectedDeck != undefined) {
       this.programState.selectedDeck.name = this.deckNameControl.value;
     }
   }
 
-  saveCardFrontText(): void{
-    if(this.programState.selectedDeck != undefined && this.selectedCardID != ""){
+  saveCardFrontText(): void {
+    if (this.programState.selectedDeck != undefined && this.selectedCardID != "") {
       this.programState.selectedDeck.editCard({
         ID: this.selectedCardID,
         frontText: this.cardFrontTextControl.value
@@ -116,8 +157,8 @@ export class DeckEditorComponent {
     }
   }
 
-  saveCardBackText(): void{
-    if(this.programState.selectedDeck != undefined && this.selectedCardID != ""){
+  saveCardBackText(): void {
+    if (this.programState.selectedDeck != undefined && this.selectedCardID != "") {
       this.programState.selectedDeck.editCard({
         ID: this.selectedCardID,
         backText: this.cardBackTextControl.value
@@ -125,15 +166,91 @@ export class DeckEditorComponent {
     }
   }
 
-  selectCard(cardID: string): void{
+  selectCard(cardID: string): void {
     this.selectedCardID = cardID;
 
-    if(this.programState.selectedDeck != undefined){
+    if (this.programState.selectedDeck != undefined) {
       let card = this.programState.selectedDeck.cards[cardID];
-      this.cardIDControl.setValue(cardID);
+      this.cardIDControl.setValue("Card ID: " + cardID);
       this.cardFrontTextControl.setValue(card.frontText);
       this.cardBackTextControl.setValue(card.backText);
     }
+
+  }
+
+  unselectCard(): void {
+    this.selectedCardID = "";
+    this.cardIDControl.reset();
+    this.cardFrontTextControl.reset();
+    this.cardBackTextControl.reset();
+  }
+
+  makeNewCard(): void{
+    function makeid(length: number): string {
+      let result = '';
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const charactersLength = characters.length;
+      let counter = 0;
+      while (counter < length) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+      }
+      return result;
+    }
+
+
+    //Check if a deck has been selected
+    if(this.programState.selectedDeck == undefined){
+      return;
+    }
+
+    //Make a new ID for the new card
+    let newID = makeid(10);
+
+    //Ensure that it doesn't conflict with other cards
+    let attempts = 0;
+    while(this.programState.getCardList().some(card=>card.ID==newID)){
+      newID = makeid(attempts++);
+    }
+
+    this.programState.selectedDeck.addCard({
+      ID: newID,
+      isFavorite: false,
+      frontText: "",
+      backText: ""
+    })
+
+    this.selectCard(newID);
+  }
+
+  removeCard(): void{
+    //Check if a deck has been selected
+    if(this.programState.selectedDeck == undefined){
+      return;
+    }
+
+    //Check if a card has been selected
+    if(this.selectedCardID == ""){
+      return;
+    }
+
+    this.programState.selectedDeck.removeCard({
+      ID: this.selectedCardID
+    });
+    this.unselectCard();
+  }
+
+  makeNewDeck(): void{
+    let newName = "Default Deck Name";
     
+    let newDeck = this.deckManager.generateDeck();
+    newDeck.name = newName;
+    this.programState.selectedDeck = newDeck;
+
+    
+  }
+
+  deleteDeck(): void{
+    this.programState.deleteSelectedDeck();
   }
 }

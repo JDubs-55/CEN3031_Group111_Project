@@ -1,6 +1,6 @@
 import { CardData, PartialCardData } from "./CardData";
 import { DeckData } from "./DeckData";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
 
 
 export class Deck{
@@ -14,6 +14,7 @@ export class Deck{
     private _tagsSubject: BehaviorSubject<Set<string>>;
     private _cardsSubject: BehaviorSubject<{[ID: string]: CardData}>;
     private _nameSubject: BehaviorSubject<{old:string, new:string}>;
+    private _isDirtySubject = new Subject();
 
 
     constructor(deckData: DeckData){
@@ -29,6 +30,23 @@ export class Deck{
         this._tagsSubject = new BehaviorSubject<Set<string>>(this._tags);
         this._cardsSubject = new BehaviorSubject<{[ID: string]: CardData}>(this._cards);
         this._nameSubject = new BehaviorSubject<{old:string, new:string}>({old: this._name, new: this._name});
+
+        //sets up the is dirty subject
+        this.onCardsChange.subscribe(()=>{
+            this._isDirtySubject.next(null);
+        });
+
+        this.onTagsChange.subscribe(()=>{
+            this._isDirtySubject.next(null);
+        });
+
+        this.onNameChange.subscribe(()=>{
+            this._isDirtySubject.next(null);
+        });
+
+        this.onFavoriteChange.subscribe(()=>{
+            this._isDirtySubject.next(null);
+        });
     }
 
     //isFavorite may be changed directly
@@ -146,7 +164,6 @@ export class Deck{
         return this._cardsSubject.asObservable();
     }
 
-
     get data(): Readonly<DeckData>{
         return {
             ID: this.ID,
@@ -157,4 +174,7 @@ export class Deck{
         }
     }
 
+    get onDirty(): Observable<any>{
+        return this._isDirtySubject.asObservable();
+    }
 }
