@@ -1,8 +1,38 @@
 # Squizzy Backend Endpoints
 
+## Backend Setup
 
-Current API Endpoints
+### Config Setup
 
+In the BackEnd>server folder create a new folder called ```config```
+
+Within this folder create a new file called ```config.json```
+
+This file should have the following structure:
+```
+{
+    "firestore_cred_path": "/FULL/PATH/TO/CREDENTIAL/FILE.json",
+    "project-id": "PROJECT-ID-HERE"
+}
+```
+
+You must also place the database credential file in this ```config``` folder. 
+
+### Dependencies for Running the Server Locally
+go-packages:
+- cosmtrek/air - https://github.com/cosmtrek/air
+- gorilla/mux - github.com/gorilla/mux
+- rs/cors - github.com/rs/cors
+
+Ensure that your path is correctly set. On Mac (if using zsh) Put this in your .zshrc file and restart the terminal. 
+``` export PATH=$PATH:$(go env GOPATH)/bin ```
+
+You can search for similar instructions if on another OS.
+
+You should be able to start the server by running ```air``` from the server directory. 
+
+
+## Current API Endpoints
 
 Deck Endpoints
 ```/createdeck``` - POST
@@ -21,9 +51,9 @@ User Endpoints
 ```/removeuser/{id}``` - DELETE
 
 
-# Deck Endpoints
+## Deck Endpoints
 
-## Create Deck:
+### Create Deck:
 ```/createdeck```
 Used to create/save a new deck to the database
 
@@ -59,7 +89,7 @@ Request must include the following json format in the request:
 ```
 Currently, the response from a sucessful save, is this same data in this format. 
 
-## Get Deck
+### Get Deck
 ```/getdeck/{id}```
 Used to get a deck by its identifier. 
 When using this endpoint, replace the ```{id}``` with the id of the deck. 
@@ -94,7 +124,7 @@ Successful Response:
 }
 ```
 
-## Update a Deck Parameter
+### Update a Deck Parameter
 ```/updatedeck/{id}/{param}/{val}```
 Updates a specific deck's attributes
 
@@ -109,7 +139,7 @@ Successful Response:
 }
 ```
 
-## Remove a Deck Endpoint
+### Remove a Deck Endpoint
 ```/removedeck/{id}```
 Removes a specific deck by id
 
@@ -118,7 +148,7 @@ When using this endpoint, replace ```{id}``` with the deckID that should be remo
 Successful Reponse: Status 202 Accepted.
 
 
-## Remove a Card Endpoint
+### Remove a Card Endpoint
 ```/removecard/{deckID}/cards/{cardID}```
 Removes a Card based on deckId and cardID. 
 
@@ -128,9 +158,9 @@ Sample Response:
 #TODO
 
 
-# Search Endpoints
+## Search Endpoints
 
-## Get List of Decks 
+### Get List of Decks 
 ```/getdecklist/{name}```
 Returns a list of deck IDs given a name to search on. 
 
@@ -138,7 +168,7 @@ When using this endpoint, replace ```{name}``` with a string that can be used to
 
 Note: Search name must be encoded. For example for the name "My Deck" your search would look like ```/getdecklist/My%20Deck```
 
-# TODO
+## TODO
 User Endpoints
 ```/createuser```
 ```/getuser/{id}```
