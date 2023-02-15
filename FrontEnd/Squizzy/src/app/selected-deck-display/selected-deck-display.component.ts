@@ -1,3 +1,4 @@
+
 import { Component  } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ProgramStateService } from '../program-state.service';
@@ -22,14 +23,13 @@ import { PageEvent } from '@angular/material/paginator';
 //I want the cycling of the previews to be synced. (yes this was an issue)
 
 
-
-
 @Component({
   selector: 'app-selected-deck-display',
   templateUrl: './selected-deck-display.component.html',
   styleUrls: ['./selected-deck-display.component.css']
 })
 export class SelectedDeckDisplayComponent {
+
   get options(): readonly string[] {
     return this.deckManager.allDeckNames;
   }

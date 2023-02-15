@@ -13,3 +13,8 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+/BackEnd/server/config/
+/BackEnd/server/tmp/
+.DS_Store
+BackEnd/server/tmp/main

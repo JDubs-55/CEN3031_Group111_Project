@@ -22,3 +22,13 @@ Our project will be a flashcard application that allows users to create quiz dec
 - Johnathan Weller (Back-end)
 - Kyle Chamblee (Back-end)
 
+
+
+**Dependencies for Running the Server Locally
+go-packages:
+- cosmtrek/air - https://github.com/cosmtrek/air
+- gorilla/mux - github.com/gorilla/mux
+- rs/cors - github.com/rs/cors
+
+Ensure that your path is correctly set. On Mac (if using zsh) Put this in your .zshrc file and restart the terminal. 
+``` export PATH=$PATH:$(go env GOPATH)/bin ```
