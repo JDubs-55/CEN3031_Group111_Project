@@ -1,22 +1,18 @@
-mat-sidenav-container{
+
+:host{
+    display: flex;
+    flex-direction: column;
     height: 100%;
 }
 
-mat-sidenav-content{
+#TopBar{
+    padding: 0.5em;
     display: flex;
-    flex-direction: column;
-}
-
-#sideNavOptions{
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
     gap: 1em;
-    margin: 0.5em;
 }
 
-#subPageDisplay{
+#SelectedTabDiv{
     flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+    overflow: hidden;
 }
+

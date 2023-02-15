@@ -1,27 +1,61 @@
 :host{
     display: flex;
-    flex-direction: column;
-    gap: 1em;
-    margin: 1em;
-    flex-grow: 1;
+    height: 100%;
+    overflow: hidden;
 }
 
-div{
-    background-color: none;
+
+app-selected-deck-display{
+    border-right: 1px solid #E0E0E0;
+    box-sizing: border-box;
+}
+
+#EditorDiv{
+    height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: stretch;
-    flex-direction: column;
-    background-color: none;
-    flex-grow: 1;
-    gap: 1em;
+    overflow: hidden;
 }
 
-span{
+mat-card{
+    flex-grow: 1;
+    display: flex;
+}
+
+#CardEditorDiv{
+    flex-grow: 1;
     display: flex;
     gap: 1em;
+    height: 100%;
+    overflow: hidden;
 }
 
-mat-form-field{
+#CardEditorFields{
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+mat-card{
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+mat-card-content{
+    overflow: hidden;
+    height: 100%;
+}
+
+button{
+    margin-bottom: 1em;
+}
+
+#DeleteDeckButtonDiv{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
 }
 

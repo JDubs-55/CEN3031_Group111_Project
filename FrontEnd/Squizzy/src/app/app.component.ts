@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { FlashCardControllerService } from './flash-card-controller.service';
+
+import { DeckManagerService } from './deck-manager.service';
+
+import { DeckData } from './MyClasses/DeckData';
+import { Deck } from './MyClasses/Deck';
+import { CardData } from './MyClasses/CardData';
+
 
 @Component({
   selector: 'app-root',
@@ -7,14 +13,19 @@ import { FlashCardControllerService } from './flash-card-controller.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Squizzy';
 
-  isSideNavOpen: boolean = false;
-
-  constructor(private flashCardController: FlashCardControllerService){
+  constructor(private deckManager: DeckManagerService) {
+    
   }
 
-  toggleSideNav(){
-    this.isSideNavOpen = !this.isSideNavOpen;
+  ngOnInit(){
+    this.deckManager.loadAllDeckNames();
+  }
+
+  dumpDeckData(): void{
+    let data: DeckData[] = Object.values(this.deckManager.loadedDecks).map(deck=>deck.data);
+
+    console.log(data);
+    
   }
 }
