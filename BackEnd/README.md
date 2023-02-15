@@ -21,9 +21,9 @@ User Endpoints
 ```/removeuser/{id}``` - DELETE
 
 
-## Deck Endpoints
+# Deck Endpoints
 
-# Create Deck:
+## Create Deck:
 ```/createdeck```
 Used to create/save a new deck to the database
 
@@ -59,7 +59,7 @@ Request must include the following json format in the request:
 ```
 Currently, the response from a sucessful save, is this same data in this format. 
 
-# Get Deck
+## Get Deck
 ```/getdeck/{id}```
 Used to get a deck by its identifier. 
 When using this endpoint, replace the ```{id}``` with the id of the deck. 
@@ -94,7 +94,7 @@ Successful Response:
 }
 ```
 
-# Update a Deck Parameter
+## Update a Deck Parameter
 ```/updatedeck/{id}/{param}/{val}```
 Updates a specific deck's attributes
 
@@ -109,7 +109,7 @@ Successful Response:
 }
 ```
 
-# Remove a Deck Endpoint
+## Remove a Deck Endpoint
 ```/removedeck/{id}```
 Removes a specific deck by id
 
@@ -118,7 +118,7 @@ When using this endpoint, replace ```{id}``` with the deckID that should be remo
 Successful Reponse: Status 202 Accepted.
 
 
-# Remove a Card Endpoint
+## Remove a Card Endpoint
 ```/removecard/{deckID}/cards/{cardID}```
 Removes a Card based on deckId and cardID. 
 
@@ -128,9 +128,9 @@ Sample Response:
 #TODO
 
 
-## Search Endpoints
+# Search Endpoints
 
-# Get List of Decks 
+## Get List of Decks 
 ```/getdecklist/{name}```
 Returns a list of deck IDs given a name to search on. 
 
