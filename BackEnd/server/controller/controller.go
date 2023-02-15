@@ -166,3 +166,21 @@ func RemoveCardByIdHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusAccepted)
 }
+
+func GetDeckListHandler(w http.ResponseWriter, r *http.Request) {
+
+	vars := mux.Vars(r)
+
+	deckList, err := model.GetDeckList(vars["name"])
+
+	if err != nil {
+		http.Error(w, "Failed to get deck list", http.StatusInternalServerError)
+		return
+	}
+
+	// Return the saved user
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(deckList)
+
+}

@@ -24,6 +24,9 @@ func SetupRouter() {
 	router.HandleFunc("/updateuser/{id}/{param}/{val}", controller.UpdateUserHandler).Methods("PUT")
 	router.HandleFunc("/removeuser/{id}", controller.RemoveUserHandler).Methods("DELETE")
 
+	//Get Deck List
+	router.HandleFunc("/getdecklist/{name}", controller.GetDeckListHandler).Methods("GET")
+
 	// Use CORS middleware to handle cross-origin requests
 	c := cors.New(cors.Options{
 		AllowedOrigins: []string{"*"},

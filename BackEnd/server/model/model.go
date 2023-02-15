@@ -32,6 +32,11 @@ type User struct {
 	Decks    []Deck
 }
 
+type DeckListItem struct {
+	ID   string
+	Name string
+}
+
 var client *firestore.Client
 
 func init() {
@@ -193,6 +198,35 @@ func UpdateDeckInfo(docID string, param string, value string) error {
 	}
 
 	return nil
+}
+
+func GetDeckList(name string) ([]DeckListItem, error) {
+	ctx := context.Background()
+	var deckItems []DeckListItem
+
+	iter := client.Collection("Decks").Where("Name", "==", name).Documents(ctx)
+
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+
+		var data map[string]interface{}
+		doc.DataTo(&data)
+
+		var deckData = new(DeckListItem)
+		deckData.ID = data["ID"].(string)
+		deckData.Name = data["Name"].(string)
+
+		deckItems = append(deckItems, *deckData)
+	}
+
+	return deckItems, nil
+
 }
 
 //Template Code
