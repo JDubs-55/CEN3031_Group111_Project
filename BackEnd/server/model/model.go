@@ -141,7 +141,36 @@ func GetDeckByID(docID string) (map[string]interface{}, error) {
 		return nil, err
 	}
 	return data, nil
+}
 
+func GetAllDecks() ([]map[string]interface{}, error) {
+
+	ctx := context.Background()
+
+	iter := client.Collection("Decks").Documents(ctx)
+
+	var decks []map[string]interface{}
+	var err error
+
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			fmt.Println("Finished retrieving decks.")
+			break
+		}
+
+		deck, err := GetDeckByID(doc.Ref.ID)
+		if err != nil {
+			fmt.Println("Error retrieving deck " + doc.Ref.ID)
+		}
+
+		decks = append(decks, deck)
+
+		fmt.Printf("Added deck %s.\n", doc.Ref.ID)
+
+	}
+
+	return decks, err
 }
 
 func RemoveDeckByID(docID string) error {
