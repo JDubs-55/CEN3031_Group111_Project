@@ -143,13 +143,14 @@ func GetDeckByID(docID string) (map[string]interface{}, error) {
 	return data, nil
 }
 
-func GetAllDecks() ([]map[string]interface{}, error) {
+func GetAllDecks() ([]string, error) {
 
 	ctx := context.Background()
 
 	iter := client.Collection("Decks").Documents(ctx)
 
-	var decks []map[string]interface{}
+	nameMap := make(map[string]string)
+	var deckNames []string
 	var err error
 
 	for {
@@ -159,18 +160,20 @@ func GetAllDecks() ([]map[string]interface{}, error) {
 			break
 		}
 
-		deck, err := GetDeckByID(doc.Ref.ID)
-		if err != nil {
+		deck, err2 := GetDeckByID(doc.Ref.ID)
+		if err2 != nil {
 			fmt.Println("Error retrieving deck " + doc.Ref.ID)
 		}
 
-		decks = append(decks, deck)
-
-		fmt.Printf("Added deck %s.\n", doc.Ref.ID)
-
+		var deckName string = deck["Name"].(string)
+		nameMap[deckName] = deckName
 	}
 
-	return decks, err
+	for _, v := range nameMap {
+		deckNames = append(deckNames, v)
+	}
+
+	return deckNames, err
 }
 
 func RemoveDeckByID(docID string) error {
