@@ -14,6 +14,7 @@ func SetupRouter() {
 	// Register the GetUserHandler function as the handler for a specific URL
 	router.HandleFunc("/api/createdeck", controller.CreateDeckHandler).Methods("POST")
 	router.HandleFunc("/api/getdeck/{id}", controller.GetDeckByIdHandler).Methods("GET")
+	router.HandleFunc("/api/getalldecks", controller.GetAllDecksHandler).Methods("GET")
 	router.HandleFunc("/api/updatedeck/{id}/{param}/{val}", controller.UpdateDeckInfoHandler).Methods("PUT")
 	router.HandleFunc("/api/removedeck/{id}", controller.RemoveDeckByIdHandler).Methods("DELETE")
 	router.HandleFunc("/api/removecard/{deckID}/cards/{cardID}", controller.RemoveCardByIdHandler).Methods("DELETE")

@@ -104,12 +104,18 @@ export class DeckManagerService {
   }
 
   //(Backend Requirement) This requests a list of every deck name from the backend 
-  loadAllDeckNames(): void {
-    function queryBackend(): string[] {
+  async loadAllDeckNames(): Promise<void> {
+    async function queryBackend(): Promise<string[]> {
       //return dummyData.map(deck=>deck.Name);
-      return ["My Deck 1", "My Deck 2"];
+      let out: string[] = [];
+      await fetch(serverLocation + "/api/getalldecks")
+      .then(response=>response.json())
+      .then(data=>{
+        out = data;
+      })
+      return out;
     }
-    let names = queryBackend();//load all the names from the backend
+    let names = await queryBackend();//load all the names from the backend
     names = names.concat(Object.keys(this._nameToID));//Add all the names that are found locally
 
     this._allDeckNames = names.filter((name, index) => names.indexOf(name) === index);//remove duplicate names

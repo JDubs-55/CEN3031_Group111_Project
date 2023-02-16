@@ -183,3 +183,14 @@ func GetDeckListHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(deckList)
 }
+
+func GetAllDecksHandler(w http.ResponseWriter, r *http.Request) {
+	deckNames, err := model.GetAllDecks()
+	if err != nil {
+		http.Error(w, "Failed to retrieve decks.", http.StatusInternalServerError)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(deckNames)
+}

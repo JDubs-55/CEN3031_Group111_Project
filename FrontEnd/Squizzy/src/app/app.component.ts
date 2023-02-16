@@ -30,6 +30,6 @@ export class AppComponent {
   }
 
   httpTest(): void{
-    this.deckManager.loadDecksByName(["My Deck 1", "My Deck 2"]);
+    console.log("http Test currently does nothing")
   }
 }

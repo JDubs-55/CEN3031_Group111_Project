@@ -258,3 +258,36 @@ func GetDeckList(name string) ([]DeckListItem, error) {
 // 	_, err := client.Collection(collection).Doc(docID).Delete(ctx)
 // 	return err
 // }
+
+func GetAllDecks() ([]string, error) {
+
+	ctx := context.Background()
+
+	iter := client.Collection("Decks").Documents(ctx)
+
+	nameMap := make(map[string]string)
+	var deckNames []string
+	var err error
+
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			fmt.Println("Finished retrieving decks.")
+			break
+		}
+
+		deck, err2 := GetDeckByID(doc.Ref.ID)
+		if err2 != nil {
+			fmt.Println("Error retrieving deck " + doc.Ref.ID)
+		}
+
+		var deckName string = deck["Name"].(string)
+		nameMap[deckName] = deckName
+	}
+
+	for _, v := range nameMap {
+		deckNames = append(deckNames, v)
+	}
+
+	return deckNames, err
+}
