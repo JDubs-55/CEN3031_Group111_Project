@@ -135,4 +135,8 @@ export class SelectedDeckDisplayComponent {
   selectDeck(deck: Deck): void {
     this.programState.selectedDeck = deck;
   }
+
+  async deckNameInputClicked(){
+    await this.deckManager.loadAllDeckNames();
+  }
 }

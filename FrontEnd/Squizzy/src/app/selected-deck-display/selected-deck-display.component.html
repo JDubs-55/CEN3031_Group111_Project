@@ -10,7 +10,7 @@
 
         <mat-form-field>
             <input type="text" placeholder="Deck Name" aria-label="Number" matInput [formControl]="myControl"
-                [matAutocomplete]="auto">
+                [matAutocomplete]="auto" (click)="deckNameInputClicked()">
         </mat-form-field>
 
 
