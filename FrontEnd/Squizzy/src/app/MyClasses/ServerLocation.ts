@@ -1,5 +1,5 @@
 
 
-const serverLocation: string = "http://localhost:4201"
+const serverLocation: string = "";//"http://localhost:4201"
 
 export {serverLocation}
