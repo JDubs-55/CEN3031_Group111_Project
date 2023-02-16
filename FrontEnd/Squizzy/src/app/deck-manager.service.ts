@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Deck } from './MyClasses/Deck';
-import { DeckData } from './MyClasses/DeckData';
+import { DeckData, isDeckData } from './MyClasses/DeckData';
 import { dummyData } from './MyClasses/DummyData'
+import { serverLocation } from './MyClasses/ServerLocation';
 
 
 
@@ -50,34 +51,34 @@ export class DeckManagerService {
 
       return {
         ID: makeid(10),
-        isFavorite: false,
-        name: "",
-        tags: [],
-        cards: []
+        IsFavorite: false,
+        Name: "",
+        Tags: [],
+        Cards: []
       };
     }
 
     let deck: DeckData = queryBackend();
 
 
-    if (!this.allDeckNames.includes(deck.name)) {
-      this._allDeckNames.push(deck.name);
+    if (!this.allDeckNames.includes(deck.Name)) {
+      this._allDeckNames.push(deck.Name);
     }
 
     this._loadedDecks[deck.ID] = new Deck(deck);//Add the new deck to the loaded decks
 
     //map the new deck's name to its ID
-    if (this._nameToID[deck.name] == undefined) {
-      this._nameToID[deck.name] = new Set<string>();
+    if (this._nameToID[deck.Name] == undefined) {
+      this._nameToID[deck.Name] = new Set<string>();
     }
-    this._nameToID[deck.name].add(deck.ID);
+    this._nameToID[deck.Name].add(deck.ID);
 
     this.initializeCallbacks(this._loadedDecks[deck.ID]);
 
     return this._loadedDecks[deck.ID];
   }
 
-  
+
 
   private initializeCallbacks(deck: Deck): void {
     deck.onNameChange.subscribe((names) => {
@@ -104,8 +105,9 @@ export class DeckManagerService {
 
   //(Backend Requirement) This requests a list of every deck name from the backend 
   loadAllDeckNames(): void {
-    function queryBackend(): string[]{
-      return dummyData.map(deck=>deck.name);
+    function queryBackend(): string[] {
+      //return dummyData.map(deck=>deck.Name);
+      return ["My Deck 1", "My Deck 2"];
     }
     let names = queryBackend();//load all the names from the backend
     names = names.concat(Object.keys(this._nameToID));//Add all the names that are found locally
@@ -113,15 +115,33 @@ export class DeckManagerService {
     this._allDeckNames = names.filter((name, index) => names.indexOf(name) === index);//remove duplicate names
   }
 
-  //(Backend might never get used) Not sure this function should even exist
-  loadDecksByID(IDs: string[] | string, overwriteLocal?: boolean): void {
+  async loadDecksByID(IDs: string[] | string, overwriteLocal?: boolean): Promise<void> {
     if (typeof IDs == "string") {
       return this.loadDecksByID([IDs]);
     }
 
-    function queryBackend(IDs: string[]): DeckData[] { return [] }
+    async function queryBackend(IDs: string[]): Promise<DeckData[]> {
+      let out: DeckData[] = [];
 
-    let result = queryBackend(IDs);
+      const calls = Array.from(IDs).map((element) => {
+        return fetch(serverLocation + `/api/getdeck/${element}`)
+          .then(response => response.json())
+          .then(data => {
+            if (!isDeckData(data)) {
+              console.log("Warning this is not valid deck data: ", data);
+              return;
+            }
+
+            out.push(data);
+          })
+      });
+
+      await Promise.all(calls);
+
+      return out
+    }
+
+    let result = await queryBackend(IDs);
 
     result.forEach(deck => {
       let addNameToList: boolean = false;
@@ -137,7 +157,7 @@ export class DeckManagerService {
         } else {
           //If the name of the server does not equal the name locally, then ignore the name from the server
           //This if statement does the contrapositive
-          if(this._loadedDecks[deck.ID].name == deck.name){
+          if (this._loadedDecks[deck.ID].name == deck.Name) {
             addNameToList = true;
           }
         }
@@ -145,8 +165,8 @@ export class DeckManagerService {
 
 
       //This will almost certainly never be true (but it can happen, and in that event this makes sense to do)
-      if (!this._allDeckNames.includes(deck.name) && addNameToList) {
-        this._allDeckNames.push(deck.name);
+      if (!this._allDeckNames.includes(deck.Name) && addNameToList) {
+        this._allDeckNames.push(deck.Name);
       }
 
       //It will only get here if data was written to loadedDecks
@@ -154,26 +174,68 @@ export class DeckManagerService {
     })
   }
 
-  //(Backend Requirement) This is the primary means by which the frontend will request decks 
-  loadDecksByName(names: string[] | string, overwriteLocal?: boolean): void {
+  async loadDecksByName(names: string[] | string, overwriteLocal?: boolean): Promise<void> {
     if (typeof names == "string") {
       return this.loadDecksByName([names]);
     }
 
-    
 
-    function queryBackend(names: string[]): DeckData[] {
-      return dummyData.filter(deck=>{
-        return names.includes(deck.name)
+    async function queryBackend(names: string[]): Promise<DeckData[]> {
+      let out: DeckData[] = [];
+
+      names = names.map(name => {
+        return name.replaceAll(" ", "%20");
+      })
+
+      let ids: string[] = [];
+      const callsForIDs = names.map(name => {
+        console.log(name);
+        return fetch(serverLocation + `/api/getdecklist/${name}`)
+          .then(response => response.json())
+          .then(data => {
+            //console.log(data);
+            if(data == null){
+              return;
+            }
+            
+            Array.from(data).forEach((deck)=>{      
+              if(typeof deck == "object" && deck != null && "ID" in deck && typeof deck["ID"] == "string"){
+                ids.push(deck["ID"])
+              }      
+            })
+            
+              
+          })
       });
+
+      await Promise.all(callsForIDs);
+
+      const calls = Array.from(ids).map((element) => {
+        return fetch(serverLocation + `/api/getdeck/${element}`)
+          .then(response => response.json())
+          .then(data => {
+            if (!isDeckData(data)) {
+              console.log("Warning this is not valid deck data: ", data);
+              return;
+            }
+
+            out.push(data);
+          })
+      });
+
+      await Promise.all(calls);
+
+      return out
     }
 
-    let result = queryBackend(names);
+
+    let result = await queryBackend(names);
+    console.log(result);
 
     let unusedNames = new Set<string>(names);
 
     result.forEach(deck => {
-      
+
 
       let addNameToList: boolean = false;
       let nameWasUsed: boolean = true;//This removes the server name from the searchable list, if the local name differs from the server name (And no other decks used that name)
@@ -189,20 +251,20 @@ export class DeckManagerService {
         } else {
           //If the name of the server does not equal the name locally, then ignore the name from the server
           //This if statement does the contrapositive
-          if(this._loadedDecks[deck.ID].name == deck.name){
+          if (this._loadedDecks[deck.ID].name == deck.Name) {
             addNameToList = true;
-          }else{
+          } else {
             nameWasUsed = false;
           }
         }
       }
 
-      if(nameWasUsed){
-        unusedNames.delete(deck.name);
+      if (nameWasUsed) {
+        unusedNames.delete(deck.Name);
       }
 
-      if (!this._allDeckNames.includes(deck.name) && addNameToList) {
-        this._allDeckNames.push(deck.name);
+      if (!this._allDeckNames.includes(deck.Name) && addNameToList) {
+        this._allDeckNames.push(deck.Name);
       }
 
       //It will only get here if data was written to loadedDecks
@@ -213,6 +275,7 @@ export class DeckManagerService {
     //all names that are not found to be unused are removed
     //A name is unsused if, it is neither in the server nor in the locally loaded decks
     this._allDeckNames = this._allDeckNames.filter(name => !unusedNames.has(name) || this._nameToID[name] != undefined);
+
   }
 
   //(Backend Requirement)
@@ -253,9 +316,9 @@ export class DeckManagerService {
     queryBackend(decksToDelete);
   }
   //Warning do no use (this is a helper function for the proper loading functions)
-  private loadDeckHelper(deck: DeckData): void{
+  private loadDeckHelper(deck: DeckData): void {
     this._loadedDecks[deck.ID] = new Deck(deck);
-    this._loadedDecks[deck.ID].onDirty.subscribe(()=>{
+    this._loadedDecks[deck.ID].onDirty.subscribe(() => {
       this._dirtyDecks.add(deck.ID);
     });
   }
@@ -284,7 +347,7 @@ export class DeckManagerService {
     });
   }
 
-  saveDirty(): void{
+  saveDirty(): void {
     console.log("Saving Dirty", Array.from(this._dirtyDecks))
     this.saveDecks(Array.from(this._dirtyDecks));
   }
@@ -380,3 +443,4 @@ export class DeckManagerService {
   }
 
 }
+

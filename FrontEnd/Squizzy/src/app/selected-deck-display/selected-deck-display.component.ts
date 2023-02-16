@@ -1,5 +1,5 @@
 
-import { Component  } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ProgramStateService } from '../program-state.service';
 import { Deck } from '../MyClasses/Deck';
@@ -36,12 +36,12 @@ export class SelectedDeckDisplayComponent {
 
 
   myControl = new FormControl();
-  get filteredOptions(): string[]{
-    return this.deckManager.searchDeckNames(this.selectedDeckName).filter(name=>name!="").sort();
+  get filteredOptions(): string[] {
+    return this.deckManager.searchDeckNames(this.selectedDeckName).filter(name => name != "").sort();
   }
   selectedDeckName = "";
 
-  deckOptions: Deck[] = []; 
+  deckOptions: Deck[] = [];
   pageSize: number = 5;
   pageIndex: number = 0;
 
@@ -66,27 +66,34 @@ export class SelectedDeckDisplayComponent {
 
 
       //This delay is to prevent the server from being queried every time the user types a key into the search box
-      if(this.delay != undefined){
+      if (this.delay != undefined) {
         this.delay.unsubscribe();
       }
 
-      this.delay = timer(this.refreshDelay).subscribe(()=>{
-        this.updateDeckOptions();
+      this.delay = timer(this.refreshDelay).subscribe(() => {
+        //When the selected deck name changes. The decks to be selected from need to be loaded
+        //Only load the deck when the searched name changed
+        if (this.selectedDeckName != "") {
+          this.deckManager.loadDecksByName(this.deckManager.searchDeckNames(this.selectedDeckName)).then(() => {
+            this.updateDeckOptions();
+          });
+        }
+               
       });
     });
 
-    this.programState.onSelectedDeckChange.subscribe(()=>{
-      if(this.programState.selectedDeck != undefined){
+    this.programState.onSelectedDeckChange.subscribe(() => {
+      if (this.programState.selectedDeck != undefined) {
         this.myControl.setValue(this.programState.selectedDeck.name);
-      }else{
+      } else {
         this.selectedDeckName = "";
         this.updateDeckOptions();
       }
-      
+
     })
 
 
-    
+
   }
 
   private _filter(value: string): string[] {
@@ -101,33 +108,31 @@ export class SelectedDeckDisplayComponent {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
 
-    while(this.pageIndex * this.pageSize > length){
+    while (this.pageIndex * this.pageSize > length) {
       this.pageIndex--;
     }
 
-    
+
     this.updateDeckOptions();
   }
 
-  updateDeckOptions(): void{
-    if(this.selectedDeckName != ""){//When the selected deck name changes. The decks to be selected from need to be loaded
-      this.deckManager.loadDecksByName(this.deckManager.searchDeckNames(this.selectedDeckName));
-    }
+  updateDeckOptions(): void {
+    
 
     this.deckOptions = this.deckManager.searchDecksByName(this.selectedDeckName);
 
     //This prevents every deck from being requested from the back end
-    if(this.selectedDeckName == ""){
+    if (this.selectedDeckName == "") {
       this.deckOptions = [];
     }
 
-    while(this.pageIndex * this.pageSize > this.deckOptions.length){
+    while (this.pageIndex * this.pageSize > this.deckOptions.length) {
       this.pageIndex--;
     }
 
   }
 
-  selectDeck(deck: Deck): void{
+  selectDeck(deck: Deck): void {
     this.programState.selectedDeck = deck;
-  } 
+  }
 }

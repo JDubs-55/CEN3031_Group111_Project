@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { DeckManagerService } from './deck-manager.service';
 
-import { DeckData } from './MyClasses/DeckData';
+import { DeckData, isDeckData } from './MyClasses/DeckData';
 import { Deck } from './MyClasses/Deck';
 import { CardData } from './MyClasses/CardData';
 
@@ -30,9 +30,6 @@ export class AppComponent {
   }
 
   httpTest(): void{
-    fetch("http://localhost:4200/api/echo/hello")
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error(error))
+    this.deckManager.loadDecksByName(["My Deck 1", "My Deck 2"]);
   }
 }

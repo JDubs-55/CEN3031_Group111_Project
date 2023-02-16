@@ -77,7 +77,7 @@ export class DeckEditorComponent {
         return;
       }
       //Check that front text actually changed
-      if (value == this.programState.selectedDeck.cards[this.selectedCardID].frontText) {
+      if (value == this.programState.selectedDeck.cards[this.selectedCardID].FrontText) {
         return;
       }
 
@@ -109,7 +109,7 @@ export class DeckEditorComponent {
         return;
       }
       //Check that front text actually changed
-      if (value == this.programState.selectedDeck.cards[this.selectedCardID].backText) {
+      if (value == this.programState.selectedDeck.cards[this.selectedCardID].BackText) {
         return;
       }
 
@@ -153,7 +153,7 @@ export class DeckEditorComponent {
     if (this.programState.selectedDeck != undefined && this.selectedCardID != "") {
       this.programState.selectedDeck.editCard({
         ID: this.selectedCardID,
-        frontText: this.cardFrontTextControl.value
+        FrontText: this.cardFrontTextControl.value
       })
     }
   }
@@ -162,7 +162,7 @@ export class DeckEditorComponent {
     if (this.programState.selectedDeck != undefined && this.selectedCardID != "") {
       this.programState.selectedDeck.editCard({
         ID: this.selectedCardID,
-        backText: this.cardBackTextControl.value
+        BackText: this.cardBackTextControl.value
       })
     }
   }
@@ -173,8 +173,8 @@ export class DeckEditorComponent {
     if (this.programState.selectedDeck != undefined) {
       let card = this.programState.selectedDeck.cards[cardID];
       this.cardIDControl.setValue("Card ID: " + cardID);
-      this.cardFrontTextControl.setValue(card.frontText);
-      this.cardBackTextControl.setValue(card.backText);
+      this.cardFrontTextControl.setValue(card.FrontText);
+      this.cardBackTextControl.setValue(card.BackText);
     }
 
   }
@@ -216,9 +216,9 @@ export class DeckEditorComponent {
 
     this.programState.selectedDeck.addCard({
       ID: newID,
-      isFavorite: false,
-      frontText: "",
-      backText: ""
+      IsFavorite: false,
+      FrontText: "",
+      BackText: ""
     })
 
     this.selectCard(newID);

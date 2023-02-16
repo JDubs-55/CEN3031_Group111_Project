@@ -19,11 +19,11 @@ export class Deck{
 
     constructor(deckData: DeckData){
         this._id = deckData.ID;
-        this._isFavorite = new BehaviorSubject<boolean>(deckData.isFavorite);
-        this._name = deckData.name;
-        this._tags = new Set<string>(deckData.tags);
+        this._isFavorite = new BehaviorSubject<boolean>(deckData.IsFavorite);
+        this._name = deckData.Name;
+        this._tags = new Set<string>(deckData.Tags);
         this._cards = {};
-        deckData.cards.forEach(card=>{
+        deckData.Cards.forEach(card=>{
             this._cards[card.ID] = card;
         });
 
@@ -167,10 +167,10 @@ export class Deck{
     get data(): Readonly<DeckData>{
         return {
             ID: this.ID,
-            isFavorite: this.isFavorite,
-            name: this.name,
-            tags: Array.from(this._tags),
-            cards: Object.values(this.cards)
+            IsFavorite: this.isFavorite,
+            Name: this.name,
+            Tags: Array.from(this._tags),
+            Cards: Object.values(this.cards)
         }
     }
 
