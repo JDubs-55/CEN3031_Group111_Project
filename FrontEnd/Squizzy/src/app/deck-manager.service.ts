@@ -195,7 +195,7 @@ export class DeckManagerService {
 
       let ids: string[] = [];
       const callsForIDs = names.map(name => {
-        console.log(name);
+        //console.log(name);
         return fetch(serverLocation + `/api/getdecklist/${name}`)
           .then(response => response.json())
           .then(data => {
@@ -236,7 +236,7 @@ export class DeckManagerService {
 
 
     let result = await queryBackend(names);
-    console.log(result);
+    //console.log(result);
 
     let unusedNames = new Set<string>(names);
 
