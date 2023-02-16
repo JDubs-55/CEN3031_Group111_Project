@@ -28,4 +28,11 @@ export class AppComponent {
     console.log(data);
     
   }
+
+  httpTest(): void{
+    fetch("http://localhost:4200/api/echo/hello")
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error))
+  }
 }
