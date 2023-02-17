@@ -247,14 +247,9 @@ export class DeckEditorComponent {
     this.unselectCard();
   }
 
-  async makeNewDeck(): Promise<void>{
-    let newName = "Default Deck Name";
-    
+  async makeNewDeck(): Promise<void>{    
     let newDeck = await this.deckManager.generateDeck();
-    newDeck.name = newName;
     this.programState.selectedDeck = newDeck;
-
-    
   }
 
   deleteDeck(): void{

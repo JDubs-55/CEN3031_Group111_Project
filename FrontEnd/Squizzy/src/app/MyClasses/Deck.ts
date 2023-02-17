@@ -17,6 +17,7 @@ export class Deck{
     private _isDirtySubject = new Subject();
 
 
+
     constructor(deckData: DeckData){
         this._id = deckData.ID;
         this._isFavorite = new BehaviorSubject<boolean>(deckData.IsFavorite);
@@ -177,4 +178,5 @@ export class Deck{
     get onDirty(): Observable<any>{
         return this._isDirtySubject.asObservable();
     }
+
 }

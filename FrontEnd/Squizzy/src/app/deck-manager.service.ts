@@ -3,6 +3,7 @@ import { Deck } from './MyClasses/Deck';
 import { DeckData, isDeckData } from './MyClasses/DeckData';
 import { dummyData } from './MyClasses/DummyData'
 import { serverLocation } from './MyClasses/ServerLocation';
+import { Observable, Subject } from "rxjs";
 
 
 
@@ -27,6 +28,7 @@ export class DeckManagerService {
   private _nameToID: { [deckName: string]: Set<string> } = {};//The keys of this object are the loaded names
 
   private _dirtyDecks = new Set<string>();
+  private _onUnloadSubject = new Subject();
 
 
   constructor() {
@@ -38,9 +40,9 @@ export class DeckManagerService {
   async generateDeck(): Promise<Deck> {
     async function queryBackend(): Promise<DeckData> {
       function makeid(length: number): string {
-        let result = '';
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        const charactersLength = characters.length;
+        let result: string = '';
+        const characters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const charactersLength: number = characters.length;
         let counter = 0;
         while (counter < length) {
           result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -49,13 +51,18 @@ export class DeckManagerService {
         return result;
       }
 
-      return {
-        ID: makeid(10),
-        IsFavorite: false,
-        Name: "",
-        Tags: [],
-        Cards: []
-      };
+      let out: DeckData;
+      await fetch(serverLocation + "/api/createdeck", {
+        method: "POST",
+        body: JSON.stringify({ ID: makeid(10), IsFavorite: false, Name: "Default Name", Tags: [], Cards: [] })
+      })
+        .then(response => response.json())
+        .then(data => {
+          out = data;
+        })
+
+      //@ts-ignore
+      return out;
     }
 
     let deck: DeckData = await queryBackend();
@@ -101,6 +108,10 @@ export class DeckManagerService {
         this._allDeckNames.push(names.new);
       }
     })
+
+    deck.onDirty.subscribe(() => {
+      this._dirtyDecks.add(deck.ID);
+    });
   }
 
   //(Backend Requirement) This requests a list of every deck name from the backend 
@@ -109,10 +120,10 @@ export class DeckManagerService {
       //return dummyData.map(deck=>deck.Name);
       let out: string[] = [];
       await fetch(serverLocation + "/api/getalldecks")
-      .then(response=>response.json())
-      .then(data=>{
-        out = data;
-      })
+        .then(response => response.json())
+        .then(data => {
+          out = data;
+        })
       return out;
     }
     let names = await queryBackend();//load all the names from the backend
@@ -154,12 +165,12 @@ export class DeckManagerService {
 
       if (this._loadedDecks[deck.ID] == undefined) {
         //If a version is not alredy loaded
-        this.loadDeckHelper(deck);
+        this._loadedDecks[deck.ID] = new Deck(deck);
         addNameToList = true;
       } else {
         //If a version of the deck is already in the system
         if (overwriteLocal) {
-          this.loadDeckHelper(deck);
+          this._loadedDecks[deck.ID] = new Deck(deck);
         } else {
           //If the name of the server does not equal the name locally, then ignore the name from the server
           //This if statement does the contrapositive
@@ -200,17 +211,17 @@ export class DeckManagerService {
           .then(response => response.json())
           .then(data => {
             //console.log(data);
-            if(data == null){
+            if (data == null) {
               return;
             }
-            
-            Array.from(data).forEach((deck)=>{      
-              if(typeof deck == "object" && deck != null && "ID" in deck && typeof deck["ID"] == "string"){
+
+            Array.from(data).forEach((deck) => {
+              if (typeof deck == "object" && deck != null && "ID" in deck && typeof deck["ID"] == "string") {
                 ids.push(deck["ID"])
-              }      
+              }
             })
-            
-              
+
+
           })
       });
 
@@ -248,12 +259,12 @@ export class DeckManagerService {
 
       if (this._loadedDecks[deck.ID] == undefined) {
         //If a version is not alredy loaded
-        this.loadDeckHelper(deck);
+        this._loadedDecks[deck.ID] = new Deck(deck);
         addNameToList = true;
       } else {
         //If a version of the deck is already in the system
         if (overwriteLocal) {
-          this.loadDeckHelper(deck);
+          this._loadedDecks[deck.ID] = new Deck(deck);
         } else {
           //If the name of the server does not equal the name locally, then ignore the name from the server
           //This if statement does the contrapositive
@@ -291,7 +302,11 @@ export class DeckManagerService {
     }
 
     function queryBackend(data: DeckData[]): void {
-      
+      data.forEach(deck => {
+        console.log("Saving: " + deck.ID);
+        fetch(serverLocation + `/api/updatedeck/${deck.ID}/Name/${deck.Name}`, { method: "PUT" });
+        fetch(serverLocation + `/api/updatedeck/${deck.ID}/IsFavorite/${deck.IsFavorite}`, { method: "PUT" });
+      })
     }
 
     let decksToSave: DeckData[] = [];
@@ -311,7 +326,11 @@ export class DeckManagerService {
       return this.deleteDecks([IDs]);
     }
 
-    function queryBackend(data: DeckData[]): void { }
+    function queryBackend(data: DeckData[]): void {
+      data.forEach(deck => {
+        fetch(serverLocation + `/api/removedeck/${deck.ID}`, { method: "DELETE" })
+      })
+    }
 
     let decksToDelete: DeckData[] = [];
 
@@ -324,12 +343,6 @@ export class DeckManagerService {
     queryBackend(decksToDelete);
   }
   //Warning do no use (this is a helper function for the proper loading functions)
-  private loadDeckHelper(deck: DeckData): void {
-    this._loadedDecks[deck.ID] = new Deck(deck);
-    this._loadedDecks[deck.ID].onDirty.subscribe(() => {
-      this._dirtyDecks.add(deck.ID);
-    });
-  }
 
   unloadDecks(IDs: string[] | string, isSaving?: boolean): void {
     if (typeof IDs == "string") {
@@ -352,6 +365,7 @@ export class DeckManagerService {
       //Unload the deck
       delete this._loadedDecks[ID];
       this._dirtyDecks.delete(ID);
+      this._onUnloadSubject.next(deck);
     });
   }
 
@@ -448,6 +462,10 @@ export class DeckManagerService {
     names = names.filter((name, index) => names.indexOf(name) === index);//remove duplicate names
 
     return this.getIDsByName(names);
+  }
+
+  get onUnloadDeck(): Observable<any> {
+    return this._onUnloadSubject.asObservable();
   }
 
 }

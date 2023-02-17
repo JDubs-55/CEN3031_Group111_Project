@@ -30,6 +30,14 @@ export class AppComponent {
   }
 
   httpTest(): void{
-    console.log("http Test currently does nothing")
+    if(this.deckManager.allDeckNames.includes("Test Deck")){
+      this.deckManager.deleteDecks(this.deckManager.getIDsByName("Test Deck"));
+    }else{
+      this.deckManager.generateDeck().then(deck=>{
+        deck.name = "Test Deck";
+        this.deckManager.saveDirty();
+      });
+      
+    }
   }
 }

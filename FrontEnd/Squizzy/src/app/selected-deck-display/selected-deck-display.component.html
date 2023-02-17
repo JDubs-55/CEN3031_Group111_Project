@@ -22,7 +22,7 @@
                 <mat-divider></mat-divider>
         
                 <div id="deckPreviewList">
-                    <app-deck-preview *ngFor="let deck of deckOptions.slice(pageIndex * pageSize, (pageIndex * pageSize + pageSize))" [deck]="deck" (click)="selectDeck(deck)"></app-deck-preview>
+                    <app-deck-preview *ngFor="let deck of deckOptions.slice(pageIndex * pageSize, (pageIndex * pageSize + pageSize))" [deck]="deck" (click)="selectDeck(deck)" id="deck{{deck.ID}}"></app-deck-preview>
                 </div>
             </mat-card-content>
         </mat-card>
