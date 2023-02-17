@@ -49,6 +49,9 @@ export class SelectedDeckDisplayComponent {
   //The delay is used to prevent a server query every time the user presses a key
   delay?: Subscription;
   refreshDelay: Readonly<number> = 500;//milliseconds
+  loadNamesDelay?: Subscription;
+  canLoadNames: boolean = true;
+  loadNamesDelayTime: Readonly<number> = 2000;//milliseconds
 
 
   constructor(public programState: ProgramStateService, private deckManager: DeckManagerService) {
@@ -137,6 +140,14 @@ export class SelectedDeckDisplayComponent {
   }
 
   async deckNameInputClicked(){
-    await this.deckManager.loadAllDeckNames();
+    //This will only load the names every 2 seconds at the fastest
+    if(this.canLoadNames){
+      this.deckManager.loadAllDeckNames();
+      this.canLoadNames = false;
+      this.loadNamesDelay = timer(this.loadNamesDelayTime).subscribe(() => {
+        this.canLoadNames = true;
+      });
+    }
+      
   }
 }

@@ -168,6 +168,12 @@ export class DeckEditorComponent {
   }
 
   selectCard(cardID: string): void {
+
+    if(this.selectedCardID != cardID){
+      this.saveCardFrontText();
+      this.saveCardBackText();
+    }
+
     this.selectedCardID = cardID;
 
     if (this.programState.selectedDeck != undefined) {
@@ -241,10 +247,10 @@ export class DeckEditorComponent {
     this.unselectCard();
   }
 
-  makeNewDeck(): void{
+  async makeNewDeck(): Promise<void>{
     let newName = "Default Deck Name";
     
-    let newDeck = this.deckManager.generateDeck();
+    let newDeck = await this.deckManager.generateDeck();
     newDeck.name = newName;
     this.programState.selectedDeck = newDeck;
 
@@ -253,5 +259,10 @@ export class DeckEditorComponent {
 
   deleteDeck(): void{
     this.programState.deleteSelectedDeck();
+  }
+
+  saveDeck(): void{
+    if(this.programState.selectedDeck != undefined)
+      this.deckManager.saveDecks(this.programState.selectedDeck.ID);
   }
 }

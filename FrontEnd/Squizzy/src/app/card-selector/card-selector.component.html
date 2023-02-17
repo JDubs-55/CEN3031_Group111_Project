@@ -4,13 +4,13 @@
         <div *ngFor="let card of programState.getCardList()">
             <div (click)="selectCard(card.ID)">
                 <mat-card id="topCard">
-                    <mat-card-content>
+                    <mat-card-content class="card">
                         {{card.FrontText}}
                     </mat-card-content>
                 </mat-card>
                 
                 <mat-card id="bottomCard">
-                    <mat-card-content >
+                    <mat-card-content class="card">
                         {{card.BackText}}
                     </mat-card-content>
                 </mat-card>

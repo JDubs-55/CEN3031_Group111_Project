@@ -35,8 +35,8 @@ export class DeckManagerService {
 
 
   //This requests the backend to generate a deck
-  generateDeck(): Deck {
-    function queryBackend(): DeckData {
+  async generateDeck(): Promise<Deck> {
+    async function queryBackend(): Promise<DeckData> {
       function makeid(length: number): string {
         let result = '';
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -58,7 +58,7 @@ export class DeckManagerService {
       };
     }
 
-    let deck: DeckData = queryBackend();
+    let deck: DeckData = await queryBackend();
 
 
     if (!this.allDeckNames.includes(deck.Name)) {
@@ -290,7 +290,9 @@ export class DeckManagerService {
       return this.saveDecks([IDs]);
     }
 
-    function queryBackend(data: DeckData[]): void { }
+    function queryBackend(data: DeckData[]): void {
+      
+    }
 
     let decksToSave: DeckData[] = [];
 
