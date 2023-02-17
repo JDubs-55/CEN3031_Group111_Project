@@ -123,6 +123,24 @@ func CreateDeck(deck Deck, deckID string) error {
 	return err
 }
 
+// TODO: CHANGE NAME TO UpdateCards
+// Will handle creating and updating info since this function will replace all cards each time
+// Need to figure out how to add just 1 card... maybe?
+func CreateCard(card []Card, deckID string) error {
+	ctx := context.Background()
+
+	_, err := client.Collection("Decks").Doc(deckID).Set(ctx, map[string]interface{}{
+		"Cards": card,
+	}, firestore.MergeAll)
+
+	if err != nil {
+		fmt.Print("Error updating deck information.")
+		return err
+	}
+
+	return err
+}
+
 func GetDeckByID(docID string) (map[string]interface{}, error) {
 
 	ctx := context.Background()

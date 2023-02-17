@@ -101,6 +101,29 @@ func CreateDeckHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(deck)
 }
 
+func CreateCardHandler(w http.ResponseWriter, r *http.Request) {
+
+	vars := mux.Vars(r)
+	deckID := vars["deckID"]
+
+	var cards []model.Card
+
+	err := json.NewDecoder(r.Body).Decode(&cards)
+	if err != nil {
+		http.Error(w, "Failed to parse request body.", http.StatusBadRequest)
+		return
+	}
+
+	err = model.CreateCard(cards, deckID)
+	if err != nil {
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(cards)
+}
+
 func GetDeckByIdHandler(w http.ResponseWriter, r *http.Request) {
 
 	vars := mux.Vars(r)
