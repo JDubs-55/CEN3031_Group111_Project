@@ -34,63 +34,43 @@ You should be able to start the server by running ```air``` from the server dire
 
 ## Current API Endpoints
 
-Deck Endpoints
-```/createdeck``` - POST
-```/getdeck/{id}``` - GET
-```/updatedeck/{id}/{param}/{val}``` - PUT
-```/removedeck/{id}``` - DELETE
-```/removecard/{deckID}/cards/{cardID}``` DELETE
+CRUD Deck Endpoints
+```/api/createdeck``` - GET
+```/api/getdeck/{id}``` - GET
+```/api/getalldecks``` - GET
+```/api/updatedeck/{id}``` - PUT
+```/api/removedeck/{id}``` - DELETE
+
+More Specific Deck Endpoints
+```/api/updatedeck/{id}/{param}/{val}``` - PUT
+```/api/removecard/{deckID}/cards/{cardID}``` DELETE
 
 Search Endpoints
-```/getdecklist/{name}``` - GET
+```/api/getdecklist/{name}``` - GET
 
 User Endpoints
-```/createuser``` - POST
-```/getuser/{id}``` - GET
-```/updateuser/{id}/{param}/{val}``` - PUT
-```/removeuser/{id}``` - DELETE
+```/api/createuser``` - POST
+```/api/getuser/{id}``` - GET
+```/api/updateuser/{id}/{param}/{val}``` - PUT
+```/api/removeuser/{id}``` - DELETE
 
 
-## Deck Endpoints
+## CRUD Deck Endpoints
 
 ### Create Deck:
-```/createdeck```
-Used to create/save a new deck to the database
+```/api/createdeck```
+Used to create a new deck in the database
 
-Request must include the following json format in the request:
+After endpoint is called, response includes the id of the newly created deck in this format. 
+
 ```
 {
-    "ID": "03",
-    "Name": "My Deck",
-    "Topic": "CS",
-    "IsFavorite": true,
-	"Cards": [
-		{
-			"ID": "card1",
-			"FrontText": "front",
-			"BackText": "back",
-            "IsFavorite": false
-		},
-        {
-			"ID": "card2",
-			"FrontText": "front2",
-			"BackText": "back2",
-            "IsFavorite": true
-		},
-        {
-			"ID": "card3",
-			"FrontText": "front3",
-			"BackText": "back3",
-            "IsFavorite": false
-		}
-		
-	]
-} 
+    "id": "MsGyevyTLNij1U7nwrjI"
+}
 ```
-Currently, the response from a sucessful save, is this same data in this format. 
 
 ### Get Deck
-```/getdeck/{id}```
+```/api/getdeck/{id}```
 Used to get a deck by its identifier. 
 When using this endpoint, replace the ```{id}``` with the id of the deck. 
 
@@ -124,8 +104,69 @@ Successful Response:
 }
 ```
 
+### Get All Decks
+```/api/getalldecks``` - GET
+Accepts no arguments
+
+Will return a list of all deck names in the database. JSON Response will look like this:
+```
+[
+    "My Deck 1",
+    "My Deck",
+    "Default Name"
+]
+```
+
+### Update Deck
+```/api/updatedeck/{id}``` - PUT
+
+When using this endpoint, the id of the deck must be in the endpoint call (url) and the request body must be the deck object in JSON form so something like this:
+```
+{
+	"id": "02",
+    "name": "My Deck",
+    "tags": ["cs", "other"],
+    "isFavorite": true,
+	"cards": [
+		{
+			"id": "card1",
+			"frontText": "front",
+			"backText": "back",
+            "isFavorite": false
+		},
+        {
+			"id": "card2",
+			"frontText": "front2",
+			"backText": "back2",
+            "isFavorite": true
+		},
+        {
+			"id": "card3",
+			"frontText": "front3",
+			"backText": "back3",
+            "isFavorite": false
+		}
+		
+	]
+}
+``` 
+
+The JSON response for a successful call is simply the request body sent back. 
+
+### Remove a Deck
+```/api/removedeck/{id}``` -DELETE
+Removes a specific deck by id
+
+When using this endpoint, replace ```{id}``` with the deckID that should be removed. 
+
+Successful Reponse: Status 202 Accepted.
+
+
+
+## More Specific Deck Endpoints 
+
 ### Update a Deck Parameter
-```/updatedeck/{id}/{param}/{val}```
+```/api/updatedeck/{id}/{param}/{val}```
 Updates a specific deck's attributes
 
 When using this endpoint, replace ```{id}/{param}/{val}``` with the deckID value, deck parameter name, and the value it should be changed to. 
@@ -138,18 +179,23 @@ Successful Response:
     "val": "false"
 }
 ```
+### Create Card //TODO
 
-### Remove a Deck Endpoint
-```/removedeck/{id}```
-Removes a specific deck by id
+### Update Deck Tags
+```/api/updatedecktags/{id}``` - PUT
+Updates a specific deck's tag list
 
-When using this endpoint, replace ```{id}``` with the deckID that should be removed. 
+To use this enpoint pass the id in the endpoint url ```{id}``` and the list of tags (strings) in the request body in the following format:
+```
+{
+    "tags":["cs", "fun"]
+}
+```
 
-Successful Reponse: Status 202 Accepted.
-
+Currently, a successful response will just be the request body sent back. 
 
 ### Remove a Card Endpoint
-```/removecard/{deckID}/cards/{cardID}```
+```/api/removecard/{deckID}/cards/{cardID}```
 Removes a Card based on deckId and cardID. 
 
 When using this endpoint, replace ```{deckID}``` and ```{cardID}``` with the deckID in which the card is located and the id of the card within the deck (cardID) respectively. 
@@ -161,12 +207,12 @@ Sample Response:
 ## Search Endpoints
 
 ### Get List of Decks 
-```/getdecklist/{name}```
+```/api/getdecklist/{name}```
 Returns a list of deck IDs given a name to search on. 
 
 When using this endpoint, replace ```{name}``` with a string that can be used to search the database for decks matching that name. 
 
-Note: Search name must be encoded. For example for the name "My Deck" your search would look like ```/getdecklist/My%20Deck```
+Note: Search name must be encoded. For example for the name "My Deck" your search would look like ```/api/getdecklist/My%20Deck```
 
 ## TODO
 User Endpoints
