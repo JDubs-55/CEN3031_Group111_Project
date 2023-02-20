@@ -3,2924 +3,2924 @@ import { DeckData } from "./DeckData"
 const dummyData: DeckData[] = [
     {
         "ID": "oiuaholijnrlkjf",
-        "isFavorite": false,
-        "name": "Genki Lesson 1",
-        "tags": [
+        "IsFavorite": false,
+        "Name": "Genki Lesson 1",
+        "Tags": [
             "Japanese",
             "Genki"
         ],
-        "cards": [
+        "Cards": [
             {
-                "frontText": "High School Student",
-                "backText": "こうこうせい",
-                "isFavorite": false,
+                "FrontText": "High School Student",
+                "BackText": "こうこうせい",
+                "IsFavorite": false,
                 "ID": "1"
             },
             {
-                "frontText": "Computer",
-                "backText": "コンピューター",
-                "isFavorite": false,
+                "FrontText": "Computer",
+                "BackText": "コンピューター",
+                "IsFavorite": false,
                 "ID": "2"
             },
             {
-                "frontText": "Britain",
-                "backText": "イギリス",
-                "isFavorite": false,
+                "FrontText": "Britain",
+                "BackText": "イギリス",
+                "IsFavorite": false,
                 "ID": "3"
             },
             {
-                "frontText": "India",
-                "backText": "インド",
-                "isFavorite": false,
+                "FrontText": "India",
+                "BackText": "インド",
+                "IsFavorite": false,
                 "ID": "4"
             },
             {
-                "frontText": "House Wife",
-                "backText": "しゅふ",
-                "isFavorite": false,
+                "FrontText": "House Wife",
+                "BackText": "しゅふ",
+                "IsFavorite": false,
                 "ID": "5"
             },
             {
-                "frontText": "Docter",
-                "backText": "いしゃ",
-                "isFavorite": false,
+                "FrontText": "Docter",
+                "BackText": "いしゃ",
+                "IsFavorite": false,
                 "ID": "6"
             },
             {
-                "frontText": "Asian Studies",
-                "backText": "アジアけんきゅう",
-                "isFavorite": false,
+                "FrontText": "Asian Studies",
+                "BackText": "アジアけんきゅう",
+                "IsFavorite": false,
                 "ID": "7"
             },
             {
-                "frontText": "Family",
-                "backText": "かぞく",
-                "isFavorite": false,
+                "FrontText": "Family",
+                "BackText": "かぞく",
+                "IsFavorite": false,
                 "ID": "8"
             },
             {
-                "frontText": "Biology",
-                "backText": "せいぶつがく",
-                "isFavorite": false,
+                "FrontText": "Biology",
+                "BackText": "せいぶつがく",
+                "IsFavorite": false,
                 "ID": "9"
             },
             {
-                "frontText": "Nurse",
-                "backText": "かんごし",
-                "isFavorite": false,
+                "FrontText": "Nurse",
+                "BackText": "かんごし",
+                "IsFavorite": false,
                 "ID": "10"
             },
             {
-                "frontText": "Literature",
-                "backText": "ぶんがく",
-                "isFavorite": false,
+                "FrontText": "Literature",
+                "BackText": "ぶんがく",
+                "IsFavorite": false,
                 "ID": "11"
             },
             {
-                "frontText": "Politics",
-                "backText": "せいじ",
-                "isFavorite": false,
+                "FrontText": "Politics",
+                "BackText": "せいじ",
+                "IsFavorite": false,
                 "ID": "12"
             },
             {
-                "frontText": "Lawyer",
-                "backText": "べんごし",
-                "isFavorite": false,
+                "FrontText": "Lawyer",
+                "BackText": "べんごし",
+                "IsFavorite": false,
                 "ID": "13"
             },
             {
-                "frontText": "Myself",
-                "backText": "わたし",
-                "isFavorite": false,
+                "FrontText": "Myself",
+                "BackText": "わたし",
+                "IsFavorite": false,
                 "ID": "14"
             },
             {
-                "frontText": "... O'Clock",
-                "backText": "～じ",
-                "isFavorite": false,
+                "FrontText": "... O'Clock",
+                "BackText": "～じ",
+                "IsFavorite": false,
                 "ID": "15"
             },
             {
-                "frontText": "Telephone",
-                "backText": "でんわ",
-                "isFavorite": false,
+                "FrontText": "Telephone",
+                "BackText": "でんわ",
+                "IsFavorite": false,
                 "ID": "16"
             },
             {
-                "frontText": "Number",
-                "backText": "ばんごう",
-                "isFavorite": false,
+                "FrontText": "Number",
+                "BackText": "ばんごう",
+                "IsFavorite": false,
                 "ID": "17"
             },
             {
-                "frontText": "Half Past 2 O'Clock",
-                "backText": "にじはん",
-                "isFavorite": false,
+                "FrontText": "Half Past 2 O'Clock",
+                "BackText": "にじはん",
+                "IsFavorite": false,
                 "ID": "18"
             },
             {
-                "frontText": "... Year Student",
-                "backText": "～ねんせい",
-                "isFavorite": false,
+                "FrontText": "... Year Student",
+                "BackText": "～ねんせい",
+                "IsFavorite": false,
                 "ID": "19"
             },
             {
-                "frontText": "International Student",
-                "backText": "りゅうがくせい",
-                "isFavorite": false,
+                "FrontText": "International Student",
+                "BackText": "りゅうがくせい",
+                "IsFavorite": false,
                 "ID": "20"
             },
             {
-                "frontText": "Major",
-                "backText": "せんこう",
-                "isFavorite": false,
+                "FrontText": "Major",
+                "BackText": "せんこう",
+                "IsFavorite": false,
                 "ID": "21"
             },
             {
-                "frontText": "PM",
-                "backText": "ごご",
-                "isFavorite": false,
+                "FrontText": "PM",
+                "BackText": "ごご",
+                "IsFavorite": false,
                 "ID": "22"
             },
             {
-                "frontText": "Number ...",
-                "backText": "～ばん",
-                "isFavorite": false,
+                "FrontText": "Number ...",
+                "BackText": "～ばん",
+                "IsFavorite": false,
                 "ID": "23"
             },
             {
-                "frontText": "Yes",
-                "backText": "はい",
-                "isFavorite": false,
+                "FrontText": "Yes",
+                "BackText": "はい",
+                "IsFavorite": false,
                 "ID": "24"
             },
             {
-                "frontText": "AM",
-                "backText": "ごぜん",
-                "isFavorite": false,
+                "FrontText": "AM",
+                "BackText": "ごぜん",
+                "IsFavorite": false,
                 "ID": "25"
             },
             {
-                "frontText": "That is right",
-                "backText": "そうです",
-                "isFavorite": false,
+                "FrontText": "That is right",
+                "BackText": "そうです",
+                "IsFavorite": false,
                 "ID": "26"
             },
             {
-                "frontText": "Is that so",
-                "backText": "そうですか",
-                "isFavorite": false,
+                "FrontText": "Is that so",
+                "BackText": "そうですか",
+                "IsFavorite": false,
                 "ID": "27"
             },
             {
-                "frontText": "Half Past",
-                "backText": "はん",
-                "isFavorite": false,
+                "FrontText": "Half Past",
+                "BackText": "はん",
+                "IsFavorite": false,
                 "ID": "28"
             },
             {
-                "frontText": "... Years Old",
-                "backText": "～さい",
-                "isFavorite": false,
+                "FrontText": "... Years Old",
+                "BackText": "～さい",
+                "IsFavorite": false,
                 "ID": "29"
             },
             {
-                "frontText": "Student",
-                "backText": "がくせい",
-                "isFavorite": false,
+                "FrontText": "Student",
+                "BackText": "がくせい",
+                "IsFavorite": false,
                 "ID": "30"
             },
             {
-                "frontText": "... Language",
-                "backText": "～ご",
-                "isFavorite": false,
+                "FrontText": "... Language",
+                "BackText": "～ご",
+                "IsFavorite": false,
                 "ID": "31"
             },
             {
-                "frontText": "College Student",
-                "backText": "だいがくせい",
-                "isFavorite": false,
+                "FrontText": "College Student",
+                "BackText": "だいがくせい",
+                "IsFavorite": false,
                 "ID": "32"
             },
             {
-                "frontText": "Name",
-                "backText": "なまえ",
-                "isFavorite": false,
+                "FrontText": "Name",
+                "BackText": "なまえ",
+                "IsFavorite": false,
                 "ID": "33"
             },
             {
-                "frontText": "What",
-                "backText": "なん",
-                "isFavorite": false,
+                "FrontText": "What",
+                "BackText": "なん",
+                "IsFavorite": false,
                 "ID": "34"
             },
             {
-                "frontText": "Um...",
-                "backText": "あのう",
-                "isFavorite": false,
+                "FrontText": "Um...",
+                "BackText": "あのう",
+                "IsFavorite": false,
                 "ID": "35"
             },
             {
-                "frontText": "Friend",
-                "backText": "ともだち",
-                "isFavorite": false,
+                "FrontText": "Friend",
+                "BackText": "ともだち",
+                "IsFavorite": false,
                 "ID": "36"
             },
             {
-                "frontText": "Mr. / Mrs.",
-                "backText": "～さん",
-                "isFavorite": false,
+                "FrontText": "Mr. / Mrs.",
+                "BackText": "～さん",
+                "IsFavorite": false,
                 "ID": "37"
             },
             {
-                "frontText": "... People",
-                "backText": "～じん",
-                "isFavorite": false,
+                "FrontText": "... People",
+                "BackText": "～じん",
+                "IsFavorite": false,
                 "ID": "38"
             },
             {
-                "frontText": "Now",
-                "backText": "いま",
-                "isFavorite": false,
+                "FrontText": "Now",
+                "BackText": "いま",
+                "IsFavorite": false,
                 "ID": "39"
             },
             {
-                "frontText": "Teacher",
-                "backText": "せんせい",
-                "isFavorite": false,
+                "FrontText": "Teacher",
+                "BackText": "せんせい",
+                "IsFavorite": false,
                 "ID": "40"
             },
             {
-                "frontText": "College",
-                "backText": "だいがく",
-                "isFavorite": false,
+                "FrontText": "College",
+                "BackText": "だいがく",
+                "IsFavorite": false,
                 "ID": "41"
             },
             {
-                "frontText": "Younger Brother",
-                "backText": "おとうと",
-                "isFavorite": false,
+                "FrontText": "Younger Brother",
+                "BackText": "おとうと",
+                "IsFavorite": false,
                 "ID": "42"
             },
             {
-                "frontText": "Engineering",
-                "backText": "こうがく",
-                "isFavorite": false,
+                "FrontText": "Engineering",
+                "BackText": "こうがく",
+                "IsFavorite": false,
                 "ID": "43"
             },
             {
-                "frontText": "History",
-                "backText": "れきし",
-                "isFavorite": false,
+                "FrontText": "History",
+                "BackText": "れきし",
+                "IsFavorite": false,
                 "ID": "44"
             },
             {
-                "frontText": "Economics",
-                "backText": "けえざい",
-                "isFavorite": false,
+                "FrontText": "Economics",
+                "BackText": "けえざい",
+                "IsFavorite": false,
                 "ID": "45"
             },
             {
-                "frontText": "China",
-                "backText": "ちゅうごく",
-                "isFavorite": false,
+                "FrontText": "China",
+                "BackText": "ちゅうごく",
+                "IsFavorite": false,
                 "ID": "46"
             },
             {
-                "frontText": "International Relations",
-                "backText": "こくさいかんけい",
-                "isFavorite": false,
+                "FrontText": "International Relations",
+                "BackText": "こくさいかんけい",
+                "IsFavorite": false,
                 "ID": "47"
             },
             {
-                "frontText": "Younger Sister",
-                "backText": "いもうと",
-                "isFavorite": false,
+                "FrontText": "Younger Sister",
+                "BackText": "いもうと",
+                "IsFavorite": false,
                 "ID": "48"
             },
             {
-                "frontText": "Business",
-                "backText": "ビジネス",
-                "isFavorite": false,
+                "FrontText": "Business",
+                "BackText": "ビジネス",
+                "IsFavorite": false,
                 "ID": "49"
             },
             {
-                "frontText": "Mother",
-                "backText": "おかあさん",
-                "isFavorite": false,
+                "FrontText": "Mother",
+                "BackText": "おかあさん",
+                "IsFavorite": false,
                 "ID": "50"
             },
             {
-                "frontText": "USA",
-                "backText": "アメリカ",
-                "isFavorite": false,
+                "FrontText": "USA",
+                "BackText": "アメリカ",
+                "IsFavorite": false,
                 "ID": "51"
             },
             {
-                "frontText": "Older Brother",
-                "backText": "おにいさん",
-                "isFavorite": false,
+                "FrontText": "Older Brother",
+                "BackText": "おにいさん",
+                "IsFavorite": false,
                 "ID": "52"
             },
             {
-                "frontText": "Country",
-                "backText": "くに",
-                "isFavorite": false,
+                "FrontText": "Country",
+                "BackText": "くに",
+                "IsFavorite": false,
                 "ID": "53"
             },
             {
-                "frontText": "Egypt",
-                "backText": "エジプト",
-                "isFavorite": false,
+                "FrontText": "Egypt",
+                "BackText": "エジプト",
+                "IsFavorite": false,
                 "ID": "54"
             },
             {
-                "frontText": "Korea",
-                "backText": "かんこく",
-                "isFavorite": false,
+                "FrontText": "Korea",
+                "BackText": "かんこく",
+                "IsFavorite": false,
                 "ID": "55"
             },
             {
-                "frontText": "Older Sister",
-                "backText": "おねえさん",
-                "isFavorite": false,
+                "FrontText": "Older Sister",
+                "BackText": "おねえさん",
+                "IsFavorite": false,
                 "ID": "56"
             },
             {
-                "frontText": "Graduate Student",
-                "backText": "だいがくいんせい",
-                "isFavorite": false,
+                "FrontText": "Graduate Student",
+                "BackText": "だいがくいんせい",
+                "IsFavorite": false,
                 "ID": "57"
             },
             {
-                "frontText": "Office Worker",
-                "backText": "かいしゃいん",
-                "isFavorite": false,
+                "FrontText": "Office Worker",
+                "BackText": "かいしゃいん",
+                "IsFavorite": false,
                 "ID": "58"
             },
             {
-                "frontText": "Father",
-                "backText": "おとうさん",
-                "isFavorite": false,
+                "FrontText": "Father",
+                "BackText": "おとうさん",
+                "IsFavorite": false,
                 "ID": "59"
             },
             {
-                "frontText": "High School",
-                "backText": "こうこう",
-                "isFavorite": false,
+                "FrontText": "High School",
+                "BackText": "こうこう",
+                "IsFavorite": false,
                 "ID": "60"
             },
             {
-                "frontText": "Canada",
-                "backText": "カナダ",
-                "isFavorite": false,
+                "FrontText": "Canada",
+                "BackText": "カナダ",
+                "IsFavorite": false,
                 "ID": "61"
             },
             {
-                "frontText": "Australia",
-                "backText": "オーストラリア",
-                "isFavorite": false,
+                "FrontText": "Australia",
+                "BackText": "オーストラリア",
+                "IsFavorite": false,
                 "ID": "62"
             },
             {
-                "frontText": "Japan",
-                "backText": "にほん",
-                "isFavorite": false,
+                "FrontText": "Japan",
+                "BackText": "にほん",
+                "IsFavorite": false,
                 "ID": "63"
             },
             {
-                "frontText": "Philippines",
-                "backText": "フィリピン",
-                "isFavorite": false,
+                "FrontText": "Philippines",
+                "BackText": "フィリピン",
+                "IsFavorite": false,
                 "ID": "64"
             }
         ]
     },
     {
         "ID": "PIUGLIbliuhgl",
-        "isFavorite": false,
-        "name": "Genki Lesson 2",
-        "tags": [
+        "IsFavorite": false,
+        "Name": "Genki Lesson 2",
+        "Tags": [
             "Japanese",
             "Genki"
         ],
-        "cards": [
+        "Cards": [
             {
-                "frontText": "Desk",
-                "backText": "つくえ",
-                "isFavorite": false,
+                "FrontText": "Desk",
+                "BackText": "つくえ",
+                "IsFavorite": false,
                 "ID": "65"
             },
             {
-                "frontText": "Chair",
-                "backText": "いす",
-                "isFavorite": false,
+                "FrontText": "Chair",
+                "BackText": "いす",
+                "IsFavorite": false,
                 "ID": "66"
             },
             {
-                "frontText": "Fish",
-                "backText": "さかな",
-                "isFavorite": false,
+                "FrontText": "Fish",
+                "BackText": "さかな",
+                "IsFavorite": false,
                 "ID": "67"
             },
             {
-                "frontText": "Bag",
-                "backText": "かばん",
-                "isFavorite": false,
+                "FrontText": "Bag",
+                "BackText": "かばん",
+                "IsFavorite": false,
                 "ID": "68"
             },
             {
-                "frontText": "Shoes",
-                "backText": "くつ",
-                "isFavorite": false,
+                "FrontText": "Shoes",
+                "BackText": "くつ",
+                "IsFavorite": false,
                 "ID": "69"
             },
             {
-                "frontText": "... Please",
-                "backText": "(～を) おねがいします",
-                "isFavorite": false,
+                "FrontText": "... Please",
+                "BackText": "(～を) おねがいします",
+                "IsFavorite": false,
                 "ID": "70"
             },
             {
-                "frontText": "Please say it again",
-                "backText": "もういちどいってください",
-                "isFavorite": false,
+                "FrontText": "Please say it again",
+                "BackText": "もういちどいってください",
+                "IsFavorite": false,
                 "ID": "71"
             },
             {
-                "frontText": "How much",
-                "backText": "いくら",
-                "isFavorite": false,
+                "FrontText": "How much",
+                "BackText": "いくら",
+                "IsFavorite": false,
                 "ID": "72"
             },
             {
-                "frontText": "Door",
-                "backText": "ドア",
-                "isFavorite": false,
+                "FrontText": "Door",
+                "BackText": "ドア",
+                "IsFavorite": false,
                 "ID": "73"
             },
             {
-                "frontText": "Please listen",
-                "backText": "きいてください",
-                "isFavorite": false,
+                "FrontText": "Please listen",
+                "BackText": "きいてください",
+                "IsFavorite": false,
                 "ID": "74"
             },
             {
-                "frontText": "English",
-                "backText": "えいご",
-                "isFavorite": false,
+                "FrontText": "English",
+                "BackText": "えいご",
+                "IsFavorite": false,
                 "ID": "75"
             },
             {
-                "frontText": "Please say it slowly",
-                "backText": "ゆっくりいってください",
-                "isFavorite": false,
+                "FrontText": "Please say it slowly",
+                "BackText": "ゆっくりいってください",
+                "IsFavorite": false,
                 "ID": "76"
             },
             {
-                "frontText": "Please wait a moment",
-                "backText": "ちょっとまってください",
-                "isFavorite": false,
+                "FrontText": "Please wait a moment",
+                "BackText": "ちょっとまってください",
+                "IsFavorite": false,
                 "ID": "77"
             },
             {
-                "frontText": "Bank",
-                "backText": "ぎんこう",
-                "isFavorite": false,
+                "FrontText": "Bank",
+                "BackText": "ぎんこう",
+                "IsFavorite": false,
                 "ID": "78"
             },
             {
-                "frontText": "Menu",
-                "backText": "メニュー",
-                "isFavorite": false,
+                "FrontText": "Menu",
+                "BackText": "メニュー",
+                "IsFavorite": false,
                 "ID": "79"
             },
             {
-                "frontText": "Pencil",
-                "backText": "えんぴつ",
-                "isFavorite": false,
+                "FrontText": "Pencil",
+                "BackText": "えんぴつ",
+                "IsFavorite": false,
                 "ID": "80"
             },
             {
-                "frontText": "In that case ...",
-                "backText": "じゃあ",
-                "isFavorite": false,
+                "FrontText": "In that case ...",
+                "BackText": "じゃあ",
+                "IsFavorite": false,
                 "ID": "81"
             },
             {
-                "frontText": "Light",
-                "backText": "でんき",
-                "isFavorite": false,
+                "FrontText": "Light",
+                "BackText": "でんき",
+                "IsFavorite": false,
                 "ID": "82"
             },
             {
-                "frontText": "Please look at page 10",
-                "backText": "じゅうページをみてください",
-                "isFavorite": false,
+                "FrontText": "Please look at page 10",
+                "BackText": "じゅうページをみてください",
+                "IsFavorite": false,
                 "ID": "83"
             },
             {
-                "frontText": "Umbrella",
-                "backText": "かさ",
-                "isFavorite": false,
+                "FrontText": "Umbrella",
+                "BackText": "かさ",
+                "IsFavorite": false,
                 "ID": "84"
             },
             {
-                "frontText": "Jeans",
-                "backText": "ジーンズ",
-                "isFavorite": false,
+                "FrontText": "Jeans",
+                "BackText": "ジーンズ",
+                "IsFavorite": false,
                 "ID": "85"
             },
             {
-                "frontText": "Delicious",
-                "backText": "おいしい",
-                "isFavorite": false,
+                "FrontText": "Delicious",
+                "BackText": "おいしい",
+                "IsFavorite": false,
                 "ID": "86"
             },
             {
-                "frontText": "Wallet",
-                "backText": "さいふ",
-                "isFavorite": false,
+                "FrontText": "Wallet",
+                "BackText": "さいふ",
+                "IsFavorite": false,
                 "ID": "87"
             },
             {
-                "frontText": "Hat",
-                "backText": "ぼうし",
-                "isFavorite": false,
+                "FrontText": "Hat",
+                "BackText": "ぼうし",
+                "IsFavorite": false,
                 "ID": "88"
             },
             {
-                "frontText": "Book",
-                "backText": "ほん",
-                "isFavorite": false,
+                "FrontText": "Book",
+                "BackText": "ほん",
+                "IsFavorite": false,
                 "ID": "89"
             },
             {
-                "frontText": "Meat",
-                "backText": "にく",
-                "isFavorite": false,
+                "FrontText": "Meat",
+                "BackText": "にく",
+                "IsFavorite": false,
                 "ID": "90"
             },
             {
-                "frontText": "Bicycle",
-                "backText": "じてんしゃ",
-                "isFavorite": false,
+                "FrontText": "Bicycle",
+                "BackText": "じてんしゃ",
+                "IsFavorite": false,
                 "ID": "91"
             },
             {
-                "frontText": "I don't understand",
-                "backText": "わかりません",
-                "isFavorite": false,
+                "FrontText": "I don't understand",
+                "BackText": "わかりません",
+                "IsFavorite": false,
                 "ID": "92"
             },
             {
-                "frontText": "Yen",
-                "backText": "～えん",
-                "isFavorite": false,
+                "FrontText": "Yen",
+                "BackText": "～えん",
+                "IsFavorite": false,
                 "ID": "93"
             },
             {
-                "frontText": "T Shirt",
-                "backText": "Ｔシャツ",
-                "isFavorite": false,
+                "FrontText": "T Shirt",
+                "BackText": "Ｔシャツ",
+                "IsFavorite": false,
                 "ID": "94"
             },
             {
-                "frontText": "Smartphone",
-                "backText": "スマホ",
-                "isFavorite": false,
+                "FrontText": "Smartphone",
+                "BackText": "スマホ",
+                "IsFavorite": false,
                 "ID": "95"
             },
             {
-                "frontText": "Notebook",
-                "backText": "ノート",
-                "isFavorite": false,
+                "FrontText": "Notebook",
+                "BackText": "ノート",
+                "IsFavorite": false,
                 "ID": "96"
             },
             {
-                "frontText": "I understand",
-                "backText": "わかりました",
-                "isFavorite": false,
+                "FrontText": "I understand",
+                "BackText": "わかりました",
+                "IsFavorite": false,
                 "ID": "97"
             },
             {
-                "frontText": "Window",
-                "backText": "まど",
-                "isFavorite": false,
+                "FrontText": "Window",
+                "BackText": "まど",
+                "IsFavorite": false,
                 "ID": "98"
             },
             {
-                "frontText": "Do you understand?",
-                "backText": "わかりましたか",
-                "isFavorite": false,
+                "FrontText": "Do you understand?",
+                "BackText": "わかりましたか",
+                "IsFavorite": false,
                 "ID": "99"
             },
             {
-                "frontText": "Curtain",
-                "backText": "カーテン",
-                "isFavorite": false,
+                "FrontText": "Curtain",
+                "BackText": "カーテン",
+                "IsFavorite": false,
                 "ID": "100"
             },
             {
-                "frontText": "Toilet",
-                "backText": "トイレ",
-                "isFavorite": false,
+                "FrontText": "Toilet",
+                "BackText": "トイレ",
+                "IsFavorite": false,
                 "ID": "101"
             },
             {
-                "frontText": "Pen",
-                "backText": "ペン",
-                "isFavorite": false,
+                "FrontText": "Pen",
+                "BackText": "ペン",
+                "IsFavorite": false,
                 "ID": "102"
             },
             {
-                "frontText": "Vegetable",
-                "backText": "やさい",
-                "isFavorite": false,
+                "FrontText": "Vegetable",
+                "BackText": "やさい",
+                "IsFavorite": false,
                 "ID": "103"
             },
             {
-                "frontText": "Please give me ...",
-                "backText": "(～を)ください",
-                "isFavorite": false,
+                "FrontText": "Please give me ...",
+                "BackText": "(～を)ください",
+                "IsFavorite": false,
                 "ID": "104"
             },
             {
-                "frontText": "Pork Cutlet",
-                "backText": "とんかつ",
-                "isFavorite": false,
+                "FrontText": "Pork Cutlet",
+                "BackText": "とんかつ",
+                "IsFavorite": false,
                 "ID": "105"
             },
             {
-                "frontText": "Thank you",
-                "backText": "どうも",
-                "isFavorite": false,
+                "FrontText": "Thank you",
+                "BackText": "どうも",
+                "IsFavorite": false,
                 "ID": "106"
             },
             {
-                "frontText": "Welcome (to our store)",
-                "backText": "いらっしゃいませ",
-                "isFavorite": false,
+                "FrontText": "Welcome (to our store)",
+                "BackText": "いらっしゃいませ",
+                "IsFavorite": false,
                 "ID": "107"
             },
             {
-                "frontText": "Expensive",
-                "backText": "たかい",
-                "isFavorite": false,
+                "FrontText": "Expensive",
+                "BackText": "たかい",
+                "IsFavorite": false,
                 "ID": "108"
             },
             {
-                "frontText": "Convenience Store",
-                "backText": "コンビニ",
-                "isFavorite": false,
+                "FrontText": "Convenience Store",
+                "BackText": "コンビニ",
+                "IsFavorite": false,
                 "ID": "109"
             },
             {
-                "frontText": "Please have this",
-                "backText": "どうぞ",
-                "isFavorite": false,
+                "FrontText": "Please have this",
+                "BackText": "どうぞ",
+                "IsFavorite": false,
                 "ID": "110"
             },
             {
-                "frontText": "Watch",
-                "backText": "とけい",
-                "isFavorite": false,
+                "FrontText": "Watch",
+                "BackText": "とけい",
+                "IsFavorite": false,
                 "ID": "111"
             },
             {
-                "frontText": "Eraser",
-                "backText": "けしゴム",
-                "isFavorite": false,
+                "FrontText": "Eraser",
+                "BackText": "けしゴム",
+                "IsFavorite": false,
                 "ID": "112"
             },
             {
-                "frontText": "Blackboard",
-                "backText": "こくばん",
-                "isFavorite": false,
+                "FrontText": "Blackboard",
+                "BackText": "こくばん",
+                "IsFavorite": false,
                 "ID": "113"
             },
             {
-                "frontText": "Dictionary",
-                "backText": "じしょ",
-                "isFavorite": false,
+                "FrontText": "Dictionary",
+                "BackText": "じしょ",
+                "IsFavorite": false,
                 "ID": "114"
             },
             {
-                "frontText": "Post Office",
-                "backText": "ゆうびんきょく",
-                "isFavorite": false,
+                "FrontText": "Post Office",
+                "BackText": "ゆうびんきょく",
+                "IsFavorite": false,
                 "ID": "115"
             },
             {
-                "frontText": "Library",
-                "backText": "としょかん",
-                "isFavorite": false,
+                "FrontText": "Library",
+                "BackText": "としょかん",
+                "IsFavorite": false,
                 "ID": "116"
             },
             {
-                "frontText": "Newspaper",
-                "backText": "しんぶん",
-                "isFavorite": false,
+                "FrontText": "Newspaper",
+                "BackText": "しんぶん",
+                "IsFavorite": false,
                 "ID": "117"
             }
         ]
     },
     {
         "ID": "IgoIHBLygbKBl",
-        "isFavorite": false,
-        "name": "Genki Lesson 3",
-        "tags": [
+        "IsFavorite": false,
+        "Name": "Genki Lesson 3",
+        "Tags": [
             "Japanese",
             "Genki"
         ],
-        "cards": [
+        "Cards": [
             {
-                "frontText": "Movie",
-                "backText": "えいが",
-                "isFavorite": false,
+                "FrontText": "Movie",
+                "BackText": "えいが",
+                "IsFavorite": false,
                 "ID": "118"
             },
             {
-                "frontText": "Music",
-                "backText": "おんがく",
-                "isFavorite": false,
+                "FrontText": "Music",
+                "BackText": "おんがく",
+                "IsFavorite": false,
                 "ID": "119"
             },
             {
-                "frontText": "Magazine",
-                "backText": "ざっし",
-                "isFavorite": false,
+                "FrontText": "Magazine",
+                "BackText": "ざっし",
+                "IsFavorite": false,
                 "ID": "120"
             },
             {
-                "frontText": "Sports",
-                "backText": "スポーツ",
-                "isFavorite": false,
+                "FrontText": "Sports",
+                "BackText": "スポーツ",
+                "IsFavorite": false,
                 "ID": "121"
             },
             {
-                "frontText": "Date (Romance)",
-                "backText": "デート",
-                "isFavorite": false,
+                "FrontText": "Date (Romance)",
+                "BackText": "デート",
+                "IsFavorite": false,
                 "ID": "122"
             },
             {
-                "frontText": "Tennis",
-                "backText": "テニス",
-                "isFavorite": false,
+                "FrontText": "Tennis",
+                "BackText": "テニス",
+                "IsFavorite": false,
                 "ID": "123"
             },
             {
-                "frontText": "TV",
-                "backText": "テレビ",
-                "isFavorite": false,
+                "FrontText": "TV",
+                "BackText": "テレビ",
+                "IsFavorite": false,
                 "ID": "124"
             },
             {
-                "frontText": "Ice Cream",
-                "backText": "アイスクリーム",
-                "isFavorite": false,
+                "FrontText": "Ice Cream",
+                "BackText": "アイスクリーム",
+                "IsFavorite": false,
                 "ID": "125"
             },
             {
-                "frontText": "Hamburger",
-                "backText": "ハンバーガー",
-                "isFavorite": false,
+                "FrontText": "Hamburger",
+                "BackText": "ハンバーガー",
+                "IsFavorite": false,
                 "ID": "126"
             },
             {
-                "frontText": "Sake",
-                "backText": "おさけ",
-                "isFavorite": false,
+                "FrontText": "Sake",
+                "BackText": "おさけ",
+                "IsFavorite": false,
                 "ID": "127"
             },
             {
-                "frontText": "Green Tea",
-                "backText": "おちゃ",
-                "isFavorite": false,
+                "FrontText": "Green Tea",
+                "BackText": "おちゃ",
+                "IsFavorite": false,
                 "ID": "128"
             },
             {
-                "frontText": "Coffee",
-                "backText": "コーヒー",
-                "isFavorite": false,
+                "FrontText": "Coffee",
+                "BackText": "コーヒー",
+                "IsFavorite": false,
                 "ID": "129"
             },
             {
-                "frontText": "Water",
-                "backText": "みず",
-                "isFavorite": false,
+                "FrontText": "Water",
+                "BackText": "みず",
+                "IsFavorite": false,
                 "ID": "130"
             },
             {
-                "frontText": "Breakfast",
-                "backText": "あさごはん",
-                "isFavorite": false,
+                "FrontText": "Breakfast",
+                "BackText": "あさごはん",
+                "IsFavorite": false,
                 "ID": "131"
             },
             {
-                "frontText": "Lunch",
-                "backText": "ひるごはん",
-                "isFavorite": false,
+                "FrontText": "Lunch",
+                "BackText": "ひるごはん",
+                "IsFavorite": false,
                 "ID": "132"
             },
             {
-                "frontText": "Dinner",
-                "backText": "ばんごはん",
-                "isFavorite": false,
+                "FrontText": "Dinner",
+                "BackText": "ばんごはん",
+                "IsFavorite": false,
                 "ID": "133"
             },
             {
-                "frontText": "Home / House",
-                "backText": "いえ",
-                "isFavorite": false,
+                "FrontText": "Home / House",
+                "BackText": "いえ",
+                "IsFavorite": false,
                 "ID": "134"
             },
             {
-                "frontText": "Home / House / My Place",
-                "backText": "うち",
-                "isFavorite": false,
+                "FrontText": "Home / House / My Place",
+                "BackText": "うち",
+                "IsFavorite": false,
                 "ID": "135"
             },
             {
-                "frontText": "School",
-                "backText": "がっこう",
-                "isFavorite": false,
+                "FrontText": "School",
+                "BackText": "がっこう",
+                "IsFavorite": false,
                 "ID": "136"
             },
             {
-                "frontText": "Cafe",
-                "backText": "カフェ",
-                "isFavorite": false,
+                "FrontText": "Cafe",
+                "BackText": "カフェ",
+                "IsFavorite": false,
                 "ID": "137"
             },
             {
-                "frontText": "Morning",
-                "backText": "あさ",
-                "isFavorite": false,
+                "FrontText": "Morning",
+                "BackText": "あさ",
+                "IsFavorite": false,
                 "ID": "138"
             },
             {
-                "frontText": "Tonight",
-                "backText": "こんばん",
-                "isFavorite": false,
+                "FrontText": "Tonight",
+                "BackText": "こんばん",
+                "IsFavorite": false,
                 "ID": "139"
             },
             {
-                "frontText": "Every Day",
-                "backText": "まいにち",
-                "isFavorite": false,
+                "FrontText": "Every Day",
+                "BackText": "まいにち",
+                "IsFavorite": false,
                 "ID": "140"
             },
             {
-                "frontText": "Every Night",
-                "backText": "まいばん",
-                "isFavorite": false,
+                "FrontText": "Every Night",
+                "BackText": "まいばん",
+                "IsFavorite": false,
                 "ID": "141"
             },
             {
-                "frontText": "Weekend",
-                "backText": "しゅうまつ",
-                "isFavorite": false,
+                "FrontText": "Weekend",
+                "BackText": "しゅうまつ",
+                "IsFavorite": false,
                 "ID": "142"
             },
             {
-                "frontText": "Saturday",
-                "backText": "どようび",
-                "isFavorite": false,
+                "FrontText": "Saturday",
+                "BackText": "どようび",
+                "IsFavorite": false,
                 "ID": "143"
             },
             {
-                "frontText": "Sunday",
-                "backText": "にちようび",
-                "isFavorite": false,
+                "FrontText": "Sunday",
+                "BackText": "にちようび",
+                "IsFavorite": false,
                 "ID": "144"
             },
             {
-                "frontText": "When",
-                "backText": "いつ",
-                "isFavorite": false,
+                "FrontText": "When",
+                "BackText": "いつ",
+                "IsFavorite": false,
                 "ID": "145"
             },
             {
-                "frontText": "At about ...",
-                "backText": "～ごろ",
-                "isFavorite": false,
+                "FrontText": "At about ...",
+                "BackText": "～ごろ",
+                "IsFavorite": false,
                 "ID": "146"
             },
             {
-                "frontText": "To go",
-                "backText": "いく",
-                "isFavorite": false,
+                "FrontText": "To go",
+                "BackText": "いく",
+                "IsFavorite": false,
                 "ID": "147"
             },
             {
-                "frontText": "To go back / To return",
-                "backText": "かえる",
-                "isFavorite": false,
+                "FrontText": "To go back / To return",
+                "BackText": "かえる",
+                "IsFavorite": false,
                 "ID": "148"
             },
             {
-                "frontText": "To listen / To hear",
-                "backText": "きく",
-                "isFavorite": false,
+                "FrontText": "To listen / To hear",
+                "BackText": "きく",
+                "IsFavorite": false,
                 "ID": "149"
             },
             {
-                "frontText": "To drink",
-                "backText": "のむ",
-                "isFavorite": false,
+                "FrontText": "To drink",
+                "BackText": "のむ",
+                "IsFavorite": false,
                 "ID": "150"
             },
             {
-                "frontText": "To speak / To talk",
-                "backText": "はなす",
-                "isFavorite": false,
+                "FrontText": "To speak / To talk",
+                "BackText": "はなす",
+                "IsFavorite": false,
                 "ID": "151"
             },
             {
-                "frontText": "To read",
-                "backText": "よむ",
-                "isFavorite": false,
+                "FrontText": "To read",
+                "BackText": "よむ",
+                "IsFavorite": false,
                 "ID": "152"
             },
             {
-                "frontText": "To get up",
-                "backText": "おきる",
-                "isFavorite": false,
+                "FrontText": "To get up",
+                "BackText": "おきる",
+                "IsFavorite": false,
                 "ID": "153"
             },
             {
-                "frontText": "To eat",
-                "backText": "たべる",
-                "isFavorite": false,
+                "FrontText": "To eat",
+                "BackText": "たべる",
+                "IsFavorite": false,
                 "ID": "154"
             },
             {
-                "frontText": "To sleep / To go to sleep",
-                "backText": "ねる",
-                "isFavorite": false,
+                "FrontText": "To sleep / To go to sleep",
+                "BackText": "ねる",
+                "IsFavorite": false,
                 "ID": "155"
             },
             {
-                "frontText": "To see / To look at / To watch",
-                "backText": "みる",
-                "isFavorite": false,
+                "FrontText": "To see / To look at / To watch",
+                "BackText": "みる",
+                "IsFavorite": false,
                 "ID": "156"
             },
             {
-                "frontText": "To come",
-                "backText": "くる",
-                "isFavorite": false,
+                "FrontText": "To come",
+                "BackText": "くる",
+                "IsFavorite": false,
                 "ID": "157"
             },
             {
-                "frontText": "To do",
-                "backText": "する",
-                "isFavorite": false,
+                "FrontText": "To do",
+                "BackText": "する",
+                "IsFavorite": false,
                 "ID": "158"
             },
             {
-                "frontText": "To study",
-                "backText": "べんきょうする",
-                "isFavorite": false,
+                "FrontText": "To study",
+                "BackText": "べんきょうする",
+                "IsFavorite": false,
                 "ID": "159"
             },
             {
-                "frontText": "Good",
-                "backText": "いい",
-                "isFavorite": false,
+                "FrontText": "Good",
+                "BackText": "いい",
+                "IsFavorite": false,
                 "ID": "160"
             },
             {
-                "frontText": "Early",
-                "backText": "はやい",
-                "isFavorite": false,
+                "FrontText": "Early",
+                "BackText": "はやい",
+                "IsFavorite": false,
                 "ID": "161"
             },
             {
-                "frontText": "Not Much",
-                "backText": "あまり",
-                "isFavorite": false,
+                "FrontText": "Not Much",
+                "BackText": "あまり",
+                "IsFavorite": false,
                 "ID": "162"
             },
             {
-                "frontText": "Not at All",
-                "backText": "ぜんぜん",
-                "isFavorite": false,
+                "FrontText": "Not at All",
+                "BackText": "ぜんぜん",
+                "IsFavorite": false,
                 "ID": "163"
             },
             {
-                "frontText": "Usually",
-                "backText": "たいてい",
-                "isFavorite": false,
+                "FrontText": "Usually",
+                "BackText": "たいてい",
+                "IsFavorite": false,
                 "ID": "164"
             },
             {
-                "frontText": "A Little",
-                "backText": "ちょっと",
-                "isFavorite": false,
+                "FrontText": "A Little",
+                "BackText": "ちょっと",
+                "IsFavorite": false,
                 "ID": "165"
             },
             {
-                "frontText": "Sometimes",
-                "backText": "ときどき",
-                "isFavorite": false,
+                "FrontText": "Sometimes",
+                "BackText": "ときどき",
+                "IsFavorite": false,
                 "ID": "166"
             },
             {
-                "frontText": "Often / Much",
-                "backText": "よく",
-                "isFavorite": false,
+                "FrontText": "Often / Much",
+                "BackText": "よく",
+                "IsFavorite": false,
                 "ID": "167"
             },
             {
-                "frontText": "That's right / Let me see",
-                "backText": "そうですね",
-                "isFavorite": false,
+                "FrontText": "That's right / Let me see",
+                "BackText": "そうですね",
+                "IsFavorite": false,
                 "ID": "168"
             },
             {
-                "frontText": "But",
-                "backText": "でも",
-                "isFavorite": false,
+                "FrontText": "But",
+                "BackText": "でも",
+                "IsFavorite": false,
                 "ID": "169"
             },
             {
-                "frontText": "How about ...? / How is ...?",
-                "backText": "どうですか",
-                "isFavorite": false,
+                "FrontText": "How about ...? / How is ...?",
+                "BackText": "どうですか",
+                "IsFavorite": false,
                 "ID": "170"
             },
             {
-                "frontText": "Yes (Informal)",
-                "backText": "ええ",
-                "isFavorite": false,
+                "FrontText": "Yes (Informal)",
+                "BackText": "ええ",
+                "IsFavorite": false,
                 "ID": "171"
             }
         ]
     },
     {
         "ID": "IUGLblibGLasdasad",
-        "isFavorite": false,
-        "name": "Genki Kanji Lesson 3",
-        "tags": [
+        "IsFavorite": false,
+        "Name": "Genki Kanji Lesson 3",
+        "Tags": [
             "Japanese",
             "Genki"
         ],
-        "cards": [
+        "Cards": [
             {
-                "frontText": "One",
-                "backText": "いち",
-                "isFavorite": false,
+                "FrontText": "One",
+                "BackText": "いち",
+                "IsFavorite": false,
                 "ID": "172"
             },
             {
-                "frontText": "One Variant",
-                "backText": "ひとつ",
-                "isFavorite": false,
+                "FrontText": "One Variant",
+                "BackText": "ひとつ",
+                "IsFavorite": false,
                 "ID": "173"
             },
             {
-                "frontText": "Two",
-                "backText": "に",
-                "isFavorite": false,
+                "FrontText": "Two",
+                "BackText": "に",
+                "IsFavorite": false,
                 "ID": "174"
             },
             {
-                "frontText": "Two Variant",
-                "backText": "ふたつ",
-                "isFavorite": false,
+                "FrontText": "Two Variant",
+                "BackText": "ふたつ",
+                "IsFavorite": false,
                 "ID": "175"
             },
             {
-                "frontText": "Two Days",
-                "backText": "ふつかかん",
-                "isFavorite": false,
+                "FrontText": "Two Days",
+                "BackText": "ふつかかん",
+                "IsFavorite": false,
                 "ID": "176"
             },
             {
-                "frontText": "Three",
-                "backText": "さん",
-                "isFavorite": false,
+                "FrontText": "Three",
+                "BackText": "さん",
+                "IsFavorite": false,
                 "ID": "177"
             },
             {
-                "frontText": "Three Variant",
-                "backText": "みっつ",
-                "isFavorite": false,
+                "FrontText": "Three Variant",
+                "BackText": "みっつ",
+                "IsFavorite": false,
                 "ID": "178"
             },
             {
-                "frontText": "Four",
-                "backText": "よん / し",
-                "isFavorite": false,
+                "FrontText": "Four",
+                "BackText": "よん / し",
+                "IsFavorite": false,
                 "ID": "179"
             },
             {
-                "frontText": "Four Variant",
-                "backText": "よっつ",
-                "isFavorite": false,
+                "FrontText": "Four Variant",
+                "BackText": "よっつ",
+                "IsFavorite": false,
                 "ID": "180"
             },
             {
-                "frontText": "Five",
-                "backText": "ご",
-                "isFavorite": false,
+                "FrontText": "Five",
+                "BackText": "ご",
+                "IsFavorite": false,
                 "ID": "181"
             },
             {
-                "frontText": "Five Variant",
-                "backText": "いつつ",
-                "isFavorite": false,
+                "FrontText": "Five Variant",
+                "BackText": "いつつ",
+                "IsFavorite": false,
                 "ID": "182"
             },
             {
-                "frontText": "Six",
-                "backText": "ろく",
-                "isFavorite": false,
+                "FrontText": "Six",
+                "BackText": "ろく",
+                "IsFavorite": false,
                 "ID": "183"
             },
             {
-                "frontText": "Six Variant",
-                "backText": "むっつ",
-                "isFavorite": false,
+                "FrontText": "Six Variant",
+                "BackText": "むっつ",
+                "IsFavorite": false,
                 "ID": "184"
             },
             {
-                "frontText": "Seven",
-                "backText": "なな / しち",
-                "isFavorite": false,
+                "FrontText": "Seven",
+                "BackText": "なな / しち",
+                "IsFavorite": false,
                 "ID": "185"
             },
             {
-                "frontText": "Seven Variant",
-                "backText": "ななつ",
-                "isFavorite": false,
+                "FrontText": "Seven Variant",
+                "BackText": "ななつ",
+                "IsFavorite": false,
                 "ID": "186"
             },
             {
-                "frontText": "Eight",
-                "backText": "はち",
-                "isFavorite": false,
+                "FrontText": "Eight",
+                "BackText": "はち",
+                "IsFavorite": false,
                 "ID": "187"
             },
             {
-                "frontText": "Eight Variant",
-                "backText": "やっつ",
-                "isFavorite": false,
+                "FrontText": "Eight Variant",
+                "BackText": "やっつ",
+                "IsFavorite": false,
                 "ID": "188"
             },
             {
-                "frontText": "Nine",
-                "backText": "きゅう",
-                "isFavorite": false,
+                "FrontText": "Nine",
+                "BackText": "きゅう",
+                "IsFavorite": false,
                 "ID": "189"
             },
             {
-                "frontText": "Nine Variant",
-                "backText": "ここのつ",
-                "isFavorite": false,
+                "FrontText": "Nine Variant",
+                "BackText": "ここのつ",
+                "IsFavorite": false,
                 "ID": "190"
             },
             {
-                "frontText": "Ten",
-                "backText": "じゅう / とお",
-                "isFavorite": false,
+                "FrontText": "Ten",
+                "BackText": "じゅう / とお",
+                "IsFavorite": false,
                 "ID": "191"
             },
             {
-                "frontText": "Hundred",
-                "backText": "ひゃく / びゃく / ぴゃく",
-                "isFavorite": false,
+                "FrontText": "Hundred",
+                "BackText": "ひゃく / びゃく / ぴゃく",
+                "IsFavorite": false,
                 "ID": "192"
             },
             {
-                "frontText": "Thousand",
-                "backText": "せん / ぜん",
-                "isFavorite": false,
+                "FrontText": "Thousand",
+                "BackText": "せん / ぜん",
+                "IsFavorite": false,
                 "ID": "193"
             },
             {
-                "frontText": "Ten Thousand",
-                "backText": "まん",
-                "isFavorite": false,
+                "FrontText": "Ten Thousand",
+                "BackText": "まん",
+                "IsFavorite": false,
                 "ID": "194"
             },
             {
-                "frontText": "Yen / Circle",
-                "backText": "えん / まる",
-                "isFavorite": false,
+                "FrontText": "Yen / Circle",
+                "BackText": "えん / まる",
+                "IsFavorite": false,
                 "ID": "195"
             },
             {
-                "frontText": "Time",
-                "backText": "じ / とき",
-                "isFavorite": false,
+                "FrontText": "Time",
+                "BackText": "じ / とき",
+                "IsFavorite": false,
                 "ID": "196"
             },
             {
-                "frontText": "Minute",
-                "backText": "ふん / ぷん",
-                "isFavorite": false,
+                "FrontText": "Minute",
+                "BackText": "ふん / ぷん",
+                "IsFavorite": false,
                 "ID": "197"
             },
             {
-                "frontText": "Year Student",
-                "backText": "～ねんせい",
-                "isFavorite": false,
+                "FrontText": "Year Student",
+                "BackText": "～ねんせい",
+                "IsFavorite": false,
                 "ID": "198"
             },
             {
-                "frontText": "Years Old",
-                "backText": "～さい",
-                "isFavorite": false,
+                "FrontText": "Years Old",
+                "BackText": "～さい",
+                "IsFavorite": false,
                 "ID": "199"
             }
         ]
     },
     {
         "ID": "UYFKvjhvkytcjcjkuvkv",
-        "isFavorite": false,
-        "name": "Genki Lesson 4",
-        "tags": [
+        "IsFavorite": false,
+        "Name": "Genki Lesson 4",
+        "Tags": [
             "Japanese",
             "Genki"
         ],
-        "cards": [
+        "Cards": [
             {
-                "frontText": "Game",
-                "backText": "ゲーム",
-                "isFavorite": false,
+                "FrontText": "Game",
+                "BackText": "ゲーム",
+                "IsFavorite": false,
                 "ID": "200"
             },
             {
-                "frontText": "Part-Time Job",
-                "backText": "アルバイト",
-                "isFavorite": false,
+                "FrontText": "Part-Time Job",
+                "BackText": "アルバイト",
+                "IsFavorite": false,
                 "ID": "201"
             },
             {
-                "frontText": "Shopping",
-                "backText": "かいもの",
-                "isFavorite": false,
+                "FrontText": "Shopping",
+                "BackText": "かいもの",
+                "IsFavorite": false,
                 "ID": "202"
             },
             {
-                "frontText": "Class",
-                "backText": "クラス",
-                "isFavorite": false,
+                "FrontText": "Class",
+                "BackText": "クラス",
+                "IsFavorite": false,
                 "ID": "203"
             },
             {
-                "frontText": "Dog",
-                "backText": "いぬ",
-                "isFavorite": false,
+                "FrontText": "Dog",
+                "BackText": "いぬ",
+                "IsFavorite": false,
                 "ID": "204"
             },
             {
-                "frontText": "Cat",
-                "backText": "ねこ",
-                "isFavorite": false,
+                "FrontText": "Cat",
+                "BackText": "ねこ",
+                "IsFavorite": false,
                 "ID": "205"
             },
             {
-                "frontText": "Person",
-                "backText": "ひと",
-                "isFavorite": false,
+                "FrontText": "Person",
+                "BackText": "ひと",
+                "IsFavorite": false,
                 "ID": "206"
             },
             {
-                "frontText": "Child",
-                "backText": "こども",
-                "isFavorite": false,
+                "FrontText": "Child",
+                "BackText": "こども",
+                "IsFavorite": false,
                 "ID": "207"
             },
             {
-                "frontText": "You",
-                "backText": "あなた",
-                "isFavorite": false,
+                "FrontText": "You",
+                "BackText": "あなた",
+                "IsFavorite": false,
                 "ID": "208"
             },
             {
-                "frontText": "Picture / Photograph",
-                "backText": "しゃしん",
-                "isFavorite": false,
+                "FrontText": "Picture / Photograph",
+                "BackText": "しゃしん",
+                "IsFavorite": false,
                 "ID": "209"
             },
             {
-                "frontText": "Flower",
-                "backText": "はな",
-                "isFavorite": false,
+                "FrontText": "Flower",
+                "BackText": "はな",
+                "IsFavorite": false,
                 "ID": "210"
             },
             {
-                "frontText": "(Term) Paper",
-                "backText": "レポート",
-                "isFavorite": false,
+                "FrontText": "(Term) Paper",
+                "BackText": "レポート",
+                "IsFavorite": false,
                 "ID": "211"
             },
             {
-                "frontText": "Rice / Meal",
-                "backText": "ごはん",
-                "isFavorite": false,
+                "FrontText": "Rice / Meal",
+                "BackText": "ごはん",
+                "IsFavorite": false,
                 "ID": "212"
             },
             {
-                "frontText": "Bread",
-                "backText": "パン",
-                "isFavorite": false,
+                "FrontText": "Bread",
+                "BackText": "パン",
+                "IsFavorite": false,
                 "ID": "213"
             },
             {
-                "frontText": "Temple",
-                "backText": "おてら",
-                "isFavorite": false,
+                "FrontText": "Temple",
+                "BackText": "おてら",
+                "IsFavorite": false,
                 "ID": "214"
             },
             {
-                "frontText": "Park",
-                "backText": "こうえん",
-                "isFavorite": false,
+                "FrontText": "Park",
+                "BackText": "こうえん",
+                "IsFavorite": false,
                 "ID": "215"
             },
             {
-                "frontText": "Supermarket",
-                "backText": "スーパー",
-                "isFavorite": false,
+                "FrontText": "Supermarket",
+                "BackText": "スーパー",
+                "IsFavorite": false,
                 "ID": "216"
             },
             {
-                "frontText": "Bus Stop",
-                "backText": "バスてい",
-                "isFavorite": false,
+                "FrontText": "Bus Stop",
+                "BackText": "バスてい",
+                "IsFavorite": false,
                 "ID": "217"
             },
             {
-                "frontText": "Hospital",
-                "backText": "びょういん",
-                "isFavorite": false,
+                "FrontText": "Hospital",
+                "BackText": "びょういん",
+                "IsFavorite": false,
                 "ID": "218"
             },
             {
-                "frontText": "Hotel",
-                "backText": "ホテル",
-                "isFavorite": false,
+                "FrontText": "Hotel",
+                "BackText": "ホテル",
+                "IsFavorite": false,
                 "ID": "219"
             },
             {
-                "frontText": "Bookstore",
-                "backText": "ほんや",
-                "isFavorite": false,
+                "FrontText": "Bookstore",
+                "BackText": "ほんや",
+                "IsFavorite": false,
                 "ID": "220"
             },
             {
-                "frontText": "Town / City",
-                "backText": "まち",
-                "isFavorite": false,
+                "FrontText": "Town / City",
+                "BackText": "まち",
+                "IsFavorite": false,
                 "ID": "221"
             },
             {
-                "frontText": "Restaurant",
-                "backText": "レストラン",
-                "isFavorite": false,
+                "FrontText": "Restaurant",
+                "BackText": "レストラン",
+                "IsFavorite": false,
                 "ID": "222"
             },
             {
-                "frontText": "... Hours",
-                "backText": "～じかん",
-                "isFavorite": false,
+                "FrontText": "... Hours",
+                "BackText": "～じかん",
+                "IsFavorite": false,
                 "ID": "223"
             },
             {
-                "frontText": "One Hour",
-                "backText": "いちじかん",
-                "isFavorite": false,
+                "FrontText": "One Hour",
+                "BackText": "いちじかん",
+                "IsFavorite": false,
                 "ID": "224"
             },
             {
-                "frontText": "When ... / At the time of ...",
-                "backText": "とき",
-                "isFavorite": false,
+                "FrontText": "When ... / At the time of ...",
+                "BackText": "とき",
+                "IsFavorite": false,
                 "ID": "225"
             },
             {
-                "frontText": "Monday",
-                "backText": "げつようび",
-                "isFavorite": false,
+                "FrontText": "Monday",
+                "BackText": "げつようび",
+                "IsFavorite": false,
                 "ID": "226"
             },
             {
-                "frontText": "Tuesday",
-                "backText": "かようび",
-                "isFavorite": false,
+                "FrontText": "Tuesday",
+                "BackText": "かようび",
+                "IsFavorite": false,
                 "ID": "227"
             },
             {
-                "frontText": "Wednesday",
-                "backText": "すいようび",
-                "isFavorite": false,
+                "FrontText": "Wednesday",
+                "BackText": "すいようび",
+                "IsFavorite": false,
                 "ID": "228"
             },
             {
-                "frontText": "Thursday",
-                "backText": "もくようび",
-                "isFavorite": false,
+                "FrontText": "Thursday",
+                "BackText": "もくようび",
+                "IsFavorite": false,
                 "ID": "229"
             },
             {
-                "frontText": "Friday",
-                "backText": "きんようび",
-                "isFavorite": false,
+                "FrontText": "Friday",
+                "BackText": "きんようび",
+                "IsFavorite": false,
                 "ID": "230"
             },
             {
-                "frontText": "To meet / To see (A person)",
-                "backText": "あう",
-                "isFavorite": false,
+                "FrontText": "To meet / To see (A person)",
+                "BackText": "あう",
+                "IsFavorite": false,
                 "ID": "231"
             },
             {
-                "frontText": "There is ...",
-                "backText": "ある",
-                "isFavorite": false,
+                "FrontText": "There is ...",
+                "BackText": "ある",
+                "IsFavorite": false,
                 "ID": "232"
             },
             {
-                "frontText": "To buy",
-                "backText": "かう",
-                "isFavorite": false,
+                "FrontText": "To buy",
+                "BackText": "かう",
+                "IsFavorite": false,
                 "ID": "233"
             },
             {
-                "frontText": "To write",
-                "backText": "かく",
-                "isFavorite": false,
+                "FrontText": "To write",
+                "BackText": "かく",
+                "IsFavorite": false,
                 "ID": "234"
             },
             {
-                "frontText": "To take",
-                "backText": "とる",
-                "isFavorite": false,
+                "FrontText": "To take",
+                "BackText": "とる",
+                "IsFavorite": false,
                 "ID": "235"
             },
             {
-                "frontText": "To wait",
-                "backText": "まつ",
-                "isFavorite": false,
+                "FrontText": "To wait",
+                "BackText": "まつ",
+                "IsFavorite": false,
                 "ID": "236"
             },
             {
-                "frontText": "To understand",
-                "backText": "わかる",
-                "isFavorite": false,
+                "FrontText": "To understand",
+                "BackText": "わかる",
+                "IsFavorite": false,
                 "ID": "237"
             },
             {
-                "frontText": "(A person) is in ... / Stays at ...",
-                "backText": "いる",
-                "isFavorite": false,
+                "FrontText": "(A person) is in ... / Stays at ...",
+                "BackText": "いる",
+                "IsFavorite": false,
                 "ID": "238"
             },
             {
-                "frontText": "About (approximate measurement)",
-                "backText": "～ぐらい",
-                "isFavorite": false,
+                "FrontText": "About (approximate measurement)",
+                "BackText": "～ぐらい",
+                "IsFavorite": false,
                 "ID": "239"
             },
             {
-                "frontText": "I'm sorry",
-                "backText": "ごめんなさい",
-                "isFavorite": false,
+                "FrontText": "I'm sorry",
+                "BackText": "ごめんなさい",
+                "IsFavorite": false,
                 "ID": "240"
             },
             {
-                "frontText": "And then",
-                "backText": "それから",
-                "isFavorite": false,
+                "FrontText": "And then",
+                "BackText": "それから",
+                "IsFavorite": false,
                 "ID": "241"
             },
             {
-                "frontText": "So / Therefore",
-                "backText": "だから",
-                "isFavorite": false,
+                "FrontText": "So / Therefore",
+                "BackText": "だから",
+                "IsFavorite": false,
                 "ID": "242"
             },
             {
-                "frontText": "Many / A lot",
-                "backText": "たくさん",
-                "isFavorite": false,
+                "FrontText": "Many / A lot",
+                "BackText": "たくさん",
+                "IsFavorite": false,
                 "ID": "243"
             },
             {
-                "frontText": "Together with (a person) / And",
-                "backText": "～と",
-                "isFavorite": false,
+                "FrontText": "Together with (a person) / And",
+                "BackText": "～と",
+                "IsFavorite": false,
                 "ID": "244"
             },
             {
-                "frontText": "Why",
-                "backText": "どうして",
-                "isFavorite": false,
+                "FrontText": "Why",
+                "BackText": "どうして",
+                "IsFavorite": false,
                 "ID": "245"
             },
             {
-                "frontText": "Alone",
-                "backText": "ひとりで",
-                "isFavorite": false,
+                "FrontText": "Alone",
+                "BackText": "ひとりで",
+                "IsFavorite": false,
                 "ID": "246"
             },
             {
-                "frontText": "Hello? (On the phone)",
-                "backText": "もしもし",
-                "isFavorite": false,
+                "FrontText": "Hello? (On the phone)",
+                "BackText": "もしもし",
+                "IsFavorite": false,
                 "ID": "247"
             },
             {
-                "frontText": "Right",
-                "backText": "みぎ",
-                "isFavorite": false,
+                "FrontText": "Right",
+                "BackText": "みぎ",
+                "IsFavorite": false,
                 "ID": "248"
             },
             {
-                "frontText": "Left",
-                "backText": "ひだり",
-                "isFavorite": false,
+                "FrontText": "Left",
+                "BackText": "ひだり",
+                "IsFavorite": false,
                 "ID": "249"
             },
             {
-                "frontText": "Front",
-                "backText": "まえ",
-                "isFavorite": false,
+                "FrontText": "Front",
+                "BackText": "まえ",
+                "IsFavorite": false,
                 "ID": "250"
             },
             {
-                "frontText": "Back",
-                "backText": "うしろ",
-                "isFavorite": false,
+                "FrontText": "Back",
+                "BackText": "うしろ",
+                "IsFavorite": false,
                 "ID": "251"
             },
             {
-                "frontText": "Inside",
-                "backText": "なか",
-                "isFavorite": false,
+                "FrontText": "Inside",
+                "BackText": "なか",
+                "IsFavorite": false,
                 "ID": "252"
             },
             {
-                "frontText": "On",
-                "backText": "うえ",
-                "isFavorite": false,
+                "FrontText": "On",
+                "BackText": "うえ",
+                "IsFavorite": false,
                 "ID": "253"
             },
             {
-                "frontText": "Under",
-                "backText": "した",
-                "isFavorite": false,
+                "FrontText": "Under",
+                "BackText": "した",
+                "IsFavorite": false,
                 "ID": "254"
             },
             {
-                "frontText": "Near",
-                "backText": "ちかく",
-                "isFavorite": false,
+                "FrontText": "Near",
+                "BackText": "ちかく",
+                "IsFavorite": false,
                 "ID": "255"
             },
             {
-                "frontText": "Next",
-                "backText": "となり",
-                "isFavorite": false,
+                "FrontText": "Next",
+                "BackText": "となり",
+                "IsFavorite": false,
                 "ID": "256"
             },
             {
-                "frontText": "Between",
-                "backText": "あいだ",
-                "isFavorite": false,
+                "FrontText": "Between",
+                "BackText": "あいだ",
+                "IsFavorite": false,
                 "ID": "257"
             },
         ]
     },
     {
         "ID": "LIYGLHGygkbhgkuhvkjhasdcas",
-        "isFavorite": false,
-        "name": "Genki Kanji Lesson 4",
-        "tags": [
+        "IsFavorite": false,
+        "Name": "Genki Kanji Lesson 4",
+        "Tags": [
             "Japanese",
             "Genki"
         ],
-        "cards": [
+        "Cards": [
             {
-                "frontText": "Day / Sun",
-                "backText": "に / にち / び",
-                "isFavorite": false,
+                "FrontText": "Day / Sun",
+                "BackText": "に / にち / び",
+                "IsFavorite": false,
                 "ID": "258"
             },
             {
-                "frontText": "Book / Basis",
-                "backText": "ほん",
-                "isFavorite": false,
+                "FrontText": "Book / Basis",
+                "BackText": "ほん",
+                "IsFavorite": false,
                 "ID": "259"
             },
             {
-                "frontText": "Person",
-                "backText": "ひと / じん",
-                "isFavorite": false,
+                "FrontText": "Person",
+                "BackText": "ひと / じん",
+                "IsFavorite": false,
                 "ID": "260"
             },
             {
-                "frontText": "Moon / Month",
-                "backText": "げつ / がつ",
-                "isFavorite": false,
+                "FrontText": "Moon / Month",
+                "BackText": "げつ / がつ",
+                "IsFavorite": false,
                 "ID": "261"
             },
             {
-                "frontText": "Fire",
-                "backText": "ひ / か",
-                "isFavorite": false,
+                "FrontText": "Fire",
+                "BackText": "ひ / か",
+                "IsFavorite": false,
                 "ID": "262"
             },
             {
-                "frontText": "Water",
-                "backText": "みず / すい",
-                "isFavorite": false,
+                "FrontText": "Water",
+                "BackText": "みず / すい",
+                "IsFavorite": false,
                 "ID": "263"
             },
             {
-                "frontText": "Tree",
-                "backText": "き / もく",
-                "isFavorite": false,
+                "FrontText": "Tree",
+                "BackText": "き / もく",
+                "IsFavorite": false,
                 "ID": "264"
             },
             {
-                "frontText": "Gold / Money",
-                "backText": "きん / かね",
-                "isFavorite": false,
+                "FrontText": "Gold / Money",
+                "BackText": "きん / かね",
+                "IsFavorite": false,
                 "ID": "265"
             },
             {
-                "frontText": "Soil",
-                "backText": "つち / ど",
-                "isFavorite": false,
+                "FrontText": "Soil",
+                "BackText": "つち / ど",
+                "IsFavorite": false,
                 "ID": "266"
             },
             {
-                "frontText": "Weekday",
-                "backText": "よう",
-                "isFavorite": false,
+                "FrontText": "Weekday",
+                "BackText": "よう",
+                "IsFavorite": false,
                 "ID": "267"
             },
             {
-                "frontText": "Up / Top / Above",
-                "backText": "うえ",
-                "isFavorite": false,
+                "FrontText": "Up / Top / Above",
+                "BackText": "うえ",
+                "IsFavorite": false,
                 "ID": "268"
             },
             {
-                "frontText": "Down / Under",
-                "backText": "した",
-                "isFavorite": false,
+                "FrontText": "Down / Under",
+                "BackText": "した",
+                "IsFavorite": false,
                 "ID": "269"
             },
             {
-                "frontText": "Middle / Inside",
-                "backText": "なか",
-                "isFavorite": false,
+                "FrontText": "Middle / Inside",
+                "BackText": "なか",
+                "IsFavorite": false,
                 "ID": "270"
             },
             {
-                "frontText": "Half",
-                "backText": "はん",
-                "isFavorite": false,
+                "FrontText": "Half",
+                "BackText": "はん",
+                "IsFavorite": false,
                 "ID": "271"
             },
             {
-                "frontText": "Japanese People",
-                "backText": "にほんじん",
-                "isFavorite": false,
+                "FrontText": "Japanese People",
+                "BackText": "にほんじん",
+                "IsFavorite": false,
                 "ID": "272"
             },
             {
-                "frontText": "This Person",
-                "backText": "このひと",
-                "isFavorite": false,
+                "FrontText": "This Person",
+                "BackText": "このひと",
+                "IsFavorite": false,
                 "ID": "273"
             },
             {
-                "frontText": "Half Past Three",
-                "backText": "さんじはん",
-                "isFavorite": false,
+                "FrontText": "Half Past Three",
+                "BackText": "さんじはん",
+                "IsFavorite": false,
                 "ID": "274"
             }
         ]
     },
     {
         "ID": "UYFKVKHluygaskrfarlkguhlkbL",
-        "isFavorite": false,
-        "name": "Genki Misc",
-        "tags": [
+        "IsFavorite": false,
+        "Name": "Genki Misc",
+        "Tags": [
             "Japanese",
             "Genki"
         ],
-        "cards": [
+        "Cards": [
             {
-                "frontText": "1st of the Month",
-                "backText": "ついたち",
-                "isFavorite": false,
+                "FrontText": "1st of the Month",
+                "BackText": "ついたち",
+                "IsFavorite": false,
                 "ID": "275"
             },
             {
-                "frontText": "2nd of the Month",
-                "backText": "ふつか",
-                "isFavorite": false,
+                "FrontText": "2nd of the Month",
+                "BackText": "ふつか",
+                "IsFavorite": false,
                 "ID": "276"
             },
             {
-                "frontText": "3rd of the Month",
-                "backText": "みっか",
-                "isFavorite": false,
+                "FrontText": "3rd of the Month",
+                "BackText": "みっか",
+                "IsFavorite": false,
                 "ID": "277"
             },
             {
-                "frontText": "4th of the Month",
-                "backText": "よっか",
-                "isFavorite": false,
+                "FrontText": "4th of the Month",
+                "BackText": "よっか",
+                "IsFavorite": false,
                 "ID": "278"
             },
             {
-                "frontText": "5th of the Month",
-                "backText": "いつか",
-                "isFavorite": false,
+                "FrontText": "5th of the Month",
+                "BackText": "いつか",
+                "IsFavorite": false,
                 "ID": "279"
             },
             {
-                "frontText": "6th of the Month",
-                "backText": "むいか",
-                "isFavorite": false,
+                "FrontText": "6th of the Month",
+                "BackText": "むいか",
+                "IsFavorite": false,
                 "ID": "280"
             },
             {
-                "frontText": "7th of the Month",
-                "backText": "なのか",
-                "isFavorite": false,
+                "FrontText": "7th of the Month",
+                "BackText": "なのか",
+                "IsFavorite": false,
                 "ID": "281"
             },
             {
-                "frontText": "8th of the Month",
-                "backText": "ようか",
-                "isFavorite": false,
+                "FrontText": "8th of the Month",
+                "BackText": "ようか",
+                "IsFavorite": false,
                 "ID": "282"
             },
             {
-                "frontText": "9th of the Month",
-                "backText": "ここのか",
-                "isFavorite": false,
+                "FrontText": "9th of the Month",
+                "BackText": "ここのか",
+                "IsFavorite": false,
                 "ID": "283"
             },
             {
-                "frontText": "10th of the Month",
-                "backText": "とおか",
-                "isFavorite": false,
+                "FrontText": "10th of the Month",
+                "BackText": "とおか",
+                "IsFavorite": false,
                 "ID": "284"
             },
             {
-                "frontText": "11th of the Month",
-                "backText": "じゅういちにち",
-                "isFavorite": false,
+                "FrontText": "11th of the Month",
+                "BackText": "じゅういちにち",
+                "IsFavorite": false,
                 "ID": "285"
             },
             {
-                "frontText": "12th of the Month",
-                "backText": "じゅうににち",
-                "isFavorite": false,
+                "FrontText": "12th of the Month",
+                "BackText": "じゅうににち",
+                "IsFavorite": false,
                 "ID": "286"
             },
             {
-                "frontText": "13th of the Month",
-                "backText": "じゅうさんにち",
-                "isFavorite": false,
+                "FrontText": "13th of the Month",
+                "BackText": "じゅうさんにち",
+                "IsFavorite": false,
                 "ID": "287"
             },
             {
-                "frontText": "14th of the Month",
-                "backText": "じゅうよっか",
-                "isFavorite": false,
+                "FrontText": "14th of the Month",
+                "BackText": "じゅうよっか",
+                "IsFavorite": false,
                 "ID": "288"
             },
             {
-                "frontText": "15th of the Month",
-                "backText": "じゅうごにち",
-                "isFavorite": false,
+                "FrontText": "15th of the Month",
+                "BackText": "じゅうごにち",
+                "IsFavorite": false,
                 "ID": "289"
             },
             {
-                "frontText": "16th of the Month",
-                "backText": "じゅうろくにち",
-                "isFavorite": false,
+                "FrontText": "16th of the Month",
+                "BackText": "じゅうろくにち",
+                "IsFavorite": false,
                 "ID": "290"
             },
             {
-                "frontText": "17th of the Month",
-                "backText": "じゅうしちにち",
-                "isFavorite": false,
+                "FrontText": "17th of the Month",
+                "BackText": "じゅうしちにち",
+                "IsFavorite": false,
                 "ID": "291"
             },
             {
-                "frontText": "18th of the Month",
-                "backText": "じゅうはちにち",
-                "isFavorite": false,
+                "FrontText": "18th of the Month",
+                "BackText": "じゅうはちにち",
+                "IsFavorite": false,
                 "ID": "292"
             },
             {
-                "frontText": "19th of the Month",
-                "backText": "じゅうくにち",
-                "isFavorite": false,
+                "FrontText": "19th of the Month",
+                "BackText": "じゅうくにち",
+                "IsFavorite": false,
                 "ID": "293"
             },
             {
-                "frontText": "20th of the Month",
-                "backText": "はつか",
-                "isFavorite": false,
+                "FrontText": "20th of the Month",
+                "BackText": "はつか",
+                "IsFavorite": false,
                 "ID": "294"
             },
             {
-                "frontText": "21th of the Month",
-                "backText": "にじゅういちにち",
-                "isFavorite": false,
+                "FrontText": "21th of the Month",
+                "BackText": "にじゅういちにち",
+                "IsFavorite": false,
                 "ID": "295"
             },
             {
-                "frontText": "22th of the Month",
-                "backText": "にじゅうににち",
-                "isFavorite": false,
+                "FrontText": "22th of the Month",
+                "BackText": "にじゅうににち",
+                "IsFavorite": false,
                 "ID": "296"
             },
             {
-                "frontText": "23th of the Month",
-                "backText": "にじゅうさんにち",
-                "isFavorite": false,
+                "FrontText": "23th of the Month",
+                "BackText": "にじゅうさんにち",
+                "IsFavorite": false,
                 "ID": "297"
             },
             {
-                "frontText": "24th of the Month",
-                "backText": "にじゅうよっか",
-                "isFavorite": false,
+                "FrontText": "24th of the Month",
+                "BackText": "にじゅうよっか",
+                "IsFavorite": false,
                 "ID": "298"
             },
             {
-                "frontText": "25th of the Month",
-                "backText": "にじゅうごにち",
-                "isFavorite": false,
+                "FrontText": "25th of the Month",
+                "BackText": "にじゅうごにち",
+                "IsFavorite": false,
                 "ID": "299"
             },
             {
-                "frontText": "26th of the Month",
-                "backText": "にじゅうろくにち",
-                "isFavorite": false,
+                "FrontText": "26th of the Month",
+                "BackText": "にじゅうろくにち",
+                "IsFavorite": false,
                 "ID": "300"
             },
             {
-                "frontText": "27th of the Month",
-                "backText": "にじゅうしちにち",
-                "isFavorite": false,
+                "FrontText": "27th of the Month",
+                "BackText": "にじゅうしちにち",
+                "IsFavorite": false,
                 "ID": "301"
             },
             {
-                "frontText": "28th of the Month",
-                "backText": "にじゅうはちにち",
-                "isFavorite": false,
+                "FrontText": "28th of the Month",
+                "BackText": "にじゅうはちにち",
+                "IsFavorite": false,
                 "ID": "302"
             },
             {
-                "frontText": "29th of the Month",
-                "backText": "にじゅうくにち",
-                "isFavorite": false,
+                "FrontText": "29th of the Month",
+                "BackText": "にじゅうくにち",
+                "IsFavorite": false,
                 "ID": "303"
             },
             {
-                "frontText": "30th of the Month",
-                "backText": "さんじゅうにち",
-                "isFavorite": false,
+                "FrontText": "30th of the Month",
+                "BackText": "さんじゅうにち",
+                "IsFavorite": false,
                 "ID": "304"
             },
             {
-                "frontText": "31th of the Month",
-                "backText": "さんじゅういちにち",
-                "isFavorite": false,
+                "FrontText": "31th of the Month",
+                "BackText": "さんじゅういちにち",
+                "IsFavorite": false,
                 "ID": "305"
             },
             {
-                "frontText": "January",
-                "backText": "いちがつ",
-                "isFavorite": false,
+                "FrontText": "January",
+                "BackText": "いちがつ",
+                "IsFavorite": false,
                 "ID": "306"
             },
             {
-                "frontText": "February",
-                "backText": "にがつ",
-                "isFavorite": false,
+                "FrontText": "February",
+                "BackText": "にがつ",
+                "IsFavorite": false,
                 "ID": "307"
             },
             {
-                "frontText": "March",
-                "backText": "さんつ",
-                "isFavorite": false,
+                "FrontText": "March",
+                "BackText": "さんつ",
+                "IsFavorite": false,
                 "ID": "308"
             },
             {
-                "frontText": "April",
-                "backText": "しがつ",
-                "isFavorite": false,
+                "FrontText": "April",
+                "BackText": "しがつ",
+                "IsFavorite": false,
                 "ID": "309"
             },
             {
-                "frontText": "May",
-                "backText": "ごがつ",
-                "isFavorite": false,
+                "FrontText": "May",
+                "BackText": "ごがつ",
+                "IsFavorite": false,
                 "ID": "310"
             },
             {
-                "frontText": "June",
-                "backText": "ろくがつ",
-                "isFavorite": false,
+                "FrontText": "June",
+                "BackText": "ろくがつ",
+                "IsFavorite": false,
                 "ID": "311"
             },
             {
-                "frontText": "July",
-                "backText": "しちがつ",
-                "isFavorite": false,
+                "FrontText": "July",
+                "BackText": "しちがつ",
+                "IsFavorite": false,
                 "ID": "312"
             },
             {
-                "frontText": "August",
-                "backText": "はちがつ",
-                "isFavorite": false,
+                "FrontText": "August",
+                "BackText": "はちがつ",
+                "IsFavorite": false,
                 "ID": "313"
             },
             {
-                "frontText": "September",
-                "backText": "くがつ",
-                "isFavorite": false,
+                "FrontText": "September",
+                "BackText": "くがつ",
+                "IsFavorite": false,
                 "ID": "314"
             },
             {
-                "frontText": "October",
-                "backText": "じゅうがつ",
-                "isFavorite": false,
+                "FrontText": "October",
+                "BackText": "じゅうがつ",
+                "IsFavorite": false,
                 "ID": "315"
             },
             {
-                "frontText": "November",
-                "backText": "じゅういちがつ",
-                "isFavorite": false,
+                "FrontText": "November",
+                "BackText": "じゅういちがつ",
+                "IsFavorite": false,
                 "ID": "316"
             },
             {
-                "frontText": "December",
-                "backText": "じゅうにがつ",
-                "isFavorite": false,
+                "FrontText": "December",
+                "BackText": "じゅうにがつ",
+                "IsFavorite": false,
                 "ID": "317"
             },
             {
-                "frontText": "The Day Before Yesterday",
-                "backText": "おととい",
-                "isFavorite": false,
+                "FrontText": "The Day Before Yesterday",
+                "BackText": "おととい",
+                "IsFavorite": false,
                 "ID": "318"
             },
             {
-                "frontText": "Yesterday",
-                "backText": "きのう",
-                "isFavorite": false,
+                "FrontText": "Yesterday",
+                "BackText": "きのう",
+                "IsFavorite": false,
                 "ID": "319"
             },
             {
-                "frontText": "Today",
-                "backText": "きょう",
-                "isFavorite": false,
+                "FrontText": "Today",
+                "BackText": "きょう",
+                "IsFavorite": false,
                 "ID": "320"
             },
             {
-                "frontText": "Tomorrow",
-                "backText": "あした",
-                "isFavorite": false,
+                "FrontText": "Tomorrow",
+                "BackText": "あした",
+                "IsFavorite": false,
                 "ID": "321"
             },
             {
-                "frontText": "The Day After Tomorrow",
-                "backText": "あさって",
-                "isFavorite": false,
+                "FrontText": "The Day After Tomorrow",
+                "BackText": "あさって",
+                "IsFavorite": false,
                 "ID": "322"
             },
             {
-                "frontText": "Two Weeks Ago",
-                "backText": "にしゅうかんまえ",
-                "isFavorite": false,
+                "FrontText": "Two Weeks Ago",
+                "BackText": "にしゅうかんまえ",
+                "IsFavorite": false,
                 "ID": "323"
             },
             {
-                "frontText": "Last Week",
-                "backText": "せんしゅう",
-                "isFavorite": false,
+                "FrontText": "Last Week",
+                "BackText": "せんしゅう",
+                "IsFavorite": false,
                 "ID": "324"
             },
             {
-                "frontText": "This Week",
-                "backText": "こんしゅう",
-                "isFavorite": false,
+                "FrontText": "This Week",
+                "BackText": "こんしゅう",
+                "IsFavorite": false,
                 "ID": "325"
             },
             {
-                "frontText": "Next Week",
-                "backText": "らいしゅう",
-                "isFavorite": false,
+                "FrontText": "Next Week",
+                "BackText": "らいしゅう",
+                "IsFavorite": false,
                 "ID": "326"
             },
             {
-                "frontText": "The Week After Next",
-                "backText": "さらいしゅう",
-                "isFavorite": false,
+                "FrontText": "The Week After Next",
+                "BackText": "さらいしゅう",
+                "IsFavorite": false,
                 "ID": "327"
             },
             {
-                "frontText": "Two Months Ago",
-                "backText": "にかげつまえ",
-                "isFavorite": false,
+                "FrontText": "Two Months Ago",
+                "BackText": "にかげつまえ",
+                "IsFavorite": false,
                 "ID": "328"
             },
             {
-                "frontText": "Last Month",
-                "backText": "せんげつ",
-                "isFavorite": false,
+                "FrontText": "Last Month",
+                "BackText": "せんげつ",
+                "IsFavorite": false,
                 "ID": "329"
             },
             {
-                "frontText": "This Month",
-                "backText": "こんげつ",
-                "isFavorite": false,
+                "FrontText": "This Month",
+                "BackText": "こんげつ",
+                "IsFavorite": false,
                 "ID": "330"
             },
             {
-                "frontText": "Next Month",
-                "backText": "らいげつ",
-                "isFavorite": false,
+                "FrontText": "Next Month",
+                "BackText": "らいげつ",
+                "IsFavorite": false,
                 "ID": "331"
             },
             {
-                "frontText": "The Month After Next",
-                "backText": "さらいげつ",
-                "isFavorite": false,
+                "FrontText": "The Month After Next",
+                "BackText": "さらいげつ",
+                "IsFavorite": false,
                 "ID": "332"
             },
             {
-                "frontText": "The Year Before Last",
-                "backText": "おととし",
-                "isFavorite": false,
+                "FrontText": "The Year Before Last",
+                "BackText": "おととし",
+                "IsFavorite": false,
                 "ID": "333"
             },
             {
-                "frontText": "Last Year",
-                "backText": "きょねん",
-                "isFavorite": false,
+                "FrontText": "Last Year",
+                "BackText": "きょねん",
+                "IsFavorite": false,
                 "ID": "334"
             },
             {
-                "frontText": "This Year",
-                "backText": "ことし",
-                "isFavorite": false,
+                "FrontText": "This Year",
+                "BackText": "ことし",
+                "IsFavorite": false,
                 "ID": "335"
             },
             {
-                "frontText": "Next Year",
-                "backText": "らいねん",
-                "isFavorite": false,
+                "FrontText": "Next Year",
+                "BackText": "らいねん",
+                "IsFavorite": false,
                 "ID": "336"
             },
             {
-                "frontText": "The Year After Next",
-                "backText": "さらいねん",
-                "isFavorite": false,
+                "FrontText": "The Year After Next",
+                "BackText": "さらいねん",
+                "IsFavorite": false,
                 "ID": "337"
             }
         ]
     },
     {
         "ID": "alisylviasblfdikghKGVkjhblBKjgads",
-        "isFavorite": false,
-        "name": "Genki Lesson 5",
-        "tags": [
+        "IsFavorite": false,
+        "Name": "Genki Lesson 5",
+        "Tags": [
             "Japanese",
             "Genki"
         ],
-        "cards": [
+        "Cards": [
             {
-                "frontText": "Food",
-                "backText": "たべもの",
-                "isFavorite": false,
+                "FrontText": "Food",
+                "BackText": "たべもの",
+                "IsFavorite": false,
                 "ID": "338"
             },
             {
-                "frontText": "Drink",
-                "backText": "のみもの",
-                "isFavorite": false,
+                "FrontText": "Drink",
+                "BackText": "のみもの",
+                "IsFavorite": false,
                 "ID": "339"
             },
             {
-                "frontText": "Fruit",
-                "backText": "くだもの",
-                "isFavorite": false,
+                "FrontText": "Fruit",
+                "BackText": "くだもの",
+                "IsFavorite": false,
                 "ID": "340"
             },
             {
-                "frontText": "Holiday / Day Off / Absence",
-                "backText": "やすみ",
-                "isFavorite": false,
+                "FrontText": "Holiday / Day Off / Absence",
+                "BackText": "やすみ",
+                "IsFavorite": false,
                 "ID": "341"
             },
             {
-                "frontText": "Travel",
-                "backText": "りょこう",
-                "isFavorite": false,
+                "FrontText": "Travel",
+                "BackText": "りょこう",
+                "IsFavorite": false,
                 "ID": "342"
             },
             {
-                "frontText": "Sea",
-                "backText": "うみ",
-                "isFavorite": false,
+                "FrontText": "Sea",
+                "BackText": "うみ",
+                "IsFavorite": false,
                 "ID": "343"
             },
             {
-                "frontText": "Surfing",
-                "backText": "サーフィン",
-                "isFavorite": false,
+                "FrontText": "Surfing",
+                "BackText": "サーフィン",
+                "IsFavorite": false,
                 "ID": "344"
             },
             {
-                "frontText": "Souvenir",
-                "backText": "おみやげ",
-                "isFavorite": false,
+                "FrontText": "Souvenir",
+                "BackText": "おみやげ",
+                "IsFavorite": false,
                 "ID": "345"
             },
             {
-                "frontText": "Bus",
-                "backText": "バス",
-                "isFavorite": false,
+                "FrontText": "Bus",
+                "BackText": "バス",
+                "IsFavorite": false,
                 "ID": "346"
             },
             {
-                "frontText": "Weather",
-                "backText": "てんき",
-                "isFavorite": false,
+                "FrontText": "Weather",
+                "BackText": "てんき",
+                "IsFavorite": false,
                 "ID": "347"
             },
             {
-                "frontText": "Homework",
-                "backText": "しゅくだい",
-                "isFavorite": false,
+                "FrontText": "Homework",
+                "BackText": "しゅくだい",
+                "IsFavorite": false,
                 "ID": "348"
             },
             {
-                "frontText": "Test",
-                "backText": "テスト",
-                "isFavorite": false,
+                "FrontText": "Test",
+                "BackText": "テスト",
+                "IsFavorite": false,
                 "ID": "349"
             },
             {
-                "frontText": "Birthday",
-                "backText": "たんじょうび",
-                "isFavorite": false,
+                "FrontText": "Birthday",
+                "BackText": "たんじょうび",
+                "IsFavorite": false,
                 "ID": "350"
             },
             {
-                "frontText": "Room",
-                "backText": "へや",
-                "isFavorite": false,
+                "FrontText": "Room",
+                "BackText": "へや",
+                "IsFavorite": false,
                 "ID": "351"
             },
             {
-                "frontText": "I (Used by men)",
-                "backText": "ぼく",
-                "isFavorite": false,
+                "FrontText": "I (Used by men)",
+                "BackText": "ぼく",
+                "IsFavorite": false,
                 "ID": "352"
             },
             {
-                "frontText": "Size L",
-                "backText": "Lサイズ (エルサイズ)",
-                "isFavorite": false,
+                "FrontText": "Size L",
+                "BackText": "Lサイズ (エルサイズ)",
+                "IsFavorite": false,
                 "ID": "353"
             },
             {
-                "frontText": "New",
-                "backText": "あたらしい",
-                "isFavorite": false,
+                "FrontText": "New",
+                "BackText": "あたらしい",
+                "IsFavorite": false,
                 "ID": "354"
             },
             {
-                "frontText": "Old (Not for people)",
-                "backText": "ふるい",
-                "isFavorite": false,
+                "FrontText": "Old (Not for people)",
+                "BackText": "ふるい",
+                "IsFavorite": false,
                 "ID": "355"
             },
             {
-                "frontText": "Hot (Weather / Thing)",
-                "backText": "あつい",
-                "isFavorite": false,
+                "FrontText": "Hot (Weather / Thing)",
+                "BackText": "あつい",
+                "IsFavorite": false,
                 "ID": "356"
             },
             {
-                "frontText": "Cold (Weather)",
-                "backText": "さむい",
-                "isFavorite": false,
+                "FrontText": "Cold (Weather)",
+                "BackText": "さむい",
+                "IsFavorite": false,
                 "ID": "357"
             },
             {
-                "frontText": "Busy (People / Days)",
-                "backText": "いそがしい",
-                "isFavorite": false,
+                "FrontText": "Busy (People / Days)",
+                "BackText": "いそがしい",
+                "IsFavorite": false,
                 "ID": "358"
             },
             {
-                "frontText": "Large",
-                "backText": "おおきい",
-                "isFavorite": false,
+                "FrontText": "Large",
+                "BackText": "おおきい",
+                "IsFavorite": false,
                 "ID": "359"
             },
             {
-                "frontText": "Small",
-                "backText": "ちいさい",
-                "isFavorite": false,
+                "FrontText": "Small",
+                "BackText": "ちいさい",
+                "IsFavorite": false,
                 "ID": "360"
             },
             {
-                "frontText": "Interesting / Funny",
-                "backText": "おもしろい",
-                "isFavorite": false,
+                "FrontText": "Interesting / Funny",
+                "BackText": "おもしろい",
+                "IsFavorite": false,
                 "ID": "361"
             },
             {
-                "frontText": "Boring",
-                "backText": "つまらない",
-                "isFavorite": false,
+                "FrontText": "Boring",
+                "BackText": "つまらない",
+                "IsFavorite": false,
                 "ID": "362"
             },
             {
-                "frontText": "Easy (Problem) / Kind (Person)",
-                "backText": "やさしい",
-                "isFavorite": false,
+                "FrontText": "Easy (Problem) / Kind (Person)",
+                "BackText": "やさしい",
+                "IsFavorite": false,
                 "ID": "363"
             },
             {
-                "frontText": "Difficult",
-                "backText": "むずかしい",
-                "isFavorite": false,
+                "FrontText": "Difficult",
+                "BackText": "むずかしい",
+                "IsFavorite": false,
                 "ID": "364"
             },
             {
-                "frontText": "Good-Looking",
-                "backText": "かっこいい",
-                "isFavorite": false,
+                "FrontText": "Good-Looking",
+                "BackText": "かっこいい",
+                "IsFavorite": false,
                 "ID": "365"
             },
             {
-                "frontText": "Frightening",
-                "backText": "こわい",
-                "isFavorite": false,
+                "FrontText": "Frightening",
+                "BackText": "こわい",
+                "IsFavorite": false,
                 "ID": "366"
             },
             {
-                "frontText": "Fun",
-                "backText": "たのしい",
-                "isFavorite": false,
+                "FrontText": "Fun",
+                "BackText": "たのしい",
+                "IsFavorite": false,
                 "ID": "367"
             },
             {
-                "frontText": "Inexpensive (Thing)",
-                "backText": "やすい",
-                "isFavorite": false,
+                "FrontText": "Inexpensive (Thing)",
+                "BackText": "やすい",
+                "IsFavorite": false,
                 "ID": "368"
             },
             {
-                "frontText": "Fond of / To Like",
-                "backText": "すき (な)",
-                "isFavorite": false,
+                "FrontText": "Fond of / To Like",
+                "BackText": "すき (な)",
+                "IsFavorite": false,
                 "ID": "369"
             },
             {
-                "frontText": "Disgusted with / To Dislike",
-                "backText": "きらい (な)",
-                "isFavorite": false,
+                "FrontText": "Disgusted with / To Dislike",
+                "BackText": "きらい (な)",
+                "IsFavorite": false,
                 "ID": "370"
             },
             {
-                "frontText": "Very Fond of / To Love",
-                "backText": "だいすき (な)",
-                "isFavorite": false,
+                "FrontText": "Very Fond of / To Love",
+                "BackText": "だいすき (な)",
+                "IsFavorite": false,
                 "ID": "371"
             },
             {
-                "frontText": "To Hate",
-                "backText": "だいきらい (な)",
-                "isFavorite": false,
+                "FrontText": "To Hate",
+                "BackText": "だいきらい (な)",
+                "IsFavorite": false,
                 "ID": "372"
             },
             {
-                "frontText": "Beautiful / Clean",
-                "backText": "きれい (な)",
-                "isFavorite": false,
+                "FrontText": "Beautiful / Clean",
+                "BackText": "きれい (な)",
+                "IsFavorite": false,
                 "ID": "373"
             },
             {
-                "frontText": "Healthy / Energetic",
-                "backText": "げんき (な)",
-                "isFavorite": false,
+                "FrontText": "Healthy / Energetic",
+                "BackText": "げんき (な)",
+                "IsFavorite": false,
                 "ID": "374"
             },
             {
-                "frontText": "Quiet",
-                "backText": "しずか (な)",
-                "isFavorite": false,
+                "FrontText": "Quiet",
+                "BackText": "しずか (な)",
+                "IsFavorite": false,
                 "ID": "375"
             },
             {
-                "frontText": "Lively",
-                "backText": "にぎやか (な)",
-                "isFavorite": false,
+                "FrontText": "Lively",
+                "BackText": "にぎやか (な)",
+                "IsFavorite": false,
                 "ID": "376"
             },
             {
-                "frontText": "Not Busy / Free (Time)",
-                "backText": "ひま (な)",
-                "isFavorite": false,
+                "FrontText": "Not Busy / Free (Time)",
+                "BackText": "ひま (な)",
+                "IsFavorite": false,
                 "ID": "377"
             },
             {
-                "frontText": "To Swim",
-                "backText": "およぐ",
-                "isFavorite": false,
+                "FrontText": "To Swim",
+                "BackText": "およぐ",
+                "IsFavorite": false,
                 "ID": "378"
             },
             {
-                "frontText": "To Ask",
-                "backText": "きく",
-                "isFavorite": false,
+                "FrontText": "To Ask",
+                "BackText": "きく",
+                "IsFavorite": false,
                 "ID": "379"
             },
             {
-                "frontText": "To Ride / To Board",
-                "backText": "のる",
-                "isFavorite": false,
+                "FrontText": "To Ride / To Board",
+                "BackText": "のる",
+                "IsFavorite": false,
                 "ID": "380"
             },
             {
-                "frontText": "To Do / To Perform",
-                "backText": "やる",
-                "isFavorite": false,
+                "FrontText": "To Do / To Perform",
+                "BackText": "やる",
+                "IsFavorite": false,
                 "ID": "381"
             },
             {
-                "frontText": "To Go Out",
-                "backText": "でかける",
-                "isFavorite": false,
+                "FrontText": "To Go Out",
+                "BackText": "でかける",
+                "IsFavorite": false,
                 "ID": "382"
             },
             {
-                "frontText": "Together",
-                "backText": "いっしょに",
-                "isFavorite": false,
+                "FrontText": "Together",
+                "BackText": "いっしょに",
+                "IsFavorite": false,
                 "ID": "383"
             },
             {
-                "frontText": "Extremely",
-                "backText": "すごく",
-                "isFavorite": false,
+                "FrontText": "Extremely",
+                "BackText": "すごく",
+                "IsFavorite": false,
                 "ID": "384"
             },
             {
-                "frontText": "It's Okay / Not to worry",
-                "backText": "だいじょうぶ",
-                "isFavorite": false,
+                "FrontText": "It's Okay / Not to worry",
+                "BackText": "だいじょうぶ",
+                "IsFavorite": false,
                 "ID": "385"
             },
             {
-                "frontText": "Very",
-                "backText": "とても",
-                "isFavorite": false,
+                "FrontText": "Very",
+                "BackText": "とても",
+                "IsFavorite": false,
                 "ID": "386"
             },
             {
-                "frontText": "What Kind of ...",
-                "backText": "どんな",
-                "isFavorite": false,
+                "FrontText": "What Kind of ...",
+                "BackText": "どんな",
+                "IsFavorite": false,
                 "ID": "387"
             },
             {
-                "frontText": "Counter for flat objects",
-                "backText": "～まい",
-                "isFavorite": false,
+                "FrontText": "Counter for flat objects",
+                "BackText": "～まい",
+                "IsFavorite": false,
                 "ID": "388"
             }
         ]
     },
     {
         "ID": "ljyfkvJGDCLBYJFCjvlgfjhcmjh",
-        "isFavorite": false,
-        "name": "Genki Kanji Lesson 5",
-        "tags": [
+        "IsFavorite": false,
+        "Name": "Genki Kanji Lesson 5",
+        "Tags": [
             "Japanese",
             "Genki"
         ],
-        "cards": [
+        "Cards": [
             {
-                "frontText": "Mountain",
-                "backText": "やま / さん",
-                "isFavorite": false,
+                "FrontText": "Mountain",
+                "BackText": "やま / さん",
+                "IsFavorite": false,
                 "ID": "389"
             },
             {
-                "frontText": "River",
-                "backText": "かわ / がわ",
-                "isFavorite": false,
+                "FrontText": "River",
+                "BackText": "かわ / がわ",
+                "IsFavorite": false,
                 "ID": "390"
             },
             {
-                "frontText": "Origin",
-                "backText": "げん / がん / もと",
-                "isFavorite": false,
+                "FrontText": "Origin",
+                "BackText": "げん / がん / もと",
+                "IsFavorite": false,
                 "ID": "391"
             },
             {
-                "frontText": "Spirit",
-                "backText": "き",
-                "isFavorite": false,
+                "FrontText": "Spirit",
+                "BackText": "き",
+                "IsFavorite": false,
                 "ID": "392"
             },
             {
-                "frontText": "Heaven (Kanji)",
-                "backText": "てん",
-                "isFavorite": false,
+                "FrontText": "Heaven (Kanji)",
+                "BackText": "てん",
+                "IsFavorite": false,
                 "ID": "393"
             },
             {
-                "frontText": "I / Private",
-                "backText": "わたし",
-                "isFavorite": false,
+                "FrontText": "I / Private",
+                "BackText": "わたし",
+                "IsFavorite": false,
                 "ID": "394"
             },
             {
-                "frontText": "Now (Kanji)",
-                "backText": "いま / こん",
-                "isFavorite": false,
+                "FrontText": "Now (Kanji)",
+                "BackText": "いま / こん",
+                "IsFavorite": false,
                 "ID": "395"
             },
             {
-                "frontText": "Rice Field (Kanji)",
-                "backText": "た / だ",
-                "isFavorite": false,
+                "FrontText": "Rice Field (Kanji)",
+                "BackText": "た / だ",
+                "IsFavorite": false,
                 "ID": "396"
             },
             {
-                "frontText": "Woman (Kanji)",
-                "backText": "おんな / じょ",
-                "isFavorite": false,
+                "FrontText": "Woman (Kanji)",
+                "BackText": "おんな / じょ",
+                "IsFavorite": false,
                 "ID": "397"
             },
             {
-                "frontText": "Man (Kanji)",
-                "backText": "おとこ / だん",
-                "isFavorite": false,
+                "FrontText": "Man (Kanji)",
+                "BackText": "おとこ / だん",
+                "IsFavorite": false,
                 "ID": "398"
             },
             {
-                "frontText": "To See (Kanji)",
-                "backText": "けん / み",
-                "isFavorite": false,
+                "FrontText": "To See (Kanji)",
+                "BackText": "けん / み",
+                "IsFavorite": false,
                 "ID": "399"
             },
             {
-                "frontText": "To Go (Kanji)",
-                "backText": "い / こう / ぎょう",
-                "isFavorite": false,
+                "FrontText": "To Go (Kanji)",
+                "BackText": "い / こう / ぎょう",
+                "IsFavorite": false,
                 "ID": "400"
             },
             {
-                "frontText": "To Eat (Kanji)",
-                "backText": "た / しょく",
-                "isFavorite": false,
+                "FrontText": "To Eat (Kanji)",
+                "BackText": "た / しょく",
+                "IsFavorite": false,
                 "ID": "401"
             },
             {
-                "frontText": "To Drink (Kanji)",
-                "backText": "の / いん",
-                "isFavorite": false,
+                "FrontText": "To Drink (Kanji)",
+                "BackText": "の / いん",
+                "IsFavorite": false,
                 "ID": "402"
             },
             {
-                "frontText": "Mt. Fuji",
-                "backText": "ふじさん",
-                "isFavorite": false,
+                "FrontText": "Mt. Fuji",
+                "BackText": "ふじさん",
+                "IsFavorite": false,
                 "ID": "403"
             },
             {
-                "frontText": "Fine",
-                "backText": "げんきな",
-                "isFavorite": false,
+                "FrontText": "Fine",
+                "BackText": "げんきな",
+                "IsFavorite": false,
                 "ID": "404"
             },
             {
-                "frontText": "Electricity / Light",
-                "backText": "でんき",
-                "isFavorite": false,
+                "FrontText": "Electricity / Light",
+                "BackText": "でんき",
+                "IsFavorite": false,
                 "ID": "405"
             },
             {
-                "frontText": "Popularity",
-                "backText": "にんき",
-                "isFavorite": false,
+                "FrontText": "Popularity",
+                "BackText": "にんき",
+                "IsFavorite": false,
                 "ID": "406"
             },
             {
-                "frontText": "Feeling",
-                "backText": "きもち",
-                "isFavorite": false,
+                "FrontText": "Feeling",
+                "BackText": "きもち",
+                "IsFavorite": false,
                 "ID": "407"
             },
             {
-                "frontText": "Heaven",
-                "backText": "てんごく",
-                "isFavorite": false,
+                "FrontText": "Heaven",
+                "BackText": "てんごく",
+                "IsFavorite": false,
                 "ID": "408"
             },
             {
-                "frontText": "Genius",
-                "backText": "てんさい",
-                "isFavorite": false,
+                "FrontText": "Genius",
+                "BackText": "てんさい",
+                "IsFavorite": false,
                 "ID": "409"
             },
             {
-                "frontText": "Japanese Emperor",
-                "backText": "てんのう",
-                "isFavorite": false,
+                "FrontText": "Japanese Emperor",
+                "BackText": "てんのう",
+                "IsFavorite": false,
                 "ID": "410"
             },
             {
-                "frontText": "Private University",
-                "backText": "しりつだいがく",
-                "isFavorite": false,
+                "FrontText": "Private University",
+                "BackText": "しりつだいがく",
+                "IsFavorite": false,
                 "ID": "411"
             },
             {
-                "frontText": "Rice Field",
-                "backText": "たんぼ",
-                "isFavorite": false,
+                "FrontText": "Rice Field",
+                "BackText": "たんぼ",
+                "IsFavorite": false,
                 "ID": "412"
             },
             {
-                "frontText": "Woman",
-                "backText": "おんなのひと / じょせい",
-                "isFavorite": false,
+                "FrontText": "Woman",
+                "BackText": "おんなのひと / じょせい",
+                "IsFavorite": false,
                 "ID": "413"
             },
             {
-                "frontText": "Girl",
-                "backText": "おんなのこ",
-                "isFavorite": false,
+                "FrontText": "Girl",
+                "BackText": "おんなのこ",
+                "IsFavorite": false,
                 "ID": "414"
             },
             {
-                "frontText": "Eldest Daughter",
-                "backText": "ちょうじょ",
-                "isFavorite": false,
+                "FrontText": "Eldest Daughter",
+                "BackText": "ちょうじょ",
+                "IsFavorite": false,
                 "ID": "415"
             },
             {
-                "frontText": "Man",
-                "backText": "おとこのひと / だんせい",
-                "isFavorite": false,
+                "FrontText": "Man",
+                "BackText": "おとこのひと / だんせい",
+                "IsFavorite": false,
                 "ID": "416"
             },
             {
-                "frontText": "Boy",
-                "backText": "おとこのこ",
-                "isFavorite": false,
+                "FrontText": "Boy",
+                "BackText": "おとこのこ",
+                "IsFavorite": false,
                 "ID": "417"
             },
             {
-                "frontText": "Male Student",
-                "backText": "だんしがくせい",
-                "isFavorite": false,
+                "FrontText": "Male Student",
+                "BackText": "だんしがくせい",
+                "IsFavorite": false,
                 "ID": "418"
             },
             {
-                "frontText": "To See",
-                "backText": "みる",
-                "isFavorite": false,
+                "FrontText": "To See",
+                "BackText": "みる",
+                "IsFavorite": false,
                 "ID": "419"
             },
             {
-                "frontText": "Sightseeing",
-                "backText": "けんぶつ",
-                "isFavorite": false,
+                "FrontText": "Sightseeing",
+                "BackText": "けんぶつ",
+                "IsFavorite": false,
                 "ID": "420"
             },
             {
-                "frontText": "Flower Viewing",
-                "backText": "はなみ",
-                "isFavorite": false,
+                "FrontText": "Flower Viewing",
+                "BackText": "はなみ",
+                "IsFavorite": false,
                 "ID": "421"
             },
             {
-                "frontText": "Opinion",
-                "backText": "いけん",
-                "isFavorite": false,
+                "FrontText": "Opinion",
+                "BackText": "いけん",
+                "IsFavorite": false,
                 "ID": "422"
             },
             {
-                "frontText": "First Line",
-                "backText": "いちぎょうめ",
-                "isFavorite": false,
+                "FrontText": "First Line",
+                "BackText": "いちぎょうめ",
+                "IsFavorite": false,
                 "ID": "423"
             },
             {
-                "frontText": "Cafeteria",
-                "backText": "しょくどう",
-                "isFavorite": false,
+                "FrontText": "Cafeteria",
+                "BackText": "しょくどう",
+                "IsFavorite": false,
                 "ID": "424"
             },
             {
-                "frontText": "Meal",
-                "backText": "しょくじ",
-                "isFavorite": false,
+                "FrontText": "Meal",
+                "BackText": "しょくじ",
+                "IsFavorite": false,
                 "ID": "425"
             },
             {
-                "frontText": "Breakfast",
-                "backText": "ちょうしょく",
-                "isFavorite": false,
+                "FrontText": "Breakfast",
+                "BackText": "ちょうしょく",
+                "IsFavorite": false,
                 "ID": "426"
             },
             {
-                "frontText": "Drunken Driving",
-                "backText": "いんしゅうんてん",
-                "isFavorite": false,
+                "FrontText": "Drunken Driving",
+                "BackText": "いんしゅうんてん",
+                "IsFavorite": false,
                 "ID": "427"
             }
         ]
     },
     {
         "ID": "iasunfgaisnfdiasnf",
-        "isFavorite": false,
-        "name": "Genki Lesson 6",
-        "tags": [
+        "IsFavorite": false,
+        "Name": "Genki Lesson 6",
+        "Tags": [
             "Japanese",
             "Genki"
         ],
-        "cards": [
+        "Cards": [
             {
-                "frontText": "Kanji",
-                "backText": "かんじ",
-                "isFavorite": false,
+                "FrontText": "Kanji",
+                "BackText": "かんじ",
+                "IsFavorite": false,
                 "ID": "428"
             },
             {
-                "frontText": "Textbook",
-                "backText": "きょうかしょ",
-                "isFavorite": false,
+                "FrontText": "Textbook",
+                "BackText": "きょうかしょ",
+                "IsFavorite": false,
                 "ID": "429"
             },
             {
-                "frontText": "Page",
-                "backText": "ページ",
-                "isFavorite": false,
+                "FrontText": "Page",
+                "BackText": "ページ",
+                "IsFavorite": false,
                 "ID": "430"
             },
             {
-                "frontText": "Next (ordinal)",
-                "backText": "つぎ",
-                "isFavorite": false,
+                "FrontText": "Next (ordinal)",
+                "BackText": "つぎ",
+                "IsFavorite": false,
                 "ID": "431"
             },
             {
-                "frontText": "Money",
-                "backText": "おかね",
-                "isFavorite": false,
+                "FrontText": "Money",
+                "BackText": "おかね",
+                "IsFavorite": false,
                 "ID": "432"
             },
             {
-                "frontText": "Baggage",
-                "backText": "にもつ",
-                "isFavorite": false,
+                "FrontText": "Baggage",
+                "BackText": "にもつ",
+                "IsFavorite": false,
                 "ID": "433"
             },
             {
-                "frontText": "Personal Computer",
-                "backText": "パソコン",
-                "isFavorite": false,
+                "FrontText": "Personal Computer",
+                "BackText": "パソコン",
+                "IsFavorite": false,
                 "ID": "434"
             },
             {
-                "frontText": "Shower",
-                "backText": "シャワー",
-                "isFavorite": false,
+                "FrontText": "Shower",
+                "BackText": "シャワー",
+                "IsFavorite": false,
                 "ID": "435"
             },
             {
-                "frontText": "Air Conditioner",
-                "backText": "エアコン",
-                "isFavorite": false,
+                "FrontText": "Air Conditioner",
+                "BackText": "エアコン",
+                "IsFavorite": false,
                 "ID": "436"
             },
             {
-                "frontText": "Train",
-                "backText": "でんしゃ",
-                "isFavorite": false,
+                "FrontText": "Train",
+                "BackText": "でんしゃ",
+                "IsFavorite": false,
                 "ID": "437"
             },
             {
-                "frontText": "Country / Place of Origin",
-                "backText": "くに",
-                "isFavorite": false,
+                "FrontText": "Country / Place of Origin",
+                "BackText": "くに",
+                "IsFavorite": false,
                 "ID": "438"
             },
             {
-                "frontText": "Night",
-                "backText": "よる",
-                "isFavorite": false,
+                "FrontText": "Night",
+                "BackText": "よる",
+                "IsFavorite": false,
                 "ID": "439"
             },
             {
-                "frontText": "Tough (Situation)",
-                "backText": "たいへん (な)",
-                "isFavorite": false,
+                "FrontText": "Tough (Situation)",
+                "BackText": "たいへん (な)",
+                "IsFavorite": false,
                 "ID": "440"
             },
             {
-                "frontText": "To Play / To spend time plesantly",
-                "backText": "あそぶ",
-                "isFavorite": false,
+                "FrontText": "To Play / To spend time plesantly",
+                "BackText": "あそぶ",
+                "IsFavorite": false,
                 "ID": "441"
             },
             {
-                "frontText": "To Hurry",
-                "backText": "いそぐ",
-                "isFavorite": false,
+                "FrontText": "To Hurry",
+                "BackText": "いそぐ",
+                "IsFavorite": false,
                 "ID": "442"
             },
             {
-                "frontText": "To Return (a thing)",
-                "backText": "かえす",
-                "isFavorite": false,
+                "FrontText": "To Return (a thing)",
+                "BackText": "かえす",
+                "IsFavorite": false,
                 "ID": "443"
             },
             {
-                "frontText": "To turn off / To erase",
-                "backText": "けす",
-                "isFavorite": false,
+                "FrontText": "To turn off / To erase",
+                "BackText": "けす",
+                "IsFavorite": false,
                 "ID": "444"
             },
             {
-                "frontText": "To die",
-                "backText": "しぬ",
-                "isFavorite": false,
+                "FrontText": "To die",
+                "BackText": "しぬ",
+                "IsFavorite": false,
                 "ID": "445"
             },
             {
-                "frontText": "To sit down",
-                "backText": "すわる",
-                "isFavorite": false,
+                "FrontText": "To sit down",
+                "BackText": "すわる",
+                "IsFavorite": false,
                 "ID": "446"
             },
             {
-                "frontText": "To stand up",
-                "backText": "たつ",
-                "isFavorite": false,
+                "FrontText": "To stand up",
+                "BackText": "たつ",
+                "IsFavorite": false,
                 "ID": "447"
             },
             {
-                "frontText": "To smoke",
-                "backText": "たばこをすう",
-                "isFavorite": false,
+                "FrontText": "To smoke",
+                "BackText": "たばこをすう",
+                "IsFavorite": false,
                 "ID": "448"
             },
             {
-                "frontText": "To use",
-                "backText": "つかう",
-                "isFavorite": false,
+                "FrontText": "To use",
+                "BackText": "つかう",
+                "IsFavorite": false,
                 "ID": "449"
             },
             {
-                "frontText": "To help",
-                "backText": "てつだう",
-                "isFavorite": false,
+                "FrontText": "To help",
+                "BackText": "てつだう",
+                "IsFavorite": false,
                 "ID": "450"
             },
             {
-                "frontText": "To enter",
-                "backText": "はいる",
-                "isFavorite": false,
+                "FrontText": "To enter",
+                "BackText": "はいる",
+                "IsFavorite": false,
                 "ID": "451"
             },
             {
-                "frontText": "To carry / To hold",
-                "backText": "もつ",
-                "isFavorite": false,
+                "FrontText": "To carry / To hold",
+                "BackText": "もつ",
+                "IsFavorite": false,
                 "ID": "452"
             },
             {
-                "frontText": "To be absent from ... / To rest",
-                "backText": "やすむ",
-                "isFavorite": false,
+                "FrontText": "To be absent from ... / To rest",
+                "BackText": "やすむ",
+                "IsFavorite": false,
                 "ID": "453"
             },
             {
-                "frontText": "To open",
-                "backText": "あける",
-                "isFavorite": false,
+                "FrontText": "To open",
+                "BackText": "あける",
+                "IsFavorite": false,
                 "ID": "454"
             },
             {
-                "frontText": "To close",
-                "backText": "しめる",
-                "isFavorite": false,
+                "FrontText": "To close",
+                "BackText": "しめる",
+                "IsFavorite": false,
                 "ID": "455"
             },
             {
-                "frontText": "To teach / To instruct",
-                "backText": "おしえる",
-                "isFavorite": false,
+                "FrontText": "To teach / To instruct",
+                "BackText": "おしえる",
+                "IsFavorite": false,
                 "ID": "456"
             },
             {
-                "frontText": "To forget / To leave behind",
-                "backText": "わすれる",
-                "isFavorite": false,
+                "FrontText": "To forget / To leave behind",
+                "BackText": "わすれる",
+                "IsFavorite": false,
                 "ID": "457"
             },
             {
-                "frontText": "To get off",
-                "backText": "おりる",
-                "isFavorite": false,
+                "FrontText": "To get off",
+                "BackText": "おりる",
+                "IsFavorite": false,
                 "ID": "458"
             },
             {
-                "frontText": "To borrow",
-                "backText": "かりる",
-                "isFavorite": false,
+                "FrontText": "To borrow",
+                "BackText": "かりる",
+                "IsFavorite": false,
                 "ID": "459"
             },
             {
-                "frontText": "To take a shower",
-                "backText": "シャワーをあびる",
-                "isFavorite": false,
+                "FrontText": "To take a shower",
+                "BackText": "シャワーをあびる",
+                "IsFavorite": false,
                 "ID": "460"
             },
             {
-                "frontText": "To turn on",
-                "backText": "つける",
-                "isFavorite": false,
+                "FrontText": "To turn on",
+                "BackText": "つける",
+                "IsFavorite": false,
                 "ID": "461"
             },
             {
-                "frontText": "To call",
-                "backText": "でんわする",
-                "isFavorite": false,
+                "FrontText": "To call",
+                "BackText": "でんわする",
+                "IsFavorite": false,
                 "ID": "462"
             },
             {
-                "frontText": "To bring (a person)",
-                "backText": "つれてくる",
-                "isFavorite": false,
+                "FrontText": "To bring (a person)",
+                "BackText": "つれてくる",
+                "IsFavorite": false,
                 "ID": "463"
             },
             {
-                "frontText": "To bring (a thing)",
-                "backText": "もってくる",
-                "isFavorite": false,
+                "FrontText": "To bring (a thing)",
+                "BackText": "もってくる",
+                "IsFavorite": false,
                 "ID": "464"
             },
             {
-                "frontText": "Later on",
-                "backText": "おとで",
-                "isFavorite": false,
+                "FrontText": "Later on",
+                "BackText": "おとで",
+                "IsFavorite": false,
                 "ID": "465"
             },
             {
-                "frontText": "Right away",
-                "backText": "すぐ",
-                "isFavorite": false,
+                "FrontText": "Right away",
+                "BackText": "すぐ",
+                "IsFavorite": false,
                 "ID": "466"
             },
             {
-                "frontText": "Slowly / Leisurely / Unhurriedly",
-                "backText": "ゆっくり",
-                "isFavorite": false,
+                "FrontText": "Slowly / Leisurely / Unhurriedly",
+                "BackText": "ゆっくり",
+                "IsFavorite": false,
                 "ID": "467"
             },
             {
-                "frontText": "That would be fine / That wouldn't be necessary",
-                "backText": "けっこです",
-                "isFavorite": false,
+                "FrontText": "That would be fine / That wouldn't be necessary",
+                "BackText": "けっこです",
+                "IsFavorite": false,
                 "ID": "468"
             },
             {
-                "frontText": "Really?",
-                "backText": "ほんとですか",
-                "isFavorite": false,
+                "FrontText": "Really?",
+                "BackText": "ほんとですか",
+                "IsFavorite": false,
                 "ID": "469"
             }
         ]

@@ -34,3 +34,8 @@ div{
     margin: 0.1em;
     background-color: #F5F5F5;
 }
+
+.card{
+    display: flex;
+    justify-content: center;
+}

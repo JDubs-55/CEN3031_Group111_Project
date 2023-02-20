@@ -1,16 +1,25 @@
 
 
+export function isCardData(object: Object): boolean{
+    let hasFrontText = "FrontText" in object;
+    let hasBackText = "BackText" in object;
+    let hasID = "ID" in object;
+    let hasIsFavorite = "IsFavorite" in object;
+
+    return hasFrontText && hasBackText && hasID && hasIsFavorite;
+}
+
 export interface CardData{
-    frontText: string;
-    backText: string;
+    FrontText: string;
+    BackText: string;
     ID: string;
-    isFavorite: boolean;
+    IsFavorite: boolean;
 }
 
 
 export interface PartialCardData{
-    frontText?: string;
-    backText?: string;
+    FrontText?: string;
+    BackText?: string;
     ID: string;
-    isFavorite?: boolean;
+    IsFavorite?: boolean;
 }

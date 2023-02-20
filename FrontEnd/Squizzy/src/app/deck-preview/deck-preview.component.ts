@@ -72,8 +72,8 @@ export class DeckPreviewComponent {
 
   updateText(): void{
     if(this.deck != undefined){
-      this.frontTexts = Object.values(this.deck.cards).map(card=>card.frontText);
-      this.backTexts = Object.values(this.deck.cards).map(card=>card.backText);
+      this.frontTexts = Object.values(this.deck.cards).map(card=>card.FrontText);
+      this.backTexts = Object.values(this.deck.cards).map(card=>card.BackText);
 
       if(this.frontTexts.length == 0){
         this.frontTexts = ["This deck has no cards"];

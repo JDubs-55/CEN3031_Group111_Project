@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { DeckManagerService } from './deck-manager.service';
 
-import { DeckData } from './MyClasses/DeckData';
+import { DeckData, isDeckData } from './MyClasses/DeckData';
 import { Deck } from './MyClasses/Deck';
 import { CardData } from './MyClasses/CardData';
 
@@ -27,5 +27,17 @@ export class AppComponent {
 
     console.log(data);
     
+  }
+
+  httpTest(): void{
+    if(this.deckManager.allDeckNames.includes("Test Deck")){
+      this.deckManager.deleteDecks(this.deckManager.getIDsByName("Test Deck"));
+    }else{
+      this.deckManager.generateDeck().then(deck=>{
+        deck.name = "Test Deck";
+        this.deckManager.saveDirty();
+      });
+      
+    }
   }
 }

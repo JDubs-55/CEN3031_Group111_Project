@@ -6,38 +6,38 @@ describe('Deck', () => {
 
     let defaultData: DeckData = {
         ID: "01",
-        isFavorite: true,
-        name: "this is a name",
-        tags: ["tag 1", "tag1"],
-        cards: [{
+        IsFavorite: true,
+        Name: "this is a name",
+        Tags: ["tag 1", "tag1"],
+        Cards: [{
             ID: "01",
-            isFavorite: false,
-            frontText: "front",
-            backText: "back"
+            IsFavorite: false,
+            FrontText: "front",
+            BackText: "back"
         }, {
             ID: "02",
-            isFavorite: true,
-            frontText: "front2",
-            backText: "back2"
+            IsFavorite: true,
+            FrontText: "front2",
+            BackText: "back2"
         }]
     };
 
     beforeEach(()=>{
         defaultData = {
             ID: "01",
-            isFavorite: true,
-            name: "this is a name",
-            tags: ["tag 1", "tag1"],
-            cards: [{
+            IsFavorite: true,
+            Name: "this is a name",
+            Tags: ["tag 1", "tag1"],
+            Cards: [{
                 ID: "01",
-                isFavorite: false,
-                frontText: "front",
-                backText: "back"
+                IsFavorite: false,
+                FrontText: "front",
+                BackText: "back"
             }, {
                 ID: "02",
-                isFavorite: true,
-                frontText: "front2",
-                backText: "back2"
+                IsFavorite: true,
+                FrontText: "front2",
+                BackText: "back2"
             }]
         }
     })
@@ -52,7 +52,7 @@ describe('Deck', () => {
 
     it("Should be able to edit cards", ()=>{
         let deck = new Deck(defaultData);
-        deck.editCard({ID:"01", frontText: "changed front text", backText: "changed back text", isFavorite: true});
+        deck.editCard({ID:"01", FrontText: "changed front text", BackText: "changed back text", IsFavorite: true});
 
         expect(deck.ID).toEqual("01");
         expect(deck.isFavorite).toEqual(true);
@@ -61,15 +61,15 @@ describe('Deck', () => {
         expect(deck.cards).toEqual({
             "01": {
                 ID: "01",
-                isFavorite: true,
-                frontText: "changed front text",
-                backText: "changed back text"
+                IsFavorite: true,
+                FrontText: "changed front text",
+                BackText: "changed back text"
             },
             "02":{
                 ID: "02",
-                isFavorite: true,
-                frontText: "front2",
-                backText: "back2"
+                IsFavorite: true,
+                FrontText: "front2",
+                BackText: "back2"
             }
         });
 
@@ -77,7 +77,7 @@ describe('Deck', () => {
 
     it("Should be able to partially edit cards", ()=>{
         let deck = new Deck(defaultData);
-        deck.editCard({ID:"01", frontText: "changed front text"});
+        deck.editCard({ID:"01", FrontText: "changed front text"});
 
         expect(deck.ID).toEqual("01");
         expect(deck.isFavorite).toEqual(true);
@@ -86,15 +86,15 @@ describe('Deck', () => {
         expect(deck.cards).toEqual({
             "01": {
                 ID: "01",
-                isFavorite: false,
-                frontText: "changed front text",
-                backText: "back"
+                IsFavorite: false,
+                FrontText: "changed front text",
+                BackText: "back"
             },
             "02":{
                 ID: "02",
-                isFavorite: true,
-                frontText: "front2",
-                backText: "back2"
+                IsFavorite: true,
+                FrontText: "front2",
+                BackText: "back2"
             }
         });
 
@@ -112,15 +112,15 @@ describe('Deck', () => {
         expect(deck.cards).toEqual({
             "01": {
                 ID: "01",
-                isFavorite: false,
-                frontText: "front",
-                backText: "back"
+                IsFavorite: false,
+                FrontText: "front",
+                BackText: "back"
             },
             "02":{
                 ID: "02",
-                isFavorite: true,
-                frontText: "front2",
-                backText: "back2"
+                IsFavorite: true,
+                FrontText: "front2",
+                BackText: "back2"
             }
         });
 
@@ -137,15 +137,15 @@ describe('Deck', () => {
         expect(deck.cards).toEqual({
             "01": {
                 ID: "01",
-                isFavorite: false,
-                frontText: "front",
-                backText: "back"
+                IsFavorite: false,
+                FrontText: "front",
+                BackText: "back"
             },
             "02":{
                 ID: "02",
-                isFavorite: true,
-                frontText: "front2",
-                backText: "back2"
+                IsFavorite: true,
+                FrontText: "front2",
+                BackText: "back2"
             }
         });
 
@@ -154,10 +154,10 @@ describe('Deck', () => {
     it("Should be able to add cards", ()=>{
         let deck = new Deck(defaultData);
         deck.addCard({
-            frontText: "new Front",
-            backText: "new Back",
+            FrontText: "new Front",
+            BackText: "new Back",
             ID:"aisrhoa",
-            isFavorite: false
+            IsFavorite: false
         });
 
         expect(deck.ID).toEqual("01");
@@ -167,21 +167,21 @@ describe('Deck', () => {
         expect(deck.cards).toEqual({
             "01": {
                 ID: "01",
-                isFavorite: false,
-                frontText: "front",
-                backText: "back"
+                IsFavorite: false,
+                FrontText: "front",
+                BackText: "back"
             },
             "02":{
                 ID: "02",
-                isFavorite: true,
-                frontText: "front2",
-                backText: "back2"
+                IsFavorite: true,
+                FrontText: "front2",
+                BackText: "back2"
             },
             "aisrhoa":{
-                frontText: "new Front",
-                backText: "new Back",
+                FrontText: "new Front",
+                BackText: "new Back",
                 ID:"aisrhoa",
-                isFavorite: false
+                IsFavorite: false
             }
         });
 
@@ -200,9 +200,9 @@ describe('Deck', () => {
         expect(deck.cards).toEqual({
             "02":{
                 ID: "02",
-                isFavorite: true,
-                frontText: "front2",
-                backText: "back2"
+                IsFavorite: true,
+                FrontText: "front2",
+                BackText: "back2"
             }
         });
 
@@ -219,15 +219,15 @@ describe('Deck', () => {
         expect(deck.cards).toEqual({
             "01":{
                 ID: "01",
-                isFavorite: false,
-                frontText: "front",
-                backText: "back"
+                IsFavorite: false,
+                FrontText: "front",
+                BackText: "back"
             },
             "02":{
                 ID: "02",
-                isFavorite: true,
-                frontText: "front2",
-                backText: "back2"
+                IsFavorite: true,
+                FrontText: "front2",
+                BackText: "back2"
             }
         });
     })
@@ -243,15 +243,15 @@ describe('Deck', () => {
         expect(deck.cards).toEqual({
             "01":{
                 ID: "01",
-                isFavorite: false,
-                frontText: "front",
-                backText: "back"
+                IsFavorite: false,
+                FrontText: "front",
+                BackText: "back"
             },
             "02":{
                 ID: "02",
-                isFavorite: true,
-                frontText: "front2",
-                backText: "back2"
+                IsFavorite: true,
+                FrontText: "front2",
+                BackText: "back2"
             }
         });
     })

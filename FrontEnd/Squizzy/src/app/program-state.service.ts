@@ -11,7 +11,13 @@ export class ProgramStateService {
   private _selectedDeck = new BehaviorSubject<Deck | undefined>(undefined);
 
 
-  constructor(private deckManager: DeckManagerService) { }
+  constructor(private deckManager: DeckManagerService) {
+    this.deckManager.onUnloadDeck.subscribe(deck=>{
+      if(this.selectedDeck == deck){
+        this.selectedDeck = undefined;
+      }
+    })
+   }
 
 
   getCardList(): readonly CardData[]{
