@@ -12,29 +12,29 @@ import (
 )
 
 type Card struct {
-	ID         string
-	FrontText  string
-	BackText   string
-	IsFavorite bool
+	ID         string `json:"id"`
+	FrontText  string `json:"frontText"`
+	BackText   string `json:"backText"`
+	IsFavorite bool   `json:"isFavorite"`
 }
 
 type Deck struct {
-	ID         string
-	Name       string
-	Tags       []string
-	IsFavorite bool
-	Cards      []Card
+	ID         string   `json:"id"`
+	Name       string   `json:"name"`
+	Tags       []string `json:"tags"`
+	IsFavorite bool     `json:"isFavorite"`
+	Cards      []Card   `json:"cards"`
 }
 
 type User struct {
-	Username string
+	Username string `json:"username"`
 	ID       string `json:"id,omitempty"`
-	Decks    []Deck
+	Decks    []Deck `json:"decks"`
 }
 
 type DeckListItem struct {
-	ID   string
-	Name string
+	ID   string `json:"id"`
+	Name string `json:"name"`
 }
 
 var client *firestore.Client
@@ -51,6 +51,211 @@ func init() {
 		log.Fatalf("Failed to create client: %v", err)
 	}
 
+}
+
+// Basic Deck CRUD Operations
+
+func CreateDeck() (string, error) {
+	ctx := context.Background()
+	var deck Deck
+	ref := client.Collection("Decks").NewDoc()
+	fmt.Print(ref.ID)
+	deck.ID = ref.ID
+	_, err := ref.Set(ctx, deck)
+
+	if err != nil {
+		log.Printf("An error has occured: %s", err)
+		return "", err
+	}
+
+	return deck.ID, nil
+}
+
+func GetAllDecks() ([]string, error) {
+
+	ctx := context.Background()
+
+	iter := client.Collection("Decks").Documents(ctx)
+
+	nameMap := make(map[string]string)
+	var deckNames []string
+	var err error
+
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			fmt.Println("Finished retrieving decks.")
+			break
+		}
+
+		deck, err2 := GetDeckByID(doc.Ref.ID)
+		if err2 != nil {
+			fmt.Println("Error retrieving deck " + doc.Ref.ID)
+		}
+
+		var deckName string = deck["Name"].(string)
+		if deckName != "" {
+			nameMap[deckName] = deckName
+		}
+
+	}
+
+	for _, v := range nameMap {
+		deckNames = append(deckNames, v)
+	}
+
+	return deckNames, err
+}
+
+func GetDeckByID(docID string) (map[string]interface{}, error) {
+
+	ctx := context.Background()
+
+	docSnap, err := client.Collection("Decks").Doc(docID).Get(ctx)
+	if err != nil {
+		return nil, err
+	} else {
+		fmt.Print("Error getting deck")
+	}
+
+	var data map[string]interface{}
+	err = docSnap.DataTo(&data)
+
+	if err != nil {
+		return nil, err
+	}
+	return data, nil
+}
+
+func UpdateDeck(deckID string, deck Deck) error {
+	ctx := context.Background()
+	_, err := client.Collection("Decks").Doc(deckID).Set(ctx, deck)
+
+	if err != nil {
+		fmt.Print(err)
+		return err
+	}
+
+	return nil
+}
+
+func RemoveDeckByID(docID string) error {
+
+	ctx := context.Background()
+	_, err := client.Collection("Decks").Doc(docID).Delete(ctx)
+	if err != nil {
+		fmt.Println("Error removing deck.")
+		return err
+	}
+
+	return nil
+}
+
+func GetDeckList(name string) ([]DeckListItem, error) {
+	ctx := context.Background()
+	var deckItems []DeckListItem
+
+	iter := client.Collection("Decks").Where("Name", "==", name).Documents(ctx)
+
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+
+		var data map[string]interface{}
+		doc.DataTo(&data)
+
+		var deckData = new(DeckListItem)
+		deckData.ID = data["ID"].(string)
+		deckData.Name = data["Name"].(string)
+
+		deckItems = append(deckItems, *deckData)
+	}
+
+	return deckItems, nil
+}
+
+// More specific deck endpoints
+
+func UpdateDeckInfo(docID string, param string, value string) error {
+
+	ctx := context.Background()
+
+	_, err := client.Collection("Decks").Doc(docID).Update(ctx, []firestore.Update{
+		{
+			Path:  param,
+			Value: value,
+		},
+	})
+	if err != nil {
+		fmt.Print("Error updating deck information.")
+		return err
+	}
+
+	return nil
+}
+
+// TODO: CHANGE NAME TO UpdateCards
+// Will handle creating and updating info since this function will replace all cards each time
+// Need to figure out how to add just 1 card... maybe?
+func CreateCard(card []Card, deckID string) error {
+	ctx := context.Background()
+
+	_, err := client.Collection("Decks").Doc(deckID).Set(ctx, map[string]interface{}{
+		"Cards": card,
+	}, firestore.MergeAll)
+
+	if err != nil {
+		fmt.Print("Error updating deck information.")
+		return err
+	}
+
+	return err
+}
+
+func UpdateDeckTags(deckID string, tags []string) error {
+	ctx := context.Background()
+
+	_, err := client.Collection("Decks").Doc(deckID).Set(ctx, map[string]interface{}{
+		"Tags": tags,
+	}, firestore.MergeAll)
+
+	if err != nil {
+		fmt.Print("Error updating deck tags.")
+		return err
+	}
+
+	return err
+}
+
+func RemoveCardByID(deckID string, cardID string) error {
+
+	ctx := context.Background()
+	iter := client.Collection("Decks").Doc(deckID).Collection("Cards").Documents(ctx)
+
+	batch := client.Batch()
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			fmt.Println("Card not found.")
+			break
+		}
+		if err != nil {
+			fmt.Println("Error removing card.")
+			return err
+		}
+		if doc.Ref.ID == cardID {
+			fmt.Println("yay")
+		}
+	}
+
+	batch.Commit(ctx)
+
+	return nil
 }
 
 // User Functions
@@ -115,168 +320,6 @@ func RemoveUserById(userID string) error {
 	}
 
 	return nil
-}
-
-func CreateDeck(deck Deck, deckID string) error {
-	ctx := context.Background()
-	_, err := client.Collection("Decks").Doc(deckID).Set(ctx, deck)
-	return err
-}
-
-// TODO: CHANGE NAME TO UpdateCards
-// Will handle creating and updating info since this function will replace all cards each time
-// Need to figure out how to add just 1 card... maybe?
-func CreateCard(card []Card, deckID string) error {
-	ctx := context.Background()
-
-	_, err := client.Collection("Decks").Doc(deckID).Set(ctx, map[string]interface{}{
-		"Cards": card,
-	}, firestore.MergeAll)
-
-	if err != nil {
-		fmt.Print("Error updating deck information.")
-		return err
-	}
-
-	return err
-}
-
-func GetDeckByID(docID string) (map[string]interface{}, error) {
-
-	ctx := context.Background()
-
-	docSnap, err := client.Collection("Decks").Doc(docID).Get(ctx)
-	if err != nil {
-		return nil, err
-	} else {
-		fmt.Print("Error getting deck")
-	}
-
-	var data map[string]interface{}
-	err = docSnap.DataTo(&data)
-
-	if err != nil {
-		return nil, err
-	}
-	return data, nil
-}
-
-func GetAllDecks() ([]string, error) {
-
-	ctx := context.Background()
-
-	iter := client.Collection("Decks").Documents(ctx)
-
-	nameMap := make(map[string]string)
-	var deckNames []string
-	var err error
-
-	for {
-		doc, err := iter.Next()
-		if err == iterator.Done {
-			fmt.Println("Finished retrieving decks.")
-			break
-		}
-
-		deck, err2 := GetDeckByID(doc.Ref.ID)
-		if err2 != nil {
-			fmt.Println("Error retrieving deck " + doc.Ref.ID)
-		}
-
-		var deckName string = deck["Name"].(string)
-		nameMap[deckName] = deckName
-	}
-
-	for _, v := range nameMap {
-		deckNames = append(deckNames, v)
-	}
-
-	return deckNames, err
-}
-
-func RemoveDeckByID(docID string) error {
-
-	ctx := context.Background()
-	_, err := client.Collection("Decks").Doc(docID).Delete(ctx)
-	if err != nil {
-		fmt.Println("Error removing deck.")
-		return err
-	}
-
-	return nil
-}
-
-func RemoveCardByID(deckID string, cardID string) error {
-
-	ctx := context.Background()
-	iter := client.Collection("Decks").Doc(deckID).Collection("Cards").Documents(ctx)
-
-	batch := client.Batch()
-	for {
-		doc, err := iter.Next()
-		if err == iterator.Done {
-			fmt.Println("Card not found.")
-			break
-		}
-		if err != nil {
-			fmt.Println("Error removing card.")
-			return err
-		}
-		if doc.Ref.ID == cardID {
-			fmt.Println("yay")
-		}
-	}
-
-	batch.Commit(ctx)
-
-	return nil
-}
-
-func UpdateDeckInfo(docID string, param string, value string) error {
-
-	ctx := context.Background()
-
-	_, err := client.Collection("Decks").Doc(docID).Update(ctx, []firestore.Update{
-		{
-			Path:  param,
-			Value: value,
-		},
-	})
-	if err != nil {
-		fmt.Print("Error updating deck information.")
-		return err
-	}
-
-	return nil
-}
-
-func GetDeckList(name string) ([]DeckListItem, error) {
-	ctx := context.Background()
-	var deckItems []DeckListItem
-
-	iter := client.Collection("Decks").Where("Name", "==", name).Documents(ctx)
-
-	for {
-		doc, err := iter.Next()
-		if err == iterator.Done {
-			break
-		}
-		if err != nil {
-			return nil, err
-		}
-
-		var data map[string]interface{}
-		doc.DataTo(&data)
-
-		var deckData = new(DeckListItem)
-		deckData.ID = data["ID"].(string)
-		deckData.Name = data["Name"].(string)
-
-		deckItems = append(deckItems, *deckData)
-	}
-
-	return deckItems, nil
-
 }
 
 //Template Code
