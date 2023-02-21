@@ -77,30 +77,30 @@ When using this endpoint, replace the ```{id}``` with the id of the deck.
 Successful Response:
 ```
 {
-    "Cards": [
+    "cards": [
         {
-            "BackText": "back",
-            "FrontText": "front",
-            "ID": "card1",
-            "IsFavorite": false
+            "backText": "back",
+            "frontText": "front",
+            "id": "card1",
+            "isFavorite": false
         },
         {
-            "BackText": "back2",
-            "FrontText": "front2",
-            "ID": "card2",
-            "IsFavorite": true
+            "backText": "back2",
+            "frontText": "front2",
+            "id": "card2",
+            "isFavorite": true
         },
         {
-            "BackText": "back3",
-            "FrontText": "front3",
-            "ID": "card3",
-            "IsFavorite": false
+            "backText": "back3",
+            "frontText": "front3",
+            "id": "card3",
+            "isFavorite": false
         }
     ],
-    "ID": "03",
-    "IsFavorite": true,
-    "Name": "My Deck",
-    "Tags": null
+    "id": "03",
+    "isFavorite": true,
+    "name": "My Deck",
+    "tags": null
 }
 ```
 
