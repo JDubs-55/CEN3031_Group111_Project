@@ -93,7 +93,7 @@ func GetAllDecks() ([]string, error) {
 			fmt.Println("Error retrieving deck " + doc.Ref.ID)
 		}
 
-		var deckName string = deck["Name"].(string)
+		var deckName string = deck.Name
 		if deckName != "" {
 			nameMap[deckName] = deckName
 		}
@@ -107,7 +107,7 @@ func GetAllDecks() ([]string, error) {
 	return deckNames, err
 }
 
-func GetDeckByID(docID string) (map[string]interface{}, error) {
+func GetDeckByID(docID string) (*Deck, error) {
 
 	ctx := context.Background()
 
@@ -118,12 +118,13 @@ func GetDeckByID(docID string) (map[string]interface{}, error) {
 		fmt.Print("Error getting deck")
 	}
 
-	var data map[string]interface{}
-	err = docSnap.DataTo(&data)
+	data := &Deck{}
+	err = docSnap.DataTo(data)
 
 	if err != nil {
 		return nil, err
 	}
+
 	return data, nil
 }
 
