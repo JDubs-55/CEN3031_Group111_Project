@@ -63,7 +63,6 @@ export class ProgramStateService {
 
     if(confirm("Are you certain you want to delete this deck.\nYou cannot undo this action.")){
       this.deckManager.deleteDecks(this.selectedDeck.ID);
-      this.selectedDeck = undefined;
     }
   }
 }
