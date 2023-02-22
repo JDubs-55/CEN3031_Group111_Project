@@ -39,23 +39,18 @@ export class DeckManagerService {
   //This requests the backend to generate a deck
   async generateDeck(): Promise<Deck> {
     async function queryBackend(): Promise<DeckData> {
-      function makeid(length: number): string {
-        let result: string = '';
-        const characters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        const charactersLength: number = characters.length;
-        let counter = 0;
-        while (counter < length) {
-          result += characters.charAt(Math.floor(Math.random() * charactersLength));
-          counter += 1;
-        }
-        return result;
-      }
 
       let out: DeckData;
-      await fetch(serverLocation + "/api/createdeck", {
-        method: "POST",
-        body: JSON.stringify({ ID: makeid(10), IsFavorite: false, Name: "Default Name", Tags: [], Cards: [] })
-      })
+      let ID: string = "";
+
+      await fetch(serverLocation + "/api/createdeck")
+        .then(response => response.json())
+        .then(data => {
+          ID = data.id;
+        })
+
+      //console.log(ID)
+      await fetch(serverLocation + `/api/getdeck/${ID}`)
         .then(response => response.json())
         .then(data => {
           out = data;
@@ -67,25 +62,30 @@ export class DeckManagerService {
 
     let deck: DeckData = await queryBackend();
 
-
-    if (!this.allDeckNames.includes(deck.Name)) {
-      this._allDeckNames.push(deck.Name);
+    if(!isDeckData(deck)){
+      console.log("Warning this is not valid deck data: ", deck);
     }
 
-    this._loadedDecks[deck.ID] = new Deck(deck);//Add the new deck to the loaded decks
+    if (!this.allDeckNames.includes(deck.name)) {
+      this._allDeckNames.push(deck.name);
+    }
+
+    this._loadedDecks[deck.id] = new Deck(deck);//Add the new deck to the loaded decks
 
     //map the new deck's name to its ID
-    if (this._nameToID[deck.Name] == undefined) {
-      this._nameToID[deck.Name] = new Set<string>();
+    if (this._nameToID[deck.name] == undefined) {
+      this._nameToID[deck.name] = new Set<string>();
     }
-    this._nameToID[deck.Name].add(deck.ID);
+    this._nameToID[deck.name].add(deck.id);
 
-    this.initializeCallbacks(this._loadedDecks[deck.ID]);
+    this.initializeCallbacks(this._loadedDecks[deck.id]);
 
-    return this._loadedDecks[deck.ID];
+
+    this._loadedDecks[deck.id].name = "Default Name"
+    //console.log("Generate DeckL ", deck)
+
+    return this._loadedDecks[deck.id];
   }
-
-
 
   private initializeCallbacks(deck: Deck): void {
     deck.onNameChange.subscribe((names) => {
@@ -124,6 +124,7 @@ export class DeckManagerService {
         .then(data => {
           out = data;
         })
+      //console.log(out)
       return out;
     }
     let names = await queryBackend();//load all the names from the backend
@@ -144,6 +145,7 @@ export class DeckManagerService {
         return fetch(serverLocation + `/api/getdeck/${element}`)
           .then(response => response.json())
           .then(data => {
+            //console.log(data)
             if (!isDeckData(data)) {
               console.log("Warning this is not valid deck data: ", data);
               return;
@@ -163,18 +165,18 @@ export class DeckManagerService {
     result.forEach(deck => {
       let addNameToList: boolean = false;
 
-      if (this._loadedDecks[deck.ID] == undefined) {
+      if (this._loadedDecks[deck.id] == undefined) {
         //If a version is not alredy loaded
-        this._loadedDecks[deck.ID] = new Deck(deck);
+        this._loadedDecks[deck.id] = new Deck(deck);
         addNameToList = true;
       } else {
         //If a version of the deck is already in the system
         if (overwriteLocal) {
-          this._loadedDecks[deck.ID] = new Deck(deck);
+          this._loadedDecks[deck.id] = new Deck(deck);
         } else {
           //If the name of the server does not equal the name locally, then ignore the name from the server
           //This if statement does the contrapositive
-          if (this._loadedDecks[deck.ID].name == deck.Name) {
+          if (this._loadedDecks[deck.id].name == deck.name) {
             addNameToList = true;
           }
         }
@@ -182,12 +184,12 @@ export class DeckManagerService {
 
 
       //This will almost certainly never be true (but it can happen, and in that event this makes sense to do)
-      if (!this._allDeckNames.includes(deck.Name) && addNameToList) {
-        this._allDeckNames.push(deck.Name);
+      if (!this._allDeckNames.includes(deck.name) && addNameToList) {
+        this._allDeckNames.push(deck.name);
       }
 
       //It will only get here if data was written to loadedDecks
-      this.initializeCallbacks(this._loadedDecks[deck.ID]);
+      this.initializeCallbacks(this._loadedDecks[deck.id]);
     })
   }
 
@@ -210,14 +212,13 @@ export class DeckManagerService {
         return fetch(serverLocation + `/api/getdecklist/${name}`)
           .then(response => response.json())
           .then(data => {
-            //console.log(data);
             if (data == null) {
               return;
             }
 
             Array.from(data).forEach((deck) => {
-              if (typeof deck == "object" && deck != null && "ID" in deck && typeof deck["ID"] == "string") {
-                ids.push(deck["ID"])
+              if (typeof deck == "object" && deck != null && "id" in deck && typeof deck["id"] == "string") {
+                ids.push(deck["id"])
               }
             })
 
@@ -225,12 +226,16 @@ export class DeckManagerService {
           })
       });
 
+
       await Promise.all(callsForIDs);
+
+      //console.log(ids)
 
       const calls = Array.from(ids).map((element) => {
         return fetch(serverLocation + `/api/getdeck/${element}`)
           .then(response => response.json())
           .then(data => {
+            //console.log(data);
             if (!isDeckData(data)) {
               console.log("Warning this is not valid deck data: ", data);
               return;
@@ -247,28 +252,28 @@ export class DeckManagerService {
 
 
     let result = await queryBackend(names);
-    //console.log(result);
+    //console.log(result)
 
     let unusedNames = new Set<string>(names);
 
     result.forEach(deck => {
-
+      //console.log(deck)
 
       let addNameToList: boolean = false;
       let nameWasUsed: boolean = true;//This removes the server name from the searchable list, if the local name differs from the server name (And no other decks used that name)
 
-      if (this._loadedDecks[deck.ID] == undefined) {
+      if (this._loadedDecks[deck.id] == undefined) {
         //If a version is not alredy loaded
-        this._loadedDecks[deck.ID] = new Deck(deck);
+        this._loadedDecks[deck.id] = new Deck(deck);
         addNameToList = true;
       } else {
         //If a version of the deck is already in the system
         if (overwriteLocal) {
-          this._loadedDecks[deck.ID] = new Deck(deck);
+          this._loadedDecks[deck.id] = new Deck(deck);
         } else {
           //If the name of the server does not equal the name locally, then ignore the name from the server
           //This if statement does the contrapositive
-          if (this._loadedDecks[deck.ID].name == deck.Name) {
+          if (this._loadedDecks[deck.id].name == deck.name) {
             addNameToList = true;
           } else {
             nameWasUsed = false;
@@ -277,15 +282,15 @@ export class DeckManagerService {
       }
 
       if (nameWasUsed) {
-        unusedNames.delete(deck.Name);
+        unusedNames.delete(deck.name);
       }
 
-      if (!this._allDeckNames.includes(deck.Name) && addNameToList) {
-        this._allDeckNames.push(deck.Name);
+      if (!this._allDeckNames.includes(deck.name) && addNameToList) {
+        this._allDeckNames.push(deck.name);
       }
 
       //It will only get here if data was written to loadedDecks
-      this.initializeCallbacks(this._loadedDecks[deck.ID]);
+      this.initializeCallbacks(this._loadedDecks[deck.id]);
     });
 
     //Any names in unused names did not have a deck that used that name
@@ -303,9 +308,12 @@ export class DeckManagerService {
 
     function queryBackend(data: DeckData[]): void {
       data.forEach(deck => {
-        console.log("Saving: " + deck.ID);
-        fetch(serverLocation + `/api/updatedeck/${deck.ID}/Name/${deck.Name}`, { method: "PUT" });
-        fetch(serverLocation + `/api/updatedeck/${deck.ID}/IsFavorite/${deck.IsFavorite}`, { method: "PUT" });
+        console.log("Saving: " + deck.id);
+
+        fetch(serverLocation + `/api/updatedeck/${deck.id}`, {
+          method: "PUT",
+          body: JSON.stringify(deck)
+        })
       })
     }
 
@@ -328,7 +336,7 @@ export class DeckManagerService {
 
     function queryBackend(data: DeckData[]): void {
       data.forEach(deck => {
-        fetch(serverLocation + `/api/removedeck/${deck.ID}`, { method: "DELETE" })
+        fetch(serverLocation + `/api/removedeck/${deck.id}`, { method: "DELETE" })
       })
     }
 
