@@ -4,6 +4,10 @@ import { CardData } from './MyClasses/CardData';
 import { DeckManagerService } from './deck-manager.service';
 import { BehaviorSubject, Observable } from "rxjs";
 
+//List of things that can happen
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +16,9 @@ export class ProgramStateService {
 
 
   constructor(private deckManager: DeckManagerService) {
+
+    //Whenever a deck is unloaded you need to check if the selected deck was unloaded
+    //If the selected deck gets unloaded, it should be set to undefined
     this.deckManager.onUnloadDeck.subscribe(deck=>{
       if(this.selectedDeck == deck){
         this.selectedDeck = undefined;
@@ -20,6 +27,7 @@ export class ProgramStateService {
    }
 
 
+  //This returns the list of CardData for the selected deck
   getCardList(): readonly CardData[]{
     if(this.selectedDeck == undefined){
       return [];
@@ -27,6 +35,8 @@ export class ProgramStateService {
     return Object.values(this.selectedDeck.cards);
   }
 
+
+  //These functions should be used exclusively for interacting with the selected deck
   get selectedDeck(): Deck | undefined{
     return this._selectedDeck.value;
   }
@@ -45,6 +55,7 @@ export class ProgramStateService {
   }
 
 
+  //This does exactly what it is named
   deleteSelectedDeck(): void{
     if(this.selectedDeck == undefined){
       return;

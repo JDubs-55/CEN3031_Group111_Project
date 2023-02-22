@@ -19,13 +19,13 @@ export class Deck{
 
 
     constructor(deckData: DeckData){
-        this._id = deckData.ID;
-        this._isFavorite = new BehaviorSubject<boolean>(deckData.IsFavorite);
-        this._name = deckData.Name;
-        this._tags = new Set<string>(deckData.Tags);
+        this._id = deckData.id;
+        this._isFavorite = new BehaviorSubject<boolean>(deckData.isFavorite);
+        this._name = deckData.name;
+        this._tags = new Set<string>(deckData.tags);
         this._cards = {};
-        deckData.Cards.forEach(card=>{
-            this._cards[card.ID] = card;
+        deckData.cards.forEach(card=>{
+            this._cards[card.id] = card;
         });
 
         this._tagsSubject = new BehaviorSubject<Set<string>>(this._tags);
@@ -103,27 +103,27 @@ export class Deck{
     }
 
     addCard(card: CardData): void{
-        if(this._cards[card.ID] != undefined){
+        if(this._cards[card.id] != undefined){
             console.log("Unable to add card: A card with this ID already exists.");
             return;
         }
 
-        this._cards[card.ID] = card;
+        this._cards[card.id] = card;
         this._cardsSubject.next(this._cards);
     }
 
     removeCard(card: PartialCardData): void{
-        if(this._cards[card.ID] == undefined){
+        if(this._cards[card.id] == undefined){
             console.log("Unable to remove card: A card with this ID does not exists.");
             return;
         }
 
-        delete this._cards[card.ID];
+        delete this._cards[card.id];
         this._cardsSubject.next(this._cards);
     }
 
     editCard(card: PartialCardData): void{
-        if(this._cards[card.ID] == undefined){
+        if(this._cards[card.id] == undefined){
             console.log("Unable to edit card: A card with this ID does not exists.");
             return;
         }
@@ -133,13 +133,13 @@ export class Deck{
         let k: keyof CardData;//Based on the type checker. k can only refer to properties that exist in Card Data
         for(k in card){
             if(card[k] != undefined){//Thus if PartialCard data has a non-undefined property, that property must also exist in Card Data
-                if(k != "ID" && this._cards[card.ID][k] != card[k]){
+                if(k != "id" && this._cards[card.id][k] != card[k]){
                     somethingChanged = true;
                 }
                 
                 //The comment below disables type checking for the line below it. This is done because typescript doesn't know that it is only possible to valid operations to occur
                 //@ts-ignore
-                this._cards[card.ID][k] = card[k];
+                this._cards[card.id][k] = card[k];
             }
         }
 
@@ -167,11 +167,11 @@ export class Deck{
 
     get data(): Readonly<DeckData>{
         return {
-            ID: this.ID,
-            IsFavorite: this.isFavorite,
-            Name: this.name,
-            Tags: Array.from(this._tags),
-            Cards: Object.values(this.cards)
+            id: this.ID,
+            isFavorite: this.isFavorite,
+            name: this.name,
+            tags: Array.from(this._tags),
+            cards: Object.values(this.cards)
         }
     }
 

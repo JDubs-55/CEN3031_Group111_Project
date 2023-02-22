@@ -77,7 +77,7 @@ export class DeckEditorComponent {
         return;
       }
       //Check that front text actually changed
-      if (value == this.programState.selectedDeck.cards[this.selectedCardID].FrontText) {
+      if (value == this.programState.selectedDeck.cards[this.selectedCardID].frontText) {
         return;
       }
 
@@ -109,7 +109,7 @@ export class DeckEditorComponent {
         return;
       }
       //Check that front text actually changed
-      if (value == this.programState.selectedDeck.cards[this.selectedCardID].BackText) {
+      if (value == this.programState.selectedDeck.cards[this.selectedCardID].backText) {
         return;
       }
 
@@ -152,8 +152,8 @@ export class DeckEditorComponent {
   saveCardFrontText(): void {
     if (this.programState.selectedDeck != undefined && this.selectedCardID != "") {
       this.programState.selectedDeck.editCard({
-        ID: this.selectedCardID,
-        FrontText: this.cardFrontTextControl.value
+        id: this.selectedCardID,
+        frontText: this.cardFrontTextControl.value
       })
     }
   }
@@ -161,8 +161,8 @@ export class DeckEditorComponent {
   saveCardBackText(): void {
     if (this.programState.selectedDeck != undefined && this.selectedCardID != "") {
       this.programState.selectedDeck.editCard({
-        ID: this.selectedCardID,
-        BackText: this.cardBackTextControl.value
+        id: this.selectedCardID,
+        backText: this.cardBackTextControl.value
       })
     }
   }
@@ -179,8 +179,8 @@ export class DeckEditorComponent {
     if (this.programState.selectedDeck != undefined) {
       let card = this.programState.selectedDeck.cards[cardID];
       this.cardIDControl.setValue("Card ID: " + cardID);
-      this.cardFrontTextControl.setValue(card.FrontText);
-      this.cardBackTextControl.setValue(card.BackText);
+      this.cardFrontTextControl.setValue(card.frontText);
+      this.cardBackTextControl.setValue(card.backText);
     }
 
   }
@@ -216,15 +216,15 @@ export class DeckEditorComponent {
 
     //Ensure that it doesn't conflict with other cards
     let attempts = 0;
-    while(this.programState.getCardList().some(card=>card.ID==newID)){
+    while(this.programState.getCardList().some(card=>card.id==newID)){
       newID = makeid(attempts++);
     }
 
     this.programState.selectedDeck.addCard({
-      ID: newID,
-      IsFavorite: false,
-      FrontText: "",
-      BackText: ""
+      id: newID,
+      isFavorite: false,
+      frontText: "",
+      backText: ""
     })
 
     this.selectCard(newID);
@@ -242,7 +242,7 @@ export class DeckEditorComponent {
     }
 
     this.programState.selectedDeck.removeCard({
-      ID: this.selectedCardID
+      id: this.selectedCardID
     });
     this.unselectCard();
   }
