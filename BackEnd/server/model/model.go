@@ -76,7 +76,7 @@ func GetAllDecks() ([]string, error) {
 
 	ctx := context.Background()
 
-	iter := client.Collection("Decks").Where("Name", "!=", "")Documents(ctx)
+	iter := client.Collection("Decks").Where("Name", "!=", "").Documents(ctx)
 
 	nameMap := make(map[string]string)
 	var deckNames []string
