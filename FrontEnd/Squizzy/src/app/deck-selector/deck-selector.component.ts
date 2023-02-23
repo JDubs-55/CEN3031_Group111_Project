@@ -41,11 +41,11 @@ export class DeckSelectorComponent {
         //Only load the deck when the searched name changed
         if (this.deckNameControl.value != null && this.deckNameControl.value != "") {
           this.deckManager.loadDecksByName(this.deckManager.searchDeckNames(this.deckNameControl.value)).then(() => {
-            this.validDecks = this.deckManager.searchDecksByName(this.deckNameControl.value);
+            this.updateValidDecks();
             this.refreshAvailableDeckNames();//The list of availible decks should update
           });
         }else{
-          this.validDecks = this.deckManager.searchDecksByName(this.deckNameControl.value);
+          this.updateValidDecks();
           this.refreshAvailableDeckNames();
         }
       });
@@ -92,6 +92,7 @@ export class DeckSelectorComponent {
   onOpenDeckSelector(): void {
     //console.log("opened deck selector")
     //Load cards
+    
     this.refreshAvailableDeckNames();
   }
 

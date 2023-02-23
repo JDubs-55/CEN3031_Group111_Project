@@ -1,5 +1,5 @@
 <div id="cardSelector">
-    <div class="card" *ngFor="let card of this.programState.getCardList()"  (click)="selectCard(card)">
+    <div class="card" *ngFor="let card of this.programState.getCardList()" (click)="selectCard(card)">
         <mat-card class="cardPreviewFrontText" [ngClass]="card == selectedCard ? 'selectedCardClass' : ''">
             <mat-card-content>
                 {{card.frontText}}
@@ -11,10 +11,63 @@
             </mat-card-content>
         </mat-card>
     </div>
-    
+
 </div>
-<div id="rightSideDiv">
-    <mat-form-field>
-        <input matInput [formControl]="deckNameControl" placeholder="Deck Name">
+<div id="bottomDiv">
+    <div id="deckNameDiv">
+        <mat-form-field subscriptSizing="dynamic">
+            <input matInput [formControl]="deckNameControl" placeholder="Deck Name">
+        </mat-form-field>
+        <mat-slide-toggle [formControl]="isFavoriteControl">Is Favorite</mat-slide-toggle>
+    </div>
+
+    <mat-accordion>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Tags
+                </mat-panel-title>
+                <mat-panel-description>
+                    Count: {{tags.length}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div id="expansionPanelDiv">
+                <div id="tagListDiv">
+                    <mat-card *ngFor="let tag of tags">
+                        <mat-card-content class="tagCardContent">
+                            <button mat-icon-button (click)="removeTag(tag)"><mat-icon>remove</mat-icon></button>
+                            {{tag}}
+                        </mat-card-content>
+
+                    </mat-card>
+                </div>
+
+
+                <div id="newTagDiv">
+                    <button mat-icon-button (click)="addTag()"><mat-icon>add</mat-icon></button>
+                    <mat-form-field subscriptSizing="dynamic">
+                        <input matInput [formControl]="newTagControl" placeholder="New Tag">
+                    </mat-form-field>
+                </div>
+            </div>
+
+
+        </mat-expansion-panel>
+    </mat-accordion>
+
+
+    <mat-form-field subscriptSizing="dynamic">
+        <input matInput [formControl]="frontTextControl" placeholder="Front Text">
     </mat-form-field>
+
+    <mat-form-field subscriptSizing="dynamic">
+        <input matInput [formControl]="backTextControl" placeholder="Back Text">
+    </mat-form-field>
+
+
+    <button mat-flat-button (click)="addCard()" color="primary">Add Card</button>
+    <button mat-flat-button (click)="removeCard()" color="primary">Remove Card</button>
+    <button mat-flat-button (click)="save()" color="primary">Save Deck</button>
+
 </div>

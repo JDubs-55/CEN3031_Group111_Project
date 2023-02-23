@@ -102,14 +102,36 @@ export class Deck{
         this._tagsSubject.next(this._tags);
     }
 
-    addCard(card: CardData): void{
-        if(this._cards[card.id] != undefined){
-            console.log("Unable to add card: A card with this ID already exists.");
-            return;
+    addCard(): CardData{
+
+        function makeid(length: number): string {
+            let result: string = '';
+            const characters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            const charactersLength: number = characters.length;
+            let counter = 0;
+            while (counter < length) {
+              result += characters.charAt(Math.floor(Math.random() * charactersLength));
+              counter += 1;
+            }
+            return result;
         }
 
-        this._cards[card.id] = card;
+        
+        let i = 1;
+        let newID: string = makeid(i);
+        while(this._cards[newID] != undefined){
+            newID = makeid(i++);
+        }
+        
+        this._cards[newID] = {
+            id: newID,
+            frontText: "Default Front",
+            backText: "Default Back",
+            isFavorite: false
+        };
         this._cardsSubject.next(this._cards);
+
+        return this._cards[newID];
     }
 
     removeCard(card: PartialCardData): void{

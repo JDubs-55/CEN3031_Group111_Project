@@ -14,6 +14,8 @@ import { BehaviorSubject, Observable } from "rxjs";
 export class ProgramStateService {
   private _selectedDeck = new BehaviorSubject<Deck | undefined>(undefined);
 
+  private _selectedPage = new BehaviorSubject<string>("");
+
 
   constructor(private deckManager: DeckManagerService) {
 
@@ -65,4 +67,19 @@ export class ProgramStateService {
       this.deckManager.deleteDecks(this.selectedDeck.ID);
     }
   }
+
+
+  get selectedPage(): string{
+    return this._selectedPage.value;
+  }
+
+  set selectedPage(value: string){
+    this._selectedPage.next(value);
+  }
+
+  get onSelectedPageChange(): Observable<string>{
+    return this._selectedPage.asObservable();
+  }
+
 }
+

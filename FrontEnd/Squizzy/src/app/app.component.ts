@@ -30,7 +30,7 @@ export class AppComponent {
   dumpDeckData(): void{
     let data: DeckData[] = Object.values(this.deckManager.loadedDecks).map(deck=>deck.data);
 
-    //console.log(data);
+    console.log(data);
   }
 
   openDeckSelector(): void{

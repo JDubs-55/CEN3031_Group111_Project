@@ -18,7 +18,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { DeckSelectorComponent } from './deck-selector/deck-selector.component';
 import { DeckPreviewComponent } from './deck-preview/deck-preview.component';
 import { DeckEditorComponent } from './deck-editor/deck-editor.component';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FlashCardTesterComponent } from './flash-card-tester/flash-card-tester.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 //TODO: figure out why angular is reporting a problem every time I force an update to the display
@@ -37,6 +40,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     DeckSelectorComponent,
     DeckPreviewComponent,
     DeckEditorComponent,
+    FlashCardTesterComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,9 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSlideToggleModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,18 +1,30 @@
 :host{
     display: flex;
+    flex-direction: column;
     margin: 1em;
     gap: 1em;
     flex-grow: 1;
-    align-items: flex-start;
+    align-items: stretch;
+    overflow: hidden;
 }
 
 .card{
     margin-right: 1.5em;
+    margin-bottom: 1.5em;
+    min-width: 12em;
+}
+
+.card mat-card-content{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
 }
 
 #cardSelector{
-    max-height: 100%;
-    overflow-y: auto;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
 }
 
 .cardPreviewFrontText{
@@ -29,10 +41,45 @@
 }
 
 
-#rightSideDiv{
+#bottomDiv{
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     height: 100%;
+    gap: 1em;
 }
 
+#deckNameDiv{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+#deckNameDiv mat-form-field{
+    flex-grow: 1;
+}
+
+#newTagDiv{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+#tagListDiv{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+#expansionPanelDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.tagCardContent{
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    padding-right: 1em;
+}
