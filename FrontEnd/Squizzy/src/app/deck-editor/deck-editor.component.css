@@ -1,0 +1,38 @@
+:host{
+    display: flex;
+    margin: 1em;
+    gap: 1em;
+    flex-grow: 1;
+    align-items: flex-start;
+}
+
+.card{
+    margin-right: 1.5em;
+}
+
+#cardSelector{
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.cardPreviewFrontText{
+    z-index: 1;
+}
+
+.cardPreviewBackText{
+    bottom: 1em;
+    left: 1em;
+}
+
+.selectedCardClass{
+    background-color: #F5F5F5;
+}
+
+
+#rightSideDiv{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+

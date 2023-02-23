@@ -59,7 +59,7 @@ export class DeckSelectorComponent {
 
   refreshAvailableDeckNames(): void{
     this.deckManager.loadAllDeckNames();
-    console.log("Refreshed search list");
+    //console.log("Refreshed search list");
   }
 
   onClickSearchBar(): void{
@@ -90,14 +90,13 @@ export class DeckSelectorComponent {
 
   //This is where behaviors that happen on open and close should be defined
   onOpenDeckSelector(): void {
-    console.log("opened deck selector")
+    //console.log("opened deck selector")
     //Load cards
     this.refreshAvailableDeckNames();
   }
 
   onCloseDeckSelector(): void {
-    console.log("closed deck selector")
-    //Save decks
+    //console.log("closed deck selector")
   }
 
 

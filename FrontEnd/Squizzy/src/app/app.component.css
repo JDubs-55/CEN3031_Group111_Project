@@ -16,6 +16,7 @@
 #SelectedTabDiv{
     flex-grow: 1;
     overflow: hidden;
+    display: flex;
 }
 
 
@@ -23,6 +24,7 @@
 mat-drawer-content{
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
 mat-drawer-container{

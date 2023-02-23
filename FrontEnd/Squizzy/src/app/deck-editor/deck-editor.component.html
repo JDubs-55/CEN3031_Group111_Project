@@ -1,0 +1,20 @@
+<div id="cardSelector">
+    <div class="card" *ngFor="let card of this.programState.getCardList()"  (click)="selectCard(card)">
+        <mat-card class="cardPreviewFrontText" [ngClass]="card == selectedCard ? 'selectedCardClass' : ''">
+            <mat-card-content>
+                front
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="cardPreviewBackText" [ngClass]="card == selectedCard ? 'selectedCardClass' : ''">
+            <mat-card-content>
+                back
+            </mat-card-content>
+        </mat-card>
+    </div>
+    
+</div>
+<div id="rightSideDiv">
+    <mat-form-field>
+        <input matInput [formControl]="deckNameControl" placeholder="Deck Name">
+    </mat-form-field>
+</div>

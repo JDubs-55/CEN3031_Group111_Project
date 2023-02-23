@@ -17,6 +17,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { DeckSelectorComponent } from './deck-selector/deck-selector.component';
 import { DeckPreviewComponent } from './deck-preview/deck-preview.component';
+import { DeckEditorComponent } from './deck-editor/deck-editor.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 //TODO: figure out why angular is reporting a problem every time I force an update to the display
@@ -34,6 +36,7 @@ import { DeckPreviewComponent } from './deck-preview/deck-preview.component';
     AppComponent,
     DeckSelectorComponent,
     DeckPreviewComponent,
+    DeckEditorComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { DeckPreviewComponent } from './deck-preview/deck-preview.component';
     MatDividerModule,
     MatButtonModule,
     MatSidenavModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
