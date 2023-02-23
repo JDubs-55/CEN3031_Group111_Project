@@ -281,9 +281,8 @@ func GetUserByID(userID string) (map[string]interface{}, error) {
 
 	userSnap, err := client.Collection("Users").Doc(userID).Get(ctx)
 	if err != nil {
-		return nil, err
-	} else {
 		fmt.Print("Error getting deck")
+		return nil, err
 	}
 
 	var data map[string]interface{}
