@@ -61,6 +61,7 @@ func CreateDeck() (string, error) {
 	ref := client.Collection("Decks").NewDoc()
 	fmt.Print(ref.ID)
 	deck.ID = ref.ID
+	deck.Name = "Default Name"
 	_, err := ref.Set(ctx, deck)
 
 	if err != nil {
