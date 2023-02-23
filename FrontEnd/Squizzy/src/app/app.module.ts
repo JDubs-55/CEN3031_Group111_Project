@@ -13,6 +13,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { DeckSelectorComponent } from './deck-selector/deck-selector.component';
+import { DeckPreviewComponent } from './deck-preview/deck-preview.component';
 
 
 //TODO: figure out why angular is reporting a problem every time I force an update to the display
@@ -28,6 +32,8 @@ import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
+    DeckSelectorComponent,
+    DeckPreviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatPaginatorModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

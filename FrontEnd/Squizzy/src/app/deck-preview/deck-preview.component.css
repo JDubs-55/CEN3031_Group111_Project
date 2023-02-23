@@ -1,0 +1,52 @@
+
+:host{
+    overflow: hidden;
+    padding: 2px;
+    max-height: 100%;
+}
+
+
+#outerCard{
+    overflow: hidden;
+    max-height: 100%;
+}
+
+mat-card-content{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    overflow: hidden;
+}
+
+.cardPreview mat-card-content{
+    align-items: center;
+}
+
+
+#nameDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.frontText{
+    z-index: 1;
+}
+
+.backText{
+    bottom: 1em;
+    left: 1em;
+}
+
+
+.cardPreview{
+    padding-right: 1em;
+    margin-right: 0.5em;
+}
+
+.selected{
+    background-color: #F5F5F5;
+}
+
+#cardListDiv{
+    overflow-y: auto;
+}

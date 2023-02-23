@@ -133,6 +133,7 @@ export class DeckManagerService {
           out = data;
         })
 
+      //console.log(out);
       return out;
     }
 
@@ -420,10 +421,17 @@ export class DeckManagerService {
 
 
   searchDeckNames(targetName: string): string[] {
+    if(targetName == null){
+      targetName = "";
+    }
     return this.allDeckNames.filter(name => name.toLowerCase().includes(targetName.toLowerCase()));
   }
 
   searchDecksByName(targetNames: string[] | string): Deck[] {
+    if(targetNames == null){
+      targetNames = []
+    }
+
     if (typeof targetNames == "string") {
       return this.searchDecksByName([targetNames]);
     }
@@ -440,6 +448,10 @@ export class DeckManagerService {
   }
 
   searchIDsByName(targetNames: string[] | string): string[] {
+    if(targetNames == null){
+      targetNames = []
+    }
+
     if (typeof targetNames == "string") {
       return this.searchIDsByName([targetNames]);
     }

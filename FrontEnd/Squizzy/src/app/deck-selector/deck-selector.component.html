@@ -1,0 +1,21 @@
+<div id="searchBarDiv">
+
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions" [value]="option">
+            {{option}}
+        </mat-option>
+    </mat-autocomplete>
+
+    <mat-form-field id="searchBar" subscriptSizing="dynamic">
+        <input matInput  [formControl]="deckNameControl" [matAutocomplete]="auto"  type="text" placeholder="Deck Name" (click)="onClickSearchBar()">
+    </mat-form-field>
+
+    <button mat-icon-button (click)="closeDeckSelector()" id="closeButton" color="primary"><mat-icon>chevron_right</mat-icon></button>
+</div>
+
+<mat-card id="deckPickerCard">
+    <mat-card-content id="deckPickerCardContent">
+        <app-deck-preview *ngFor="let deck of validDecks" [deck]="deck" (myClick)="selectDeck(deck)"></app-deck-preview>
+    </mat-card-content>
+</mat-card>
+

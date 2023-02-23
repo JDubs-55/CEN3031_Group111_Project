@@ -1,0 +1,21 @@
+<mat-card [ngClass]="colorClass" id="outerCard" (click)="onClick()">
+    <mat-card-content>
+        <div id="nameDiv">{{name}}</div>
+        <mat-divider></mat-divider>
+        <div id="cardListDiv">
+            <div *ngFor="let card of cards" class="cardPreview">
+                <mat-card class="frontText" [ngClass]="colorClass">
+                    <mat-card-content>
+                        {{card.frontText}}
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="backText" [ngClass]="colorClass">
+                    <mat-card-content>
+                        {{card.backText}}
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        
+    </mat-card-content>
+</mat-card>

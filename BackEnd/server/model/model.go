@@ -115,7 +115,7 @@ func GetDeckByID(docID string) (*Deck, error) {
 	if err != nil {
 		return nil, err
 	} else {
-		fmt.Print("Error getting deck")
+		fmt.Println("Error getting deck")
 	}
 
 	data := &Deck{}
