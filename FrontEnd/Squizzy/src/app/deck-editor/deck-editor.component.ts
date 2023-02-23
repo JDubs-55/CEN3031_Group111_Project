@@ -144,4 +144,18 @@ export class DeckEditorComponent {
     this.programState.selectedDeck.removeCard(this.selectedCard);
     this.selectCard(undefined);
   }
+
+  newDeck(): void{
+    this.deckManager.generateDeck()
+    .then(deck=>{
+      console.log(deck);
+      this.programState.selectedDeck = deck;
+    });
+  }
+
+  deleteDeck(): void{
+    if(this.programState.selectedDeck == undefined) return;//There is nothing to do if there is no deck selected
+
+    this.programState.deleteSelectedDeck();
+  }
 }

@@ -125,8 +125,8 @@ export class Deck{
         
         this._cards[newID] = {
             id: newID,
-            frontText: "Default Front",
-            backText: "Default Back",
+            frontText: "",
+            backText: "",
             isFavorite: false
         };
         this._cardsSubject.next(this._cards);

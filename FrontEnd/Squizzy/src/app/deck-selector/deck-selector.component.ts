@@ -94,6 +94,7 @@ export class DeckSelectorComponent {
     //Load cards
     
     this.refreshAvailableDeckNames();
+    this.updateValidDecks();
   }
 
   onCloseDeckSelector(): void {

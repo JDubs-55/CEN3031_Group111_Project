@@ -83,3 +83,7 @@
     padding: 0px;
     padding-right: 1em;
 }
+
+#spacerDiv{
+    flex-grow: 1;
+}
