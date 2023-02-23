@@ -26,18 +26,5 @@ export class AppComponent {
     let data: DeckData[] = Object.values(this.deckManager.loadedDecks).map(deck=>deck.data);
 
     console.log(data);
-    
-  }
-
-  httpTest(): void{
-    if(this.deckManager.allDeckNames.includes("Test Deck")){
-      this.deckManager.deleteDecks(this.deckManager.getIDsByName("Test Deck"));
-    }else{
-      this.deckManager.generateDeck().then(deck=>{
-        deck.name = "Test Deck";
-        this.deckManager.saveDirty();
-      });
-      
-    }
   }
 }

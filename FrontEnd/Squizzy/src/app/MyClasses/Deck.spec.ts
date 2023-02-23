@@ -5,39 +5,39 @@ import { DeckData } from './DeckData';
 describe('Deck', () => {
 
     let defaultData: DeckData = {
-        ID: "01",
-        IsFavorite: true,
-        Name: "this is a name",
-        Tags: ["tag 1", "tag1"],
-        Cards: [{
-            ID: "01",
-            IsFavorite: false,
-            FrontText: "front",
-            BackText: "back"
+        id: "01",
+        isFavorite: true,
+        name: "this is a name",
+        tags: ["tag 1", "tag1"],
+        cards: [{
+            id: "01",
+            isFavorite: false,
+            frontText: "front",
+            backText: "back"
         }, {
-            ID: "02",
-            IsFavorite: true,
-            FrontText: "front2",
-            BackText: "back2"
+            id: "02",
+            isFavorite: true,
+            frontText: "front2",
+            backText: "back2"
         }]
     };
 
     beforeEach(()=>{
         defaultData = {
-            ID: "01",
-            IsFavorite: true,
-            Name: "this is a name",
-            Tags: ["tag 1", "tag1"],
-            Cards: [{
-                ID: "01",
-                IsFavorite: false,
-                FrontText: "front",
-                BackText: "back"
+            id: "01",
+            isFavorite: true,
+            name: "this is a name",
+            tags: ["tag 1", "tag1"],
+            cards: [{
+                id: "01",
+                isFavorite: false,
+                frontText: "front",
+                backText: "back"
             }, {
-                ID: "02",
-                IsFavorite: true,
-                FrontText: "front2",
-                BackText: "back2"
+                id: "02",
+                isFavorite: true,
+                frontText: "front2",
+                backText: "back2"
             }]
         }
     })
@@ -52,7 +52,7 @@ describe('Deck', () => {
 
     it("Should be able to edit cards", ()=>{
         let deck = new Deck(defaultData);
-        deck.editCard({ID:"01", FrontText: "changed front text", BackText: "changed back text", IsFavorite: true});
+        deck.editCard({id:"01", frontText: "changed front text", backText: "changed back text", isFavorite: true});
 
         expect(deck.ID).toEqual("01");
         expect(deck.isFavorite).toEqual(true);
@@ -77,7 +77,7 @@ describe('Deck', () => {
 
     it("Should be able to partially edit cards", ()=>{
         let deck = new Deck(defaultData);
-        deck.editCard({ID:"01", FrontText: "changed front text"});
+        deck.editCard({id:"01", frontText: "changed front text"});
 
         expect(deck.ID).toEqual("01");
         expect(deck.isFavorite).toEqual(true);
@@ -154,10 +154,10 @@ describe('Deck', () => {
     it("Should be able to add cards", ()=>{
         let deck = new Deck(defaultData);
         deck.addCard({
-            FrontText: "new Front",
-            BackText: "new Back",
-            ID:"aisrhoa",
-            IsFavorite: false
+            frontText: "new Front",
+            backText: "new Back",
+            id:"aisrhoa",
+            isFavorite: false
         });
 
         expect(deck.ID).toEqual("01");
@@ -190,7 +190,7 @@ describe('Deck', () => {
     it("Should be able to remove cards", ()=>{
         let deck = new Deck(defaultData);
         deck.removeCard({
-            ID: "01"
+            id: "01"
         });
 
         expect(deck.ID).toEqual("01");
