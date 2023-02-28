@@ -1,0 +1,13 @@
+<form #loginForm="ngForm">
+  <div class="main">
+    <div class="input-fields">
+      <input name="email" ngModel placeholder="Email" id="email" type="email" class="input-field" />
+    </div>
+    <div class="input-fields">
+      <input name="password" ngModel placeholder="Password" id="password" type="password" class="input-field" />
+    </div>
+    <button (click)="addUser(loginForm.value)">Register</button>
+    <button (click)="signIn(loginForm.value)">Sign In</button>
+    <button (click)="signOut()">Sign Out</button>
+  </div>
+</form>

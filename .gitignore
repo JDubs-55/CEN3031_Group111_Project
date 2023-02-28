@@ -18,3 +18,4 @@
 /BackEnd/server/tmp/
 .DS_Store
 BackEnd/server/tmp/main
+mock_FE/test-auth/src/environments/*

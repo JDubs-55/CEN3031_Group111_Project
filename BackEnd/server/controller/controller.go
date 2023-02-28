@@ -190,22 +190,7 @@ func UpdateDeckTagsHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(data)
 }
 
-func RemoveCardByIdHandler(w http.ResponseWriter, r *http.Request) {
-
-	vars := mux.Vars(r)
-	deckID := vars["deckID"]
-	cardID := vars["cardID"]
-
-	err := model.RemoveCardByID(deckID, cardID)
-	if err != nil {
-		http.Error(w, "Failed to remove card.", http.StatusInternalServerError)
-		return
-	}
-
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusAccepted)
-}
-
+/**************************************************************************/
 // User endpoints
 func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
 	var user model.User
@@ -219,7 +204,7 @@ func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
 
 	err = model.CreateUser(user)
 	if err != nil {
-		http.Error(w, "Failed to save deck", http.StatusInternalServerError)
+		http.Error(w, "Failed to create user", http.StatusInternalServerError)
 		return
 	}
 

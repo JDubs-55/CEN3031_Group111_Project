@@ -43,7 +43,6 @@ CRUD Deck Endpoints
 
 More Specific Deck Endpoints
 ```/api/updatedeck/{id}/{param}/{val}``` - PUT
-```/api/removecard/{deckID}/cards/{cardID}``` DELETE
 
 Search Endpoints
 ```/api/getdecklist/{name}``` - GET

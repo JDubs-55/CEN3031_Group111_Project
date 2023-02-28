@@ -7,6 +7,7 @@ import (
 	"log"
 
 	"cloud.google.com/go/firestore"
+	firebase "firebase.google.com/go"
 	"google.golang.org/api/iterator"
 	"google.golang.org/api/option"
 )
@@ -24,12 +25,13 @@ type Deck struct {
 	Tags       []string `json:"tags"`
 	IsFavorite bool     `json:"isFavorite"`
 	Cards      []Card   `json:"cards"`
+	Owner      string   `json:"owner"`
 }
 
 type User struct {
+	Email    string `json:"email"`
 	Username string `json:"username"`
 	ID       string `json:"id,omitempty"`
-	Decks    []Deck `json:"decks"`
 }
 
 type DeckListItem struct {
@@ -38,17 +40,26 @@ type DeckListItem struct {
 }
 
 var client *firestore.Client
+var app *firebase.App
 
 func init() {
 
-	var creds = utils.ReadConfig()
-
 	ctx := context.Background()
-	sa := option.WithCredentialsFile(creds["firestore_cred_path"].(string))
+
+	var creds = utils.ReadConfig()
 	var err error
+
+	sa := option.WithCredentialsFile(creds["firestore_cred_path"].(string))
+
 	client, err = firestore.NewClient(ctx, creds["project-id"].(string), sa)
 	if err != nil {
 		log.Fatalf("Failed to create client: %v", err)
+	}
+
+	config := &firebase.Config{ProjectID: creds["project-id"].(string)}
+	app, err = firebase.NewApp(ctx, config, sa)
+	if err != nil {
+		log.Fatalf("Failed to initialize app: %v\n", err)
 	}
 
 }
@@ -233,40 +244,23 @@ func UpdateDeckTags(deckID string, tags []string) error {
 	return err
 }
 
-func RemoveCardByID(deckID string, cardID string) error {
-
-	ctx := context.Background()
-	iter := client.Collection("Decks").Doc(deckID).Collection("Cards").Documents(ctx)
-
-	batch := client.Batch()
-	for {
-		doc, err := iter.Next()
-		if err == iterator.Done {
-			fmt.Println("Card not found.")
-			break
-		}
-		if err != nil {
-			fmt.Println("Error removing card.")
-			return err
-		}
-		if doc.Ref.ID == cardID {
-			fmt.Println("yay")
-		}
-	}
-
-	batch.Commit(ctx)
-
-	return nil
-}
-
+/**************************************************************************/
 // User Functions
 func CreateUser(user User) error {
 	ctx := context.Background()
 
-	ref := client.Collection("Users").NewDoc()
-	fmt.Print(ref.ID)
-	user.ID = ref.ID
-	_, err := ref.Set(ctx, user)
+	//ref := client.Collection("Users").NewDoc()
+	//fmt.Print(ref.ID)
+	//user.ID = ref.ID
+	//_, err := ref.Set(ctx, user)
+
+	// Users will be created on the FE
+	// Once the user token is passed from the FE, verifyuser/tokenid  //TODO
+	// once verified, get the userid from the token and send it to getUserByID
+	//If user exists, infomation will be pulled from "Users" collection about that user
+	//if not, getUserByID creates a new user with username = email, id = userID (from token), and and empty deck array
+	//once getUserByID creates the new user, it sends that object here to have its 'document' created with refID = userID (from token)
+	_, err := client.Collection("Users").Doc(user.ID).Set(ctx, user)
 
 	if err != nil {
 		log.Printf("An error has occured: %s", err)
@@ -279,11 +273,49 @@ func CreateUser(user User) error {
 func GetUserByID(userID string) (map[string]interface{}, error) {
 	ctx := context.Background()
 
-	userSnap, err := client.Collection("Users").Doc(userID).Get(ctx)
+	//Get Auth client
+	authClient, authErr := app.Auth(ctx)
+	if authErr != nil {
+		fmt.Printf("Error retrieving Auth client: %v\n", authErr)
+	}
+
+	token, err := authClient.VerifyIDToken(ctx, userID)
 	if err != nil {
+		fmt.Printf("Error verifying ID token: %v\n", err)
+	}
+
+	//fmt.Printf("Verified ID token: %v\nToken.UID = %v\n", token, token.UID)
+	uid := token.UID
+
+	//Will retrieve uid from the token passed from FE in the endpoint, hardcoded for now for testing
+	//Gets user data from user ID -- error on invalid uid
+	usr, err := authClient.GetUser(ctx, uid)
+	if err != nil {
+		fmt.Printf("Error retrieving User %s: %v\n", uid, err)
 		return nil, err
-	} else {
-		fmt.Print("Error getting deck")
+	}
+
+	//If user exists and auth passes, populate user data structure with "Users" collection,
+	//retrieving user info by uid as below
+	//fmt.Printf("Successfully returned user data: %v\n", &usr.UserInfo) //usr object has a lot of options
+	fmt.Println("Successfully found user data.")
+
+	userSnap, err := client.Collection("Users").Doc(uid).Get(ctx)
+	if err != nil {
+		fmt.Println("Error retrieving user information. User does not exist. Creating new user...")
+		newUser := User{
+			Email:    usr.Email,
+			Username: usr.Email,
+			ID:       usr.UID,
+		}
+		err = CreateUser(newUser)
+		if err != nil {
+			return nil, err
+		}
+		userSnap, err = client.Collection("Users").Doc(uid).Get(ctx)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	var data map[string]interface{}
@@ -292,6 +324,7 @@ func GetUserByID(userID string) (map[string]interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	return data, nil
 }
 
@@ -305,7 +338,7 @@ func UpdateUserById(userID string, attr string, val string) error {
 		},
 	})
 	if err != nil {
-		fmt.Print("Error updating user information.")
+		fmt.Println("Error updating user information.")
 		return err
 	}
 
@@ -314,41 +347,34 @@ func UpdateUserById(userID string, attr string, val string) error {
 
 func RemoveUserById(userID string) error {
 	ctx := context.Background()
-	_, err := client.Collection("Users").Doc(userID).Delete(ctx)
+
+	//Get Auth client
+	authClient, authErr := app.Auth(ctx)
+	if authErr != nil {
+		fmt.Printf("Error retrieving Auth client: %v\n", authErr)
+	}
+
+	//Will retrieve uid from the token passed from FE in the endpoint, hardcoded for now for testing
+	//Gets user data from user ID -- error on invalid uid
+	_, err := authClient.GetUser(ctx, userID)
 	if err != nil {
-		fmt.Println("Error removing user.")
+		fmt.Printf("Error locating User %s: %v\n", userID, err)
+		return err
+	}
+
+	//Remove User object from Documents
+	_, err = client.Collection("Users").Doc(userID).Delete(ctx)
+	if err != nil {
+		fmt.Println("Error removing user data.")
+		return err
+	}
+
+	//Remove signed-up User from DB
+	err = authClient.DeleteUser(ctx, userID)
+	if err != nil {
+		fmt.Println("Error deleting user.")
 		return err
 	}
 
 	return nil
 }
-
-//Template Code
-
-// func AddDocument(ctx context.Context, collection string, doc map[string]interface{}) error {
-// 	_, _, err := client.Collection(collection).Add(ctx, doc)
-// 	return err
-// }
-
-// func GetDocument(ctx context.Context, collection, docID string) (map[string]interface{}, error) {
-// 	docSnap, err := client.Collection(collection).Doc(docID).Get(ctx)
-// 	if err != nil {
-// 		return nil, err
-// 	}
-// 	var data map[string]interface{}
-// 	err = docSnap.DataTo(&data)
-// 	if err != nil {
-// 		return nil, err
-// 	}
-// 	return data, nil
-// }
-
-// func UpdateDocument(ctx context.Context, collection, docID string, update map[string]interface{}) error {
-// 	_, err := client.Collection(collection).Doc(docID).Set(ctx, update, firestore.MergeAll)
-// 	return err
-// }
-
-// func DeleteDocument(ctx context.Context, collection, docID string) error {
-// 	_, err := client.Collection(collection).Doc(docID).Delete(ctx)
-// 	return err
-// }
