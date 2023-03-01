@@ -23,7 +23,7 @@
       "ES2022",
       "dom"
     ],
-    "types": ["cypress", "@testing-library/cypress"]
+    "types": ["cypress"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

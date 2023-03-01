@@ -45,6 +45,6 @@ describe('card-selector.cy.ts', () => {
   })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).to.be.true;
   });
 })
