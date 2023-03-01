@@ -87,7 +87,7 @@ export class Deck{
     }
 
     //ID may not be changed directly
-    get ID(): string{
+    get id(): string{
         return this._id;
     }
 
@@ -189,7 +189,7 @@ export class Deck{
 
     get data(): Readonly<DeckData>{
         return {
-            id: this.ID,
+            id: this.id,
             isFavorite: this.isFavorite,
             name: this.name,
             tags: Array.from(this._tags),

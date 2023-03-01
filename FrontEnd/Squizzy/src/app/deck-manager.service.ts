@@ -93,7 +93,7 @@ export class DeckManagerService {
     deck.onNameChange.subscribe((names) => {
       //remove the name mapping for the old name
       if (this._nameToID[names.old] != undefined) {
-        this._nameToID[names.old].delete(deck.ID);
+        this._nameToID[names.old].delete(deck.id);
         if (this._nameToID[names.old].size == 0) {
           delete this._nameToID[names.old];
         }
@@ -105,7 +105,7 @@ export class DeckManagerService {
       }
 
       //Add the name, id pair to the map
-      this._nameToID[names.new].add(deck.ID);
+      this._nameToID[names.new].add(deck.id);
 
       //If the new name is not found in the list of all deck names, then add it to the list of all names
       if (!this.allDeckNames.includes(names.new)) {
@@ -117,7 +117,7 @@ export class DeckManagerService {
     //When any aspect of the deck changes the following needs to happen
     deck.onDirty.subscribe(() => {
       //Add the deck to the list of decks that have had something changed
-      this._dirtyDecks.add(deck.ID);
+      this._dirtyDecks.add(deck.id);
     });
   }
 

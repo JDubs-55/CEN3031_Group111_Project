@@ -84,7 +84,7 @@ export class DeckSelectorComponent {
   }
 
   updateValidDecks(): void{
-    this.validDecks = this.deckManager.searchDecksByName(this.deckNameControl.value).sort((a, b)=>a.ID.localeCompare(b.ID));
+    this.validDecks = this.deckManager.searchDecksByName(this.deckNameControl.value).sort((a, b)=>a.id.localeCompare(b.id));
   }
 
 

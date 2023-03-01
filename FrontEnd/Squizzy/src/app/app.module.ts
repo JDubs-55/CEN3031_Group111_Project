@@ -15,13 +15,15 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatExpansionModule } from '@angular/material/expansion';
+
+
 import { DeckSelectorComponent } from './deck-selector/deck-selector.component';
 import { DeckPreviewComponent } from './deck-preview/deck-preview.component';
 import { DeckEditorComponent } from './deck-editor/deck-editor.component';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FlashCardTesterComponent } from './flash-card-tester/flash-card-tester.component';
-import { MatExpansionModule } from '@angular/material/expansion';
 
 
 //TODO: figure out why angular is reporting a problem every time I force an update to the display

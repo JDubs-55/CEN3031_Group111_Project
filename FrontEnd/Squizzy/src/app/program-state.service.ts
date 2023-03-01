@@ -45,7 +45,7 @@ export class ProgramStateService {
 
   set selectedDeck(deck: Deck | undefined) {
     if(deck != undefined){
-      this._selectedDeck.next(this.deckManager.getDeck(deck.ID));//This line ensures that the deck that is set as selected is actually loaded
+      this._selectedDeck.next(this.deckManager.getDeck(deck.id));//This line ensures that the deck that is set as selected is actually loaded
     }else{
       this._selectedDeck.next(undefined);//This line ensures that the deck that is set as selected is actually loaded
     }
@@ -64,7 +64,7 @@ export class ProgramStateService {
     }
 
     if(confirm("Are you certain you want to delete this deck.\nYou cannot undo this action.")){
-      this.deckManager.deleteDecks(this.selectedDeck.ID);
+      this.deckManager.deleteDecks(this.selectedDeck.id);
     }
   }
 

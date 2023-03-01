@@ -31,7 +31,7 @@ export class DeckPreviewComponent {
 
   constructor(private programState: ProgramStateService){
     this.programState.onSelectedDeckChange.subscribe(selectedDeck=>{
-      if(selectedDeck != undefined && selectedDeck.ID == this.deck?.ID){
+      if(selectedDeck != undefined && selectedDeck.id == this.deck?.id){
         this.colorClass = "selected";
       }else{
         this.colorClass = "";
