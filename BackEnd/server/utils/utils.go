@@ -10,7 +10,7 @@ func ReadConfig() map[string]interface{} {
 
 	// First read the `config.json` file
 
-	content, err := ioutil.ReadFile("../config/config.json")
+	content, err := ioutil.ReadFile("./config/config.json")
 	if err != nil {
 		log.Fatal("Error when opening config file: ", err)
 	}

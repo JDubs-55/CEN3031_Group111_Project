@@ -166,7 +166,7 @@ Successful Reponse: Status 202 Accepted.
 ## More Specific Deck Endpoints 
 
 ### Update a Deck Parameter
-```/api/updatedeck/{id}/{param}/{val}```
+```/api/updatedeckinfo/{id}/{param}/{val}```
 Updates a specific deck's attributes
 
 When using this endpoint, replace ```{id}/{param}/{val}``` with the deckID value, deck parameter name, and the value it should be changed to. 
@@ -214,10 +214,42 @@ When using this endpoint, replace ```{name}``` with a string that can be used to
 
 Note: Search name must be encoded. For example for the name "My Deck" your search would look like ```/api/getdecklist/My%20Deck```
 
-## TODO
-User Endpoints
-```/createuser```
+
+### User Endpoints
+
+### Read/Create User Collection
 ```/getuser/{id}```
+(v1) If the user has already registered, this will return a user object contiaing the user's information(collection). The information consists of the email address the user registered with, the username (defaulted to the user's email), and the user ID (generated when the user registers). If the user has registered but a collection does not yet exist, one is created for them, accessible via their user id, and returned.
+
+When using this endpoint, replace ```{id}``` with a string represent the user's unique ID.
+
+Sample Response:
+```
+{
+    "Email": "test@test.com",
+    "ID": "iTyTCz0MfGUdyhKEA6V7N1PUSql2",
+    "Username": "test@test.com"
+}
+```
+
+### Update User Information
 ```/updateuser/{id}/{param}/{val}```
+(v1) On success, returns the request. The retrun will contain the parameter that was updated, the user's id, and the value of the updated parameter.
+
+When using this endpoint, replace ```{id}``` with the user's id, ```{param}``` with the parameter to edit, and ```{val}``` with the value to replace the parameter with. Currently the only editable value is the Username as the ID and Email should remain constant for now.
+
+Successful Response:
+```
+{
+    "param": "Username",
+    "id": "iTyTCz0MfGUdyhKEA6V7N1PUSql2",
+    "val": "test"
+}
+```
+
+### Remove User and User Collection
 ```/removeuser/{id}```
+(v1) On success, removes the User's collection within the database and deletes the user's account. 
+
+Successful Response: Status 202 Accepted.
 

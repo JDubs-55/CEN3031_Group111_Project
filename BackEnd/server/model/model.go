@@ -107,7 +107,7 @@ func GetAllDecks() ([]string, error) {
 
 		var deckName string = deck.Name
 		if deckName != "" {
-			nameMap[deckName] = deckName
+			nameMap[deck.ID] = deckName
 		}
 
 	}
@@ -249,17 +249,13 @@ func UpdateDeckTags(deckID string, tags []string) error {
 func CreateUser(user User) error {
 	ctx := context.Background()
 
-	//ref := client.Collection("Users").NewDoc()
-	//fmt.Print(ref.ID)
-	//user.ID = ref.ID
-	//_, err := ref.Set(ctx, user)
-
 	// Users will be created on the FE
-	// Once the user token is passed from the FE, verifyuser/tokenid  //TODO
-	// once verified, get the userid from the token and send it to getUserByID
-	//If user exists, infomation will be pulled from "Users" collection about that user
-	//if not, getUserByID creates a new user with username = email, id = userID (from token), and and empty deck array
-	//once getUserByID creates the new user, it sends that object here to have its 'document' created with refID = userID (from token)
+	// Once the user token is passed from the FE, it is sent to GetUserById()
+	// Once verified, GetUserById() will retrieve the user ID from the token
+	// If user exists, infomation will be pulled from "Users" collection about that user
+	// If not, GetUserByID() creates a new user object with email/username = email and id = userID
+	// 	GetUserByID will pass the new user object here where it will have its collection created in the DB
+	// 	The collection ID = user ID
 	_, err := client.Collection("Users").Doc(user.ID).Set(ctx, user)
 
 	if err != nil {
@@ -270,25 +266,28 @@ func CreateUser(user User) error {
 	return nil
 }
 
-func GetUserByID(userID string) (map[string]interface{}, error) {
+func GetUserByID(usrToken string) (map[string]interface{}, error) {
 	ctx := context.Background()
 
 	//Get Auth client
 	authClient, authErr := app.Auth(ctx)
 	if authErr != nil {
 		fmt.Printf("Error retrieving Auth client: %v\n", authErr)
+		return nil, authErr
 	}
 
-	token, err := authClient.VerifyIDToken(ctx, userID)
+	//Get verified token
+	token, err := authClient.VerifyIDToken(ctx, usrToken)
 	if err != nil {
 		fmt.Printf("Error verifying ID token: %v\n", err)
+		return nil, err
 	}
 
-	//fmt.Printf("Verified ID token: %v\nToken.UID = %v\n", token, token.UID)
+	//Get user ID from token
 	uid := token.UID
 
-	//Will retrieve uid from the token passed from FE in the endpoint, hardcoded for now for testing
 	//Gets user data from user ID -- error on invalid uid
+	//Ensures user has registered an account
 	usr, err := authClient.GetUser(ctx, uid)
 	if err != nil {
 		fmt.Printf("Error retrieving User %s: %v\n", uid, err)
@@ -297,9 +296,7 @@ func GetUserByID(userID string) (map[string]interface{}, error) {
 
 	//If user exists and auth passes, populate user data structure with "Users" collection,
 	//retrieving user info by uid as below
-	//fmt.Printf("Successfully returned user data: %v\n", &usr.UserInfo) //usr object has a lot of options
 	fmt.Println("Successfully found user data.")
-
 	userSnap, err := client.Collection("Users").Doc(uid).Get(ctx)
 	if err != nil {
 		fmt.Println("Error retrieving user information. User does not exist. Creating new user...")
@@ -312,6 +309,7 @@ func GetUserByID(userID string) (map[string]interface{}, error) {
 		if err != nil {
 			return nil, err
 		}
+		fmt.Printf("User %v created.\n", newUser.Email)
 		userSnap, err = client.Collection("Users").Doc(uid).Get(ctx)
 		if err != nil {
 			return nil, err
@@ -328,10 +326,28 @@ func GetUserByID(userID string) (map[string]interface{}, error) {
 	return data, nil
 }
 
-func UpdateUserById(userID string, attr string, val string) error {
+func UpdateUserById(usrToken string, attr string, val string) error {
 	ctx := context.Background()
 
-	_, err := client.Collection("Users").Doc(userID).Update(ctx, []firestore.Update{
+	//Get Auth client
+	authClient, authErr := app.Auth(ctx)
+	if authErr != nil {
+		fmt.Printf("Error retrieving Auth client: %v\n", authErr)
+		return authErr
+	}
+
+	//Get verified token
+	token, err := authClient.VerifyIDToken(ctx, usrToken)
+	if err != nil {
+		fmt.Printf("Error verifying ID token: %v\n", err)
+		return err
+	}
+
+	//Get user ID from verified token
+	userID := token.UID
+
+	//Update information in User's collection
+	_, err = client.Collection("Users").Doc(userID).Update(ctx, []firestore.Update{
 		{
 			Path:  attr,
 			Value: val,
@@ -345,7 +361,7 @@ func UpdateUserById(userID string, attr string, val string) error {
 	return nil
 }
 
-func RemoveUserById(userID string) error {
+func RemoveUserById(usrToken string) error {
 	ctx := context.Background()
 
 	//Get Auth client
@@ -354,9 +370,18 @@ func RemoveUserById(userID string) error {
 		fmt.Printf("Error retrieving Auth client: %v\n", authErr)
 	}
 
-	//Will retrieve uid from the token passed from FE in the endpoint, hardcoded for now for testing
+	//Get verified token
+	token, err := authClient.VerifyIDToken(ctx, usrToken)
+	if err != nil {
+		fmt.Printf("Error verifying ID token: %v\n", err)
+		return err
+	}
+
+	//Get user ID from verified token
+	userID := token.UID
+
 	//Gets user data from user ID -- error on invalid uid
-	_, err := authClient.GetUser(ctx, userID)
+	_, err = authClient.GetUser(ctx, userID)
 	if err != nil {
 		fmt.Printf("Error locating User %s: %v\n", userID, err)
 		return err

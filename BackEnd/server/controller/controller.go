@@ -192,34 +192,41 @@ func UpdateDeckTagsHandler(w http.ResponseWriter, r *http.Request) {
 
 /**************************************************************************/
 // User endpoints
-func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
-	var user model.User
 
-	err := json.NewDecoder(r.Body).Decode(&user)
+/***********************************************************************************/
+//NO LONGER NEEDED, USERS ARE CREATED ON THE FE AND THE USER COLLECTION IS ADDED IN
+//GetUserById()
 
-	if err != nil {
-		http.Error(w, "Failed to parse request body", http.StatusBadRequest)
-		return
-	}
+// func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
+// 	var user model.User
 
-	err = model.CreateUser(user)
-	if err != nil {
-		http.Error(w, "Failed to create user", http.StatusInternalServerError)
-		return
-	}
+// 	err := json.NewDecoder(r.Body).Decode(&user)
 
-	// Return the saved user
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode(user)
-}
+// 	if err != nil {
+// 		http.Error(w, "Failed to parse request body", http.StatusBadRequest)
+// 		return
+// 	}
+
+// 	err = model.CreateUser(user)
+// 	if err != nil {
+// 		http.Error(w, "Failed to create user", http.StatusInternalServerError)
+// 		return
+// 	}
+
+// 	// Return the saved user
+// 	w.Header().Set("Content-Type", "application/json")
+// 	w.WriteHeader(http.StatusCreated)
+// 	json.NewEncoder(w).Encode(user)
+// }
+/***********************************************************************************/
 
 func GetUserByIdHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	userID := vars["id"]
+	// id := vars["id"]
+	token := vars["token"]
 
-	// Save the user to the database
-	user, err := model.GetUserByID(userID)
+	// user, err = model.GetUserByID(id)
+	user, err := model.GetUserByID(token)
 	if err != nil {
 		http.Error(w, "Failed to get user.", http.StatusInternalServerError)
 		return
@@ -233,11 +240,13 @@ func GetUserByIdHandler(w http.ResponseWriter, r *http.Request) {
 
 func UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	userID := vars["id"]
-	param := vars["param"]
+	// id := vars["id"]
+	token := vars["token"]
 	value := vars["val"]
+	param := vars["param"]
 
-	err := model.UpdateUserById(userID, param, value)
+	// err = model.UpdateUserById(id, param, value)
+	err := model.UpdateUserById(token, param, value)
 	if err != nil {
 		http.Error(w, "Failed to update user.", http.StatusInternalServerError)
 	}
@@ -249,9 +258,11 @@ func UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
 
 func RemoveUserHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	userID := vars["id"]
+	// id := vars["id"]
+	token := vars["token"]
 
-	err := model.RemoveUserById(userID)
+	// err = model.RemoveUserById(id)
+	err := model.RemoveUserById(token)
 	if err != nil {
 		http.Error(w, "Failed to remove user.", http.StatusInternalServerError)
 		return

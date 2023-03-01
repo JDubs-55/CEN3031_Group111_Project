@@ -24,7 +24,7 @@ func SetupRouter() *mux.Router {
 	router.HandleFunc("/api/updatedecktags/{id}", controller.UpdateDeckTagsHandler).Methods("PUT")
 
 	//User Endpoints
-	router.HandleFunc("/api/createuser", controller.CreateUserHandler).Methods("POST")
+	// router.HandleFunc("/api/createuser", controller.CreateUserHandler).Methods("POST") //No longer needed
 	router.HandleFunc("/api/getuser/{id}", controller.GetUserByIdHandler).Methods("GET")
 	router.HandleFunc("/api/updateuser/{id}/{param}/{val}", controller.UpdateUserHandler).Methods("PUT")
 	router.HandleFunc("/api/removeuser/{id}", controller.RemoveUserHandler).Methods("DELETE")
@@ -46,10 +46,10 @@ func SetupRouter() *mux.Router {
 	router.HandleFunc("/api/v2/updatedecktags/{id}", controller.UpdateDeckTagsHandler).Methods("PUT")
 
 	//User Endpoints
-	router.HandleFunc("/api/v2/createuser", controller.CreateUserHandler).Methods("POST")
-	router.HandleFunc("/api/v2/getuser/{id}", controller.GetUserByIdHandler).Methods("GET")
-	router.HandleFunc("/api/v2/updateuser/{id}/{param}/{val}", controller.UpdateUserHandler).Methods("PUT")
-	router.HandleFunc("/api/v2/removeuser/{id}", controller.RemoveUserHandler).Methods("DELETE")
+	// router.HandleFunc("/api/v2/createuser", controller.CreateUserHandler).Methods("POST") // No longer needed
+	router.HandleFunc("/api/v2/getuser/{token}", controller.GetUserByIdHandler).Methods("GET")
+	router.HandleFunc("/api/v2/updateuser/{token}/{param}/{val}", controller.UpdateUserHandler).Methods("PUT")
+	router.HandleFunc("/api/v2/removeuser/{token}", controller.RemoveUserHandler).Methods("DELETE")
 
 	return router
 }
