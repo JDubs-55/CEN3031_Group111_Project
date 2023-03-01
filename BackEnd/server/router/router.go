@@ -38,7 +38,7 @@ func SetupRouter() *mux.Router {
 	router.HandleFunc("/api/v2/removedeck/{id}", controller.RemoveDeckByIdHandler).Methods("DELETE")
 
 	//Get Deck List
-	router.HandleFunc("/api/v2/getdecklist/{name}", controller.GetDeckListHandler).Methods("GET")
+	router.HandleFunc("/api/v2/getdecklist/{owner}", controller.GetDeckListHandler).Methods("GET")
 
 	//More specific deck endpoints.
 	router.HandleFunc("/api/v2/updatedeckinfo/{id}/{param}/{val}", controller.UpdateDeckInfoHandler).Methods("PUT")

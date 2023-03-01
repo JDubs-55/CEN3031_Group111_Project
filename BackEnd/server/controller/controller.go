@@ -110,7 +110,7 @@ func GetDeckListHandler(w http.ResponseWriter, r *http.Request) {
 
 	vars := mux.Vars(r)
 
-	deckList, err := model.GetDeckList(vars["name"])
+	deckList, err := model.GetDeckList(vars["owner"])
 
 	if err != nil {
 		http.Error(w, "Failed to get deck list", http.StatusInternalServerError)
@@ -222,10 +222,8 @@ func UpdateDeckTagsHandler(w http.ResponseWriter, r *http.Request) {
 
 func GetUserByIdHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	// id := vars["id"]
 	token := vars["token"]
 
-	// user, err = model.GetUserByID(id)
 	user, err := model.GetUserByID(token)
 	if err != nil {
 		http.Error(w, "Failed to get user.", http.StatusInternalServerError)
@@ -240,13 +238,11 @@ func GetUserByIdHandler(w http.ResponseWriter, r *http.Request) {
 
 func UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	// id := vars["id"]
 	token := vars["token"]
 	value := vars["val"]
 	param := vars["param"]
 
-	// err = model.UpdateUserById(id, param, value)
-	err := model.UpdateUserById(token, param, value)
+	err := model.UpdateUser(token, param, value)
 	if err != nil {
 		http.Error(w, "Failed to update user.", http.StatusInternalServerError)
 	}
@@ -258,10 +254,8 @@ func UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
 
 func RemoveUserHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	// id := vars["id"]
 	token := vars["token"]
 
-	// err = model.RemoveUserById(id)
 	err := model.RemoveUserById(token)
 	if err != nil {
 		http.Error(w, "Failed to remove user.", http.StatusInternalServerError)

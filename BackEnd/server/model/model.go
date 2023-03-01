@@ -154,7 +154,7 @@ func UpdateDeck(deckID string, deck Deck) error {
 func RemoveDeckByID(docID string) error {
 
 	ctx := context.Background()
-	_, err := client.Collection("Decks").Doc(docID).Delete(ctx)
+	_, err := client.Collection("Decks-V2").Doc(docID).Delete(ctx)
 	if err != nil {
 		fmt.Println("Error removing deck.")
 		return err
@@ -163,11 +163,11 @@ func RemoveDeckByID(docID string) error {
 	return nil
 }
 
-func GetDeckList(name string) ([]DeckListItem, error) {
+func GetDeckList(owner string) ([]DeckListItem, error) {
 	ctx := context.Background()
 	var deckItems []DeckListItem
 
-	iter := client.Collection("Decks").Where("Name", "==", name).Documents(ctx)
+	iter := client.Collection("Decks-V2").Where("Owner", "==", owner).Documents(ctx)
 
 	for {
 		doc, err := iter.Next()
@@ -175,6 +175,7 @@ func GetDeckList(name string) ([]DeckListItem, error) {
 			break
 		}
 		if err != nil {
+			fmt.Println("Failed retrieving user decks.")
 			return nil, err
 		}
 
@@ -326,8 +327,24 @@ func GetUserByID(usrToken string) (map[string]interface{}, error) {
 	return data, nil
 }
 
-func UpdateUserById(usrToken string, attr string, val string) error {
+func UpdateUser(usrToken string, attr string, val string) error {
 	ctx := context.Background()
+
+	//Make sure the correct case wont be an issue
+	//If not matching precisely, will create a new parameter
+	if attr == "username" {
+		attr = "Username"
+	}
+	/**** Possible Future functionality ****/
+	// else if attr == "email" {
+	// 	attr = "Email"
+	// }
+	/***************************************/
+	//Ensures that only the username and email parameters can be modified
+	if attr != "Username" { //&& attr != "Email" {
+		err := fmt.Errorf("unable to modify parameter %v", attr)
+		return err
+	}
 
 	//Get Auth client
 	authClient, authErr := app.Auth(ctx)
@@ -358,6 +375,16 @@ func UpdateUserById(usrToken string, attr string, val string) error {
 		return err
 	}
 
+	/****** Possible future functionality *******/
+	//If the user changed their email, update their account information as well
+	// if attr == "Email" {
+	// 	_, err = authClient.UpdateUser(ctx, userID, (&auth.UserToUpdate{}).Email(val))
+	// 	if err != nil {
+	// 		fmt.Println("Error updating email for user account.")
+	// 		return err
+	// 	}
+	// }
+	/*******************************************/
 	return nil
 }
 
@@ -381,10 +408,24 @@ func RemoveUserById(usrToken string) error {
 	userID := token.UID
 
 	//Gets user data from user ID -- error on invalid uid
-	_, err = authClient.GetUser(ctx, userID)
+	userData, err := authClient.GetUser(ctx, userID)
 	if err != nil {
 		fmt.Printf("Error locating User %s: %v\n", userID, err)
 		return err
+	}
+
+	//Remove all Decks owned by the user
+	iter := client.Collection("Decks-V2").Where("Owner", "==", userData.Email).Documents(ctx)
+	for {
+		doc, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			fmt.Println("Failed removing user decks.")
+			return err
+		}
+		doc.Ref.Delete(ctx)
 	}
 
 	//Remove User object from Documents
