@@ -31,7 +31,7 @@ func SetupRouter() *mux.Router {
 
 	/** VERSION 2 ENDPOINT **/
 	// Register the GetUserHandler function as the handler for a specific URL
-	router.HandleFunc("/api/v2/createdeck", controller.CreateDeckHandler).Methods("GET")
+	router.HandleFunc("/api/v2/createdeck/{token}", controller.CreateDeckHandler).Methods("GET")
 	router.HandleFunc("/api/v2/getalldecks", controller.GetAllDecksHandler).Methods("GET")
 	router.HandleFunc("/api/v2/getdeck/{id}", controller.GetDeckByIdHandler).Methods("GET")
 	router.HandleFunc("/api/v2/updatedeck/{id}", controller.UpdateDeckHandler).Methods("PUT")

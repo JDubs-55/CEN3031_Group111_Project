@@ -10,19 +10,21 @@ import (
 )
 
 func CreateDeckHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	token := vars["token"]
 
-	// Create a new deck on db and get the deck ID
-	deckID, err := model.CreateDeck()
+	// Create a new deck on db and get the deck
+	deck, err := model.CreateDeck(token)
 	if err != nil {
 		http.Error(w, "Failed to create deck", http.StatusInternalServerError)
 		return
 	}
 
-	fmt.Print(deckID)
+	fmt.Printf("Successfully created deck %v with id %v.\n", deck.Name, deck.ID)
 
-	// Format response with newly created deck id.
+	// Format response with newly created deck's id.
 	response := map[string]interface{}{
-		"id": deckID,
+		"id": deck.ID,
 	}
 
 	// Return the new deck's id.

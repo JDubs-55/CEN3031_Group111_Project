@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"time"
 
 	"cloud.google.com/go/firestore"
 	firebase "firebase.google.com/go"
@@ -13,25 +14,28 @@ import (
 )
 
 type Card struct {
-	ID         string `json:"id"`
-	FrontText  string `json:"frontText"`
 	BackText   string `json:"backText"`
+	FrontText  string `json:"frontText"`
+	ID         string `json:"id"`
 	IsFavorite bool   `json:"isFavorite"`
 }
 
 type Deck struct {
-	ID         string   `json:"id"`
-	Name       string   `json:"name"`
-	Tags       []string `json:"tags"`
-	IsFavorite bool     `json:"isFavorite"`
-	Cards      []Card   `json:"cards"`
-	Owner      string   `json:"owner"`
+	Cards        []Card    `json:"cards"`
+	CreationDate time.Time `json:"creationDate"`
+	ID           string    `json:"id"`
+	IsFavorite   bool      `json:"isFavorite"`
+	IsPublic     bool      `json:"isPublic"`
+	Name         string    `json:"name"`
+	Owner        string    `json:"owner"`
+	SharedWith   []string  `json:"sharedWith"`
+	Tags         []string  `json:"tags"`
 }
 
 type User struct {
 	Email    string `json:"email"`
-	Username string `json:"username"`
 	ID       string `json:"id,omitempty"`
+	Username string `json:"username"`
 }
 
 type DeckListItem struct {
@@ -66,21 +70,50 @@ func init() {
 
 // Basic Deck CRUD Operations
 
-func CreateDeck() (string, error) {
+func CreateDeck(usrToken string) (Deck, error) {
 	ctx := context.Background()
 	var deck Deck
-	ref := client.Collection("Decks").NewDoc()
-	fmt.Print(ref.ID)
-	deck.ID = ref.ID
-	deck.Name = "Default Name"
-	_, err := ref.Set(ctx, deck)
 
-	if err != nil {
-		log.Printf("An error has occured: %s", err)
-		return "", err
+	//Get Auth client
+	authClient, authErr := app.Auth(ctx)
+	if authErr != nil {
+		fmt.Printf("Error retrieving Auth client: %v\n", authErr)
 	}
 
-	return deck.ID, nil
+	//Get verified token
+	token, err := authClient.VerifyIDToken(ctx, usrToken)
+	if err != nil {
+		fmt.Printf("Error verifying ID token: %v\n", err)
+		return deck, err
+	}
+
+	//Get user ID from verified token
+	userID := token.UID
+
+	//Gets user data from user ID -- error on invalid uid
+	userData, err := authClient.GetUser(ctx, userID)
+	if err != nil {
+		fmt.Printf("Error retreiving user data %s: %v\n", userID, err)
+		return deck, err
+	}
+
+	ref := client.Collection("Decks-V2").NewDoc()
+
+	//Set default deck parameters except for cards, sharedWith, and Tags
+	deck.CreationDate = time.Now()
+	deck.ID = ref.ID
+	deck.IsFavorite = false
+	deck.IsPublic = false
+	deck.Name = "Default Name"
+	deck.Owner = userData.Email
+
+	_, err = ref.Set(ctx, deck)
+	if err != nil {
+		log.Printf("An error has occured: %s", err)
+		return deck, err
+	}
+
+	return deck, err
 }
 
 func GetAllDecks() ([]string, error) {

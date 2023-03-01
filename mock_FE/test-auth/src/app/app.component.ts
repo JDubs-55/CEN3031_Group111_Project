@@ -69,7 +69,7 @@ export class AppComponent {
         this.auth.currentUser?.getIdToken(true)
           .then(idToken => {
             console.log(idToken)
-            this.http.get<User>("http://localhost:4201/api/getuser/" + idToken,
+            this.http.get<User>("http://localhost:4201/api/v2/getuser/" + idToken,
               { responseType: 'json' }).subscribe(data => {
                 console.log(data)
               })
