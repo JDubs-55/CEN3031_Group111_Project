@@ -18,11 +18,15 @@ export class CardSelectorComponent {
   @Output() onSelectCard = new EventEmitter<string>();//This is an event just like how (click) is an event.
 
 
-  constructor(public programState: ProgramStateService, private changeDetector: ChangeDetectorRef){
+  ngOnInit(){
     //This forces the card list to change which cards are being displayed
     this.programState.onSelectedDeckChange.subscribe(()=>{
       this.changeDetector.detectChanges();
     })
+  }
+
+  constructor(public programState: ProgramStateService, private changeDetector: ChangeDetectorRef){
+    
   }
 
 
