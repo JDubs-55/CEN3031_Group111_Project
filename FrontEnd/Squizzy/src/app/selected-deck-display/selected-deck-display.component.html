@@ -1,0 +1,32 @@
+
+<mat-card id="OuterCard">
+    <mat-card-content id="OuterCardContent">
+
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+
+        <mat-form-field>
+            <input type="text" placeholder="Deck Name" aria-label="Number" matInput [formControl]="myControl"
+                [matAutocomplete]="auto" (click)="deckNameInputClicked()">
+        </mat-form-field>
+
+
+        <mat-card id="InnerCard">
+            <mat-card-content id="InnerCardContent">
+                <mat-paginator [pageIndex]="pageIndex" [length]="deckOptions.length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" (page)="handlePageEvent($event)" color="primary">
+                </mat-paginator>
+        
+                <mat-divider></mat-divider>
+        
+                <div id="deckPreviewList">
+                    <app-deck-preview *ngFor="let deck of deckOptions.slice(pageIndex * pageSize, (pageIndex * pageSize + pageSize))" [deck]="deck" (click)="selectDeck(deck)" id="deck{{deck.ID}}"></app-deck-preview>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+    </mat-card-content>
+</mat-card>
+

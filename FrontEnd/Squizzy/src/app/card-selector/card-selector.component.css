@@ -1,0 +1,41 @@
+:host{
+    max-height: 100%;
+}
+
+mat-card-content{
+    overflow: auto;
+}
+
+div{
+    margin-right: 1em;
+}
+
+#topCard{
+    z-index: 1;
+    max-width: 30vw;
+}
+
+#bottomCard{
+    bottom: 1em;
+    left: 1em;
+    max-width: 30vw;
+}
+
+#topCard mat-card-content{
+    overflow: hidden;
+}
+
+#bottomCard  mat-card-content{
+    overflow: hidden;
+}
+
+#OuterCard{
+    max-height: 100%;
+    margin: 0.1em;
+    background-color: #F5F5F5;
+}
+
+.card{
+    display: flex;
+    justify-content: center;
+}
