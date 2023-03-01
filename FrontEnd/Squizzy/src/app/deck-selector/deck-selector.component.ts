@@ -59,7 +59,6 @@ export class DeckSelectorComponent {
 
   refreshAvailableDeckNames(): void{
     this.deckManager.loadAllDeckNames();
-    //console.log("Refreshed search list");
   }
 
   onClickSearchBar(): void{

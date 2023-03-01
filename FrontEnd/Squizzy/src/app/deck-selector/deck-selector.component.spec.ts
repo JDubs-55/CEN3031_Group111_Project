@@ -17,6 +17,11 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 
+
+//Not sure how I am supposed to do unit tests.
+//The behavior of the functions is to modify data found in services.
+//The modification of this data then causes a chain reaction of events.
+
 describe('DeckSelectorComponent', () => {
   let component: DeckSelectorComponent;
   let fixture: ComponentFixture<DeckSelectorComponent>;
