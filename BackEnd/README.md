@@ -42,7 +42,7 @@ CRUD Deck Endpoints
 ```/api/removedeck/{id}``` - DELETE
 
 More Specific Deck Endpoints
-```/api/updatedeck/{id}/{param}/{val}``` - PUT
+```/api/updatedeckinfo/{id}/{param}/{val}``` - PUT
 
 Search Endpoints
 ```/api/getdecklist/{name}``` - GET
@@ -76,30 +76,31 @@ When using this endpoint, replace the ```{id}``` with the id of the deck.
 Successful Response:
 ```
 {
-    "Cards": [
+	"id": "02",
+    "name": "My Deck",
+    "tags": null,
+    "isFavorite": true,
+	"cards": [
+		{
+			"id": "card1",
+			"frontText": "front",
+			"backText": "back",
+            "isFavorite": false
+		},
         {
-            "BackText": "back",
-            "FrontText": "front",
-            "ID": "card1",
-            "IsFavorite": false
-        },
+			"id": "card2",
+			"frontText": "front2",
+			"backText": "back2",
+            "isFavorite": true
+		},
         {
-            "BackText": "back2",
-            "FrontText": "front2",
-            "ID": "card2",
-            "IsFavorite": true
-        },
-        {
-            "BackText": "back3",
-            "FrontText": "front3",
-            "ID": "card3",
-            "IsFavorite": false
-        }
-    ],
-    "ID": "03",
-    "IsFavorite": true,
-    "Name": "My Deck",
-    "Tags": null
+			"id": "card3",
+			"frontText": "front3",
+			"backText": "back3",
+            "isFavorite": false
+		}
+		
+	]
 }
 ```
 

@@ -9,12 +9,13 @@ import (
 func ReadConfig() map[string]interface{} {
 
 	// First read the `config.json` file
-	content, err := ioutil.ReadFile("./config/config.json")
+
+	content, err := ioutil.ReadFile("../config/config.json")
 	if err != nil {
 		log.Fatal("Error when opening config file: ", err)
 	}
 
-	// Now let's unmarshall the data into `payload`
+	// Unmarshall the data into `payload`
 	var payload map[string]interface{}
 	err = json.Unmarshal(content, &payload)
 	if err != nil {

@@ -38,7 +38,7 @@ func GetAllDecksHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(deckNames)
 }
 
@@ -50,13 +50,13 @@ func GetDeckByIdHandler(w http.ResponseWriter, r *http.Request) {
 	// Save the deck to the database
 	deck, err := model.GetDeckByID(deckID)
 	if err != nil {
-		http.Error(w, "Failed to get deck.", http.StatusInternalServerError)
+		http.Error(w, "Failed to get deck.", http.StatusNotFound)
 		return
 	}
 
 	// Return the saved deck
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(deck)
 }
 
@@ -119,7 +119,7 @@ func GetDeckListHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Return the saved user
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(deckList)
 }
 
@@ -227,7 +227,7 @@ func GetUserByIdHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Return the saved user
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(user)
 }
 

@@ -2,13 +2,11 @@ package router
 
 import (
 	"CEN3031_Group111_Project/BackEnd/server/controller"
-	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/rs/cors"
 )
 
-func SetupRouter() {
+func SetupRouter() *mux.Router {
 	router := mux.NewRouter()
 
 	// Register the GetUserHandler function as the handler for a specific URL
@@ -53,13 +51,5 @@ func SetupRouter() {
 	router.HandleFunc("/api/v2/updateuser/{id}/{param}/{val}", controller.UpdateUserHandler).Methods("PUT")
 	router.HandleFunc("/api/v2/removeuser/{id}", controller.RemoveUserHandler).Methods("DELETE")
 
-	// Use CORS middleware to handle cross-origin requests
-	c := cors.New(cors.Options{
-		AllowedOrigins: []string{"*"},
-		AllowedMethods: []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
-		AllowedHeaders: []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
-	})
-
-	handler := c.Handler(router)
-	http.ListenAndServe(":4201", handler)
+	return router
 }
