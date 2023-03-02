@@ -114,7 +114,9 @@ func GetDeckByID(docID string) (*Deck, error) {
 
 	docSnap, err := client.Collection("Decks").Doc(docID).Get(ctx)
 	if err != nil {
+
 		fmt.Println("Error getting deck")
+
 		return nil, err
 	}
 
