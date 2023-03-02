@@ -32,3 +32,4 @@ go-packages:
 
 Ensure that your path is correctly set. On Mac (if using zsh) Put this in your .zshrc file and restart the terminal. 
 ``` export PATH=$PATH:$(go env GOPATH)/bin ```
+
