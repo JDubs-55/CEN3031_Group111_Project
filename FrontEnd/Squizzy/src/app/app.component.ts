@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 import { DeckManagerService } from './deck-manager.service';
 
 import { DeckData, isDeckData } from './MyClasses/DeckData';
 import { Deck } from './MyClasses/Deck';
 import { CardData } from './MyClasses/CardData';
+import { MatDrawer } from '@angular/material/sidenav';
+import { DeckSelectorComponent } from './deck-selector/deck-selector.component';
 
 
 @Component({
@@ -14,30 +16,25 @@ import { CardData } from './MyClasses/CardData';
 })
 export class AppComponent {
 
+  @ViewChild('drawer') sideBarDrawer!: MatDrawer;
+  @ViewChild('deckSelector') deckSelector!: DeckSelectorComponent;
+
   constructor(private deckManager: DeckManagerService) {
     
   }
 
   ngOnInit(){
-    this.deckManager.loadAllDeckNames();
+    //this.deckManager.loadAllDeckNames();
   }
 
   dumpDeckData(): void{
     let data: DeckData[] = Object.values(this.deckManager.loadedDecks).map(deck=>deck.data);
 
     console.log(data);
-    
   }
 
-  httpTest(): void{
-    if(this.deckManager.allDeckNames.includes("Test Deck")){
-      this.deckManager.deleteDecks(this.deckManager.getIDsByName("Test Deck"));
-    }else{
-      this.deckManager.generateDeck().then(deck=>{
-        deck.name = "Test Deck";
-        this.deckManager.saveDirty();
-      });
-      
-    }
+  openDeckSelector(): void{
+    this.sideBarDrawer.toggle()
+    this.deckSelector.onOpenDeckSelector();
   }
 }

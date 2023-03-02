@@ -1,61 +1,89 @@
 :host{
     display: flex;
-    height: 100%;
-    overflow: hidden;
-}
-
-
-app-selected-deck-display{
-    border-right: 1px solid #E0E0E0;
-    box-sizing: border-box;
-}
-
-#EditorDiv{
-    height: 100%;
-    display: flex;
     flex-direction: column;
+    margin: 1em;
+    gap: 1em;
+    flex-grow: 1;
     align-items: stretch;
     overflow: hidden;
 }
 
-mat-card{
-    flex-grow: 1;
+.card{
+    margin-right: 1.5em;
+    margin-bottom: 1.5em;
+    min-width: 12em;
+}
+
+.card mat-card-content{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#cardSelector{
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
     display: flex;
 }
 
-#CardEditorDiv{
+.cardPreviewFrontText{
+    z-index: 1;
+}
+
+.cardPreviewBackText{
+    bottom: 1em;
+    left: 1em;
+}
+
+.selectedCardClass{
+    background-color: #F5F5F5;
+}
+
+
+#bottomDiv{
     flex-grow: 1;
     display: flex;
+    flex-direction: column;
+    height: 100%;
     gap: 1em;
-    height: 100%;
-    overflow: hidden;
 }
 
-#CardEditorFields{
+#deckNameDiv{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+#deckNameDiv mat-form-field{
     flex-grow: 1;
+}
+
+#newTagDiv{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+#tagListDiv{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+#expansionPanelDiv{
     display: flex;
     flex-direction: column;
+    gap: 1em;
 }
 
-mat-card{
-    overflow: hidden;
-    flex-grow: 1;
-}
-
-mat-card-content{
-    overflow: hidden;
-    height: 100%;
-}
-
-button{
-    margin-bottom: 1em;
-}
-
-#DeleteDeckButtonDiv{
-    flex-grow: 1;
+.tagCardContent{
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    
+    align-items: center;
+    padding: 0px;
+    padding-right: 1em;
 }
 
+#spacerDiv{
+    flex-grow: 1;
+}

@@ -114,7 +114,9 @@ func GetDeckByID(docID string) (*Deck, error) {
 
 	docSnap, err := client.Collection("Decks").Doc(docID).Get(ctx)
 	if err != nil {
-		fmt.Print("Error getting deck")
+
+		fmt.Println("Error getting deck")
+
 		return nil, err
 	}
 
@@ -281,9 +283,8 @@ func GetUserByID(userID string) (map[string]interface{}, error) {
 
 	userSnap, err := client.Collection("Users").Doc(userID).Get(ctx)
 	if err != nil {
-		return nil, err
-	} else {
 		fmt.Print("Error getting deck")
+		return nil, err
 	}
 
 	var data map[string]interface{}

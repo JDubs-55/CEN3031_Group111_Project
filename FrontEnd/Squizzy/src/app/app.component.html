@@ -1,13 +1,17 @@
-
-<div id="TopBar">
-    <a mat-flat-button color="primary" routerLink="/DeckEditor">Deck Editor</a>
-    <button mat-flat-button color="primary" (click)="dumpDeckData()">Dump Deck Data</button>
-    <a mat-flat-button color="primary" routerLink="/FlashCardTester">Flash Card Tester</a>
-    <button mat-flat-button color="primary" (click)="httpTest()">Http Test</button>
-</div>
-<mat-divider></mat-divider>
-<div id="SelectedTabDiv">
-    <router-outlet></router-outlet>
-</div>
-
-
+<mat-drawer-container>
+    <mat-drawer #drawer mode="side">
+        <app-deck-selector #deckSelector (close)="drawer.toggle()"></app-deck-selector>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div id="TopBar">
+            <button mat-icon-button color="primary" (click)="openDeckSelector()"><mat-icon id="leftSidebarIcon">chevron_left</mat-icon></button>
+            <button mat-flat-button color="primary" (click)="dumpDeckData()">Dump Deck Data</button>
+            <a mat-flat-button color="primary" routerLink="/FlashCardTester">Flash Card Tester</a>
+            <a mat-flat-button color="primary" routerLink="/DeckEditor">Deck Editor</a>
+        </div>
+        <mat-divider></mat-divider>
+        <div id="SelectedTabDiv">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

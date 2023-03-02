@@ -13,13 +13,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
-import { SelectedDeckDisplayComponent } from './selected-deck-display/selected-deck-display.component';
+import { DeckSelectorComponent } from './deck-selector/deck-selector.component';
 import { DeckPreviewComponent } from './deck-preview/deck-preview.component';
 import { DeckEditorComponent } from './deck-editor/deck-editor.component';
-import { CardSelectorComponent } from './card-selector/card-selector.component';
 import { FlashCardTesterComponent } from './flash-card-tester/flash-card-tester.component';
+
 
 //TODO: figure out why angular is reporting a problem every time I force an update to the display
 //(note) the code does what I intend to do, but I am probably doing something in an unintended way
@@ -34,10 +39,9 @@ import { FlashCardTesterComponent } from './flash-card-tester/flash-card-tester.
 @NgModule({
   declarations: [
     AppComponent,
-    SelectedDeckDisplayComponent,
+    DeckSelectorComponent,
     DeckPreviewComponent,
     DeckEditorComponent,
-    CardSelectorComponent,
     FlashCardTesterComponent,
   ],
   imports: [
@@ -52,7 +56,12 @@ import { FlashCardTesterComponent } from './flash-card-tester/flash-card-tester.
     MatFormFieldModule,
     MatPaginatorModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatButtonToggleModule,
+    MatSlideToggleModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

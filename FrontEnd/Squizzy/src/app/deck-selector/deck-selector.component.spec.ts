@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeckEditorComponent } from './deck-editor.component';
+import { DeckSelectorComponent } from './deck-selector.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
@@ -17,9 +17,14 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 
-describe('DeckEditorComponent', () => {
-  let component: DeckEditorComponent;
-  let fixture: ComponentFixture<DeckEditorComponent>;
+
+//Not sure how I am supposed to do unit tests.
+//The behavior of the functions is to modify data found in services.
+//The modification of this data then causes a chain reaction of events.
+
+describe('DeckSelectorComponent', () => {
+  let component: DeckSelectorComponent;
+  let fixture: ComponentFixture<DeckSelectorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -40,11 +45,11 @@ describe('DeckEditorComponent', () => {
         MatExpansionModule,
         BrowserAnimationsModule
       ],
-      declarations: [ DeckEditorComponent ]
+      declarations: [ DeckSelectorComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DeckEditorComponent);
+    fixture = TestBed.createComponent(DeckSelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

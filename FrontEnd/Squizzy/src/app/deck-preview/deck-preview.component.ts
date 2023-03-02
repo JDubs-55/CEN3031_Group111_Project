@@ -1,12 +1,8 @@
-import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { MatCard } from '@angular/material/card';
+import { CardData } from '../MyClasses/CardData';
 import { Deck } from '../MyClasses/Deck';
-import { interval, Subscription, Observable } from 'rxjs';
 import { ProgramStateService } from '../program-state.service';
-
-
-//TODO: Write Comments
-//TODO: Write Unit Tests
-
 
 @Component({
   selector: 'app-deck-preview',
@@ -14,75 +10,42 @@ import { ProgramStateService } from '../program-state.service';
   styleUrls: ['./deck-preview.component.css']
 })
 export class DeckPreviewComponent {
-  @Input() deck?: Deck;
-  frontTexts: string[] = [];
-  backTexts: string[] = [];
-  textNumber: number = 0;
+  @Output() myClick = new EventEmitter<void>();//This exists solely so that the application knows when to close the deck selector (Do not use for any other purpose!)
 
+  @Input() deck?: Deck;
   colorClass: string = "";
 
-  onCardChange?: Subscription;
-  static timer = interval(1000).subscribe(()=>{
-    DeckPreviewComponent.deckPreviewComponents.forEach(preview=>{
-      preview.showNext();
+  get cards(): Readonly<CardData[]>{
+    if(this.deck != undefined)
+      return Object.values(this.deck.cards);
+
+    return [];
+  }
+
+  get name(): Readonly<string>{
+    if(this.deck != undefined)
+      return this.deck.name;
+
+    return "";
+  }
+
+  constructor(private programState: ProgramStateService){
+    this.programState.onSelectedDeckChange.subscribe(selectedDeck=>{
+      if(selectedDeck != undefined && selectedDeck.id == this.deck?.id){
+        this.colorClass = "selected";
+      }else{
+        this.colorClass = "";
+      }
+      
     })
-  })
-
-  static deckPreviewComponents = new Set<DeckPreviewComponent>();
-
-
-
-  constructor(private changeDetector: ChangeDetectorRef, private programState: ProgramStateService){ }
+  }
 
   ngOnInit(){
-    DeckPreviewComponent.deckPreviewComponents.add(this);
-
-    this.showNext();
     
-    this.deck?.onCardsChange.subscribe(()=>{
-      this.updateText();
-    })
-
-    this.programState.onSelectedDeckChange.subscribe((deck)=>{
-      if(deck != undefined && this.deck != undefined){
-        if(deck.ID == this.deck.ID){
-          this.colorClass = "selected";
-          return;
-        }
-      }
-      this.colorClass = "";
-    })
-  }
-  
-  ngOnDestroy(){
-    DeckPreviewComponent.deckPreviewComponents.delete(this);
-
-    this.onCardChange?.unsubscribe();
   }
 
-
-  showNext(): void{
-    if(this.frontTexts.length == 0){
-      this.textNumber = 0;
-    }else{
-      this.textNumber = (this.textNumber + 1) % this.frontTexts.length;
-    }
-    this.changeDetector.detectChanges();
+  onClick(){
+    this.myClick.emit();
   }
 
-  updateText(): void{
-    if(this.deck != undefined){
-      this.frontTexts = Object.values(this.deck.cards).map(card=>card.FrontText);
-      this.backTexts = Object.values(this.deck.cards).map(card=>card.BackText);
-
-      if(this.frontTexts.length == 0){
-        this.frontTexts = ["This deck has no cards"];
-        this.backTexts = ["ID: " + this.deck.ID];
-      }
-    }
-
-    
-
-    this.textNumber = this.textNumber % this.frontTexts.length;//This prevents the text number from becomming too high when a card is deleted
-  }
 }

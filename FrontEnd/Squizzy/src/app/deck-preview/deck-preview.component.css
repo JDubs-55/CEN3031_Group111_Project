@@ -1,38 +1,52 @@
+
 :host{
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    gap: -1em;
     overflow: hidden;
+    padding: 2px;
+    max-height: 100%;
 }
 
-mat-card{
-    margin-right: 1em;
+
+#outerCard{
     overflow: hidden;
+    max-height: 100%;
 }
+
 mat-card-content{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
     overflow: hidden;
 }
 
-
-#topCard{
-    z-index: 1;
-    background-color: inherit;
+.cardPreview mat-card-content{
+    align-items: center;
 }
 
-#bottomCard{
+
+#nameDiv{
+    display: flex;
+    justify-content: center;
+}
+
+.frontText{
+    z-index: 1;
+}
+
+.backText{
     bottom: 1em;
     left: 1em;
-    background-color: inherit;
 }
 
-div{
-    background-color: white;
-    display: contents;
+
+.cardPreview{
+    padding-right: 1em;
+    margin-right: 0.5em;
 }
 
 .selected{
-    background-color: #E0E0E0;
+    background-color: #F5F5F5;
+}
+
+#cardListDiv{
+    overflow-y: auto;
 }
