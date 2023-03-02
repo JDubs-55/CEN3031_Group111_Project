@@ -43,9 +43,10 @@ export class DeckEditorComponent {
 
       this.selectedCard = undefined;
 
-      this.deckNameControl.enable();
+      
       this.deckNameControl.setValue(selectedDeck.name);
       this.isFavoriteControl.setValue(selectedDeck.isFavorite);
+      this.deckNameControl.enable();
 
       this.frontTextControl.setValue("");
       this.backTextControl.setValue("");
@@ -116,14 +117,14 @@ export class DeckEditorComponent {
 
 
 
-    this.programState.selectedDeck.tags.add(value);
+    this.programState.selectedDeck.addTag(value);
   }
 
   removeTag(value: string): void{
     if(value == undefined || value == null || value == "") return;//If the value of the new tag is empty do not save that tag as it is invalid
     if(this.programState.selectedDeck == undefined) return;//If there is no selected deck, then there is nothing that can be changed
 
-    this.programState.selectedDeck.tags.delete(value);
+    this.programState.selectedDeck.removeTag(value);
 
   }
 
