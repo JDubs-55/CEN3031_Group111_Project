@@ -33,8 +33,10 @@ describe('deck editor spec', () => {
   })
   
   it('Can edit deck', () => {
-    searchName("M")
-    selectDeck("02");
+    searchName("My Deck")
+    cy.wait(15000);
+    cy.get('input').type('{enter}')
+    cy.get("app-deck-preview").click();
 
     selectDeckNameInput().invoke("val").then(input=>{
       if(input == "My Deck 2"){
