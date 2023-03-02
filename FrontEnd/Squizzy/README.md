@@ -1,27 +1,54 @@
 # Squizzy
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
+**Project Name**: 
+Squizzy
 
-## Development server
 
-Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+**Project Description**:
+Our project will be a flashcard application that allows users to create quiz decks, quiz themselves, and share their decks with others. Users will be able to:
+ - Create decks of flash cards
+ - Add their decks to folders to organize their study materials. 
+ - Apply tags to their decks to allow for better searchability. 
+ - Search for decks by tag, title, and/or content
+ - Search through folders manually
+ - Test their knowledge using any deck created on the platform through a variety of different quiz types. 
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+**Project Members**:
+- Collin Stebbins (Front-end)
+- Anthony Crowe (Front-end)
+- Johnathan Weller (Back-end)
+- Kyle Chamblee (Back-end)
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+**Dependencies for Running the Server Locally
+go-packages:
+- cosmtrek/air - https://github.com/cosmtrek/air
+- gorilla/mux - github.com/gorilla/mux
+- rs/cors - github.com/rs/cors
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Ensure that your path is correctly set. On Mac (if using zsh) Put this in your .zshrc file and restart the terminal. 
+``` export PATH=$PATH:$(go env GOPATH)/bin ```
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+**Unit Tests**:
+- Deck: Can load from deck data
+- Deck: Can edit cards
+- Deck: Can edit cards partially
+- Deck: Can add tags
+- Deck: Can remove tags
+- Deck: Can add cards
+- Deck: Can remove cards
+- Deck: Can edit deck name
+- Deck: Can change favorite status
+- All the angular components: Did it get created
+
+**Cypress Tests**:
+- Made for an older version of the code, both front and back. No longer works.
+- Need to make new tests for all the components.
+- Each component should be able to be tested independently in the current state.
+- Due to the code design, unit testing, either doesn't make sense or is impossible. (Most components just call functions in the services)
+

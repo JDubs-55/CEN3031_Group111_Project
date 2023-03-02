@@ -1,36 +1,25 @@
-# Squizzy Backend Endpoints
+## Front End Team Sprint 2 Writeup
 
-## Backend Setup
+**Unit Tests**:
+- Deck: Can load from deck data
+- Deck: Can edit cards
+- Deck: Can edit cards partially
+- Deck: Can add tags
+- Deck: Can remove tags
+- Deck: Can add cards
+- Deck: Can remove cards
+- Deck: Can edit deck name
+- Deck: Can change favorite status
+- All the angular components: Did it get created
 
-### Config Setup
+**Cypress Tests**:
+- Made for an older version of the code, both front and back. No longer works.
+- Need to make new tests for all the components.
+- Each component should be able to be tested independently in the current state.
+- Due to the code design, unit testing, either doesn't make sense or is impossible. (Most components just call functions in the services)
 
-In the BackEnd>server folder create a new folder called ```config```
 
-Within this folder create a new file called ```config.json```
-
-This file should have the following structure:
-```
-{
-    "firestore_cred_path": "/FULL/PATH/TO/CREDENTIAL/FILE.json",
-    "project-id": "PROJECT-ID-HERE"
-}
-```
-
-You must also place the database credential file in this ```config``` folder. 
-
-### Dependencies for Running the Server Locally
-go-packages:
-- cosmtrek/air - https://github.com/cosmtrek/air
-- gorilla/mux - github.com/gorilla/mux
-- rs/cors - github.com/rs/cors
-
-Ensure that your path is correctly set. On Mac (if using zsh) Put this in your .zshrc file and restart the terminal. 
-``` export PATH=$PATH:$(go env GOPATH)/bin ```
-
-You can search for similar instructions if on another OS.
-
-You should be able to start the server by running ```air``` from the server directory. 
-
+# Squizzy Backend Team Sprint 2 Writeup
 
 ## Current API Endpoints
 
@@ -275,3 +264,8 @@ In this test, we construct what the response should look like when we call get d
 ### TestEndpointResponseCodes
 
 These unit tests will ensure that the proper status codes are returned for each endpoint. A custom struct object is created that contain the name of the test, the endpoint associated with the name, the method used to call that endpoint, and the expected status code. If the test requires a request body, one is constructed. If any status code from each endpoint call does not match the expected endpoint, the test will fail.
+
+
+## Other Notes
+
+It's worth noting that the backend team also spend considerable time implementing a rudimentary authentication system on the backend_dev_auth branch. Integration of authentication will be a focal point in the coming sprint 3. 
