@@ -1,3 +1,4 @@
+# Sprint 2 Submission
 ## Front End Team Sprint 2 Writeup
 
 **Unit Tests**:
@@ -19,7 +20,7 @@
 - Due to the code design, unit testing, either doesn't make sense or is impossible. (Most components just call functions in the services)
 
 
-# Squizzy Backend Team Sprint 2 Writeup
+## Squizzy Backend Team Sprint 2 Writeup
 
 ## Current API Endpoints
 
