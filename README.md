@@ -33,3 +33,22 @@ go-packages:
 Ensure that your path is correctly set. On Mac (if using zsh) Put this in your .zshrc file and restart the terminal. 
 ``` export PATH=$PATH:$(go env GOPATH)/bin ```
 
+
+**Unit Tests**:
+- Deck: Can load from deck data
+- Deck: Can edit cards
+- Deck: Can edit cards partially
+- Deck: Can add tags
+- Deck: Can remove tags
+- Deck: Can add cards
+- Deck: Can remove cards
+- Deck: Can edit deck name
+- Deck: Can change favorite status
+- All the angular components: Did it get created
+
+**Cypress Tests**:
+- Made for an older version of the code, both front and back. No longer works.
+- Need to make new tests for all the components.
+- Each component should be able to be tested independently in the current state.
+- Due to the code design, unit testing, either doesn't make sense or is impossible. (Most components just call functions in the services)
+
