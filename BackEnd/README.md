@@ -253,3 +253,26 @@ Successful Response:
 
 Successful Response: Status 202 Accepted.
 
+
+
+## Backend Unit Tests
+### TestDeckCRUDEndpoint
+
+These tests serve to test the CRUD functionality of our backend deck endpoints.
+
+#### Create Deck
+
+This test will issue a call to our create deck endpoint with the appropriate method (GET). If we receive the expected response (a deck ID) and expected status code, the test will succeed.
+
+#### Update Deck
+
+In this test, we create a request body and pass it to the update deck endpoint. We compare the constructed request body with the deck returned from the endpoint. The test will fail if there are any discrepencies in the response or expected status code.
+
+#### Get Deck
+
+In this test, we construct what the response should look like when we call get deck on a deck that has been created in a previous passed test. As in update deck, if the deck object returned does not match the constructed response or if the expected status code is different, the test will fail.
+
+### TestEndpointResponseCodes
+
+These unit tests will ensure that the proper status codes are returned for each endpoint. A custom struct object is created that contain the name of the test, the endpoint associated with the name, the method used to call that endpoint, and the expected status code. If the test requires a request body, one is constructed. If any status code from each endpoint call does not match the expected endpoint, the test will fail.
+

@@ -113,7 +113,7 @@ func CreateDeck(usrToken string) (Deck, error) {
 		return deck, err
 	}
 
-	return deck, err
+	return deck, nil
 }
 
 func GetAllDecks() ([]string, error) {
